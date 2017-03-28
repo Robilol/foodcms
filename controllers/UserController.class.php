@@ -2,22 +2,22 @@
 
 class UserController {
 
-	public function login(){
+	public function loginAction(){
 
 	}
-	public function logout(){
+	public function logoutAction(){
 
 	}
-	public function registerUser(){
+	public function registerAction(){
 
 	}
-	public function editUser(){
+	public function editAction(){
 
 	}
-	public function resetUser(){
+	public function resetAction(){
 
 	}
-	public function showUser(){
+	public function showAction(){
 
 	}
 

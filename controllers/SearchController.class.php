@@ -2,7 +2,7 @@
 
 class SearchController {
 
-	public function search(){
+	public function searchAction(){
 
 	}
 

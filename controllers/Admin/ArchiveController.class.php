@@ -6,25 +6,25 @@
 class ArchiveController
 {
 
-    public function listUser(){
+    public function listUserAction(){
 
     }
-    public function listComment(){
+    public function listCommentAction(){
 
     }
-    public function listArticle(){
+    public function listArticleAction(){
 
     }
-    public function listPicture(){
+    public function listPictureAction(){
 
     }
-    public function listTag(){
+    public function listTagAction(){
 
     }
-    public function listCategory(){
+    public function listCategoryAction(){
 
     }
-    public function listPage(){
+    public function listPageAction(){
 
     }
 }
