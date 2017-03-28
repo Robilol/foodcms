@@ -2,19 +2,19 @@
 
 class UserController {
 
-	public function addUser(){
+	public function addAction(){
 
 	}
-	public function editUser(){
+	public function editAction(){
 
 	}
-	public function deleteUser(){
+	public function deleteAction(){
 
 	}
-	public function listUser(){
+	public function listAction(){
 
 	}
-	public function resetUser(){
+	public function resetAction(){
 
 	}
 

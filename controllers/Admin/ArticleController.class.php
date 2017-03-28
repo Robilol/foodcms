@@ -3,21 +3,21 @@
 
 class ArticleController {
 
-    public function listArticle(){
+    public function listAction(){
 
     }
 
 
-    public function writeArticle(){
+    public function writeAction(){
 
 
     }
 
-    public function editArticle(){
+    public function editAction(){
 
     }
 
-    public function  deleteArticle(){
+    public function  deleteAction(){
 
 
     }

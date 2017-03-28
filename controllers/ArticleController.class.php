@@ -3,12 +3,12 @@
 
 class ArticleController {
 
-    public function listArticle(){
+    public function listAction(){
 
     }
 
 
-    public function showArticle(){
+    public function showAction(){
 
 
     }
