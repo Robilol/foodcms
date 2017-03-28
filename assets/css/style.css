@@ -1,0 +1,29 @@
+/* MENU */
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f66767;
+}
+
+.menu ul li img{
+  height: 60px;
+  margin: 7px;
+  margin-left: 12px;
+}
+
+.rightli {
+  float: right;
+  height: 70px;
+  width: 30%;
+}
+
+.rightli li {
+  width: 50%;
+  line-height: 35px;
+}
+
+.rightli li a {
+  height: 70px;
+}
