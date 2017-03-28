@@ -1,18 +1,24 @@
-<?php
+<?php 
 
-class TagController {
+class TagController
+{
+    public function listAction()
+    {
+        
+    }
 
-	public function listTag(){
+    public function createAction()
+    {
+        
+    }
 
-	}
-	public function createTag(){
+    public function editAction()
+    {
+        
+    }
 
-	}
-	public function editTag(){
-
-	}
-	public function deleteTag(){
-
-	}
-
+    public function deleteAction()
+    {
+        
+    }
 }
