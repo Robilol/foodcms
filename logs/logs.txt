@@ -19,3 +19,7 @@
 2017-02-19 23:50:37 La méthode addAction n'existe pas dans la classe indexController.
 2017-02-19 23:51:16 La méthode addAction n'existe pas dans la classe indexController.
 2017-02-19 23:52:39 La méthode addAction n'existe pas dans la classe indexController.
+2017-03-28 19:41:26 Le contrôleur favicon.icoController n'existe pas.
+2017-03-28 19:41:30 Le contrôleur ezefzefController n'existe pas.
+2017-03-28 19:41:30 Le contrôleur favicon.icoController n'existe pas.
+2017-03-28 19:41:35 Le contrôleur favicon.icoController n'existe pas.
