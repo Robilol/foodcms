@@ -10,6 +10,8 @@
         protected $active;
         protected $user;
         protected $flag_archived;
+        protected $date_created;
+        protected $date_modified;
 
         /**
          * @param mixed $text
@@ -123,4 +125,52 @@
             $this->title = $title;
         }
 
+    
+    /**
+     * Gets the value of date_created.
+     *
+     * @return mixed
+     */
+    public function getDateCreated()
+    {
+        return $this->date_created;
     }
+
+    /**
+     * Sets the value of date_created.
+     *
+     * @param mixed $date_created the date created
+     *
+     * @return self
+     */
+    protected function setDateCreated($date_created)
+    {
+        $this->date_created = $date_created;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of date_modified.
+     *
+     * @return mixed
+     */
+    public function getDateModified()
+    {
+        return $this->date_modified;
+    }
+
+    /**
+     * Sets the value of date_modified.
+     *
+     * @param mixed $date_modified the date modified
+     *
+     * @return self
+     */
+    protected function setDateModified($date_modified)
+    {
+        $this->date_modified = $date_modified;
+
+        return $this;
+    }
+}
