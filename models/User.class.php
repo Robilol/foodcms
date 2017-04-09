@@ -2,30 +2,21 @@
 
     class User extends BaseSql {
 
-        protected $id = -1;
+        protected $id;
         protected $email;
-        protected $pwd;
+        protected $password;
+        protected $username;
         protected $firstname;
         protected $lastname;
-        protected $status;
-        protected $permission;
-
-        public function __construct($id = -1, $email = null, $pwd = null, $firstname = null, $lastname = null, $status = 0, $permission = 0) {
-            parent::__construct();
-
-            /*
-            $this->setId($id);
-            $this->setEmail($email);
-            $this->setPwd($pwd);
-            $this->setFirstname($firstname);
-            $this->setLastname($lastname);
-            $this->setStatus($status);
-            $this->setPermission($permission);
-            */
-        }
+        protected $flag_archived;
+        protected $role;
 
         public function setId($id) {
             $this->id = $id;
+        }
+
+        public function getId() {
+            echo $this->id;
         }
 
         public function setEmail($email) {
@@ -36,47 +27,47 @@
             echo $this->email;
         }
 
-        public function setPwd($pwd) {
+        public function setPassword($pwd) {
             $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        }
+
+        public function setUsername($username) {
+            $this->username = ($username);
+        }
+
+        public function getUsername() {
+            echo $this->username;
         }
 
         public function setFirstname($firstname) {
             $this->firstname = ($firstname);
         }
 
+        public function getFirstname() {
+            echo $this->firstname;
+        }
+
         public function setLastname($lastname) {
             $this->lastname = ($lastname);
         }
 
-        public function setStatus($status) {
-            $this->status = $status;
+        public function getLastname() {
+            echo $this->lastname;
         }
 
-        public function setPermission($permission) {
-            $this->permission = $permission;
+        public function setFlag_archived($flag_archived) {
+            $this->flag_archived = $flag_archived;
         }
 
-        public function getForm()
-        {
-            return [
-                    "options" => [
-                                    "method" => "POST",
-                                    "action" => "user/add",
-                                    "submit" => "s'inscrire"
-                                ],
-                    "struct" => [
-                                    "email" => [
-                                                "type" => "email",
-                                                "placeholder" => "Votre email",
-                                                "required" => true,
-                                                ],
-                                    "pwd" => [
-                                                "type" => "password",
-                                                "placeholder" => "Votre mot de passe",
-                                                "required" => true,
-                                                ],
-                                ]
-                    ];
+        public function getFlag_archived() {
+            echo $this->flag_archived;
+        }
+
+        public function setRole($role) {
+            $this->role = $role;
+        }
+        public function getRole() {
+            echo $this->role;
         }
 
     }
