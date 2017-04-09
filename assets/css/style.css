@@ -48,12 +48,12 @@ position:relative;
   max-width: 100%;
   margin: 7px;
   margin-left: 12px;
-  max-height: 40px;
+  max-height: 50px;
 }
 
 #liens {
-  height: 58px;
-  line-height: 29px;
+  height: 68px;
+  line-height: 36px;
 }
 
 /* TITRE */
