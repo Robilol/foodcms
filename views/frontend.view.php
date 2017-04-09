@@ -7,17 +7,29 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="menu">
-    <ul>
-      <li><img class="logo" src="/assets/logo.png"></li>
-      <div class="rightli">
+  <div id="main">
+    <ul id="navigation">
+      <li><img id="logo" src="/assets/img/logo.png"></li>
+      <div id="liens" style="float:right">
         <li><a href="/">S'INSCRIRE</a></li>
         <li><a href="/">S'IDENTIFIER</a></li>
+        <li><a href="/">RECETTES</a></li>
+        <li><a href="/">CATEGORIES</a></li>
+        <li><a href="/">RECHERCHE</a></li>
       </div>
     </ul>
+    <?php
+    include $this->view.".view.php";
+    ?>
+    <footer>
+      <div id="footer">
+        <ul id="liens_footer">
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Plan du site</a></li>
+        </ul>
+      </div>
+    </footer>
   </div>
-  <?php
-  include $this->view.".view.php";
-  ?>
 </body>
 </html>
