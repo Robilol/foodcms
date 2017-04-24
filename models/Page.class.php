@@ -6,7 +6,7 @@ class Page extends BaseSql{
  protected $title;
  protected $active;
  protected $category;
- protected $flag_archived;
+ protected $archived;
 
     /**
      * @param mixed $active
@@ -21,7 +21,7 @@ class Page extends BaseSql{
      */
     public function getFlagArchived()
     {
-        return $this->flag_archived;
+        return $this->archived;
     }
 
     /**
@@ -57,11 +57,11 @@ class Page extends BaseSql{
     }
 
     /**
-     * @param mixed $flag_archived
+     * @param mixed $archived
      */
-    public function setFlagArchived($flag_archived)
+    public function setFlagArchived($archived)
     {
-        $this->flag_archived = $flag_archived;
+        $this->archived = $archived;
     }
 
     /**

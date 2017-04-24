@@ -4,7 +4,7 @@ class Menu extends BaseSql{
     protected $id;
     protected $name;
     protected $active;
-    protected $flag_archived;
+    protected $archived;
 
     /**
      * @param mixed $name
@@ -23,11 +23,11 @@ class Menu extends BaseSql{
     }
 
     /**
-     * @param mixed $flag_archived
+     * @param mixed $archived
      */
-    public function setFlagArchived($flag_archived)
+    public function setFlagArchived($archived)
     {
-        $this->flag_archived = $flag_archived;
+        $this->archived = $archived;
     }
 
     /**
@@ -51,7 +51,7 @@ class Menu extends BaseSql{
      */
     public function getFlagArchived()
     {
-        return $this->flag_archived;
+        return $this->archived;
     }
 
     /**
