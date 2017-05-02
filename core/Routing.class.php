@@ -46,7 +46,15 @@ class Routing {
   }
 
   public function setParams() {
-    $this->params = array_merge(array_values($this->uriExploded), $_POST);
+      if ($this->uriExploded[0] == "admin") {
+          for($i=3; $i<count($this->uriExploded); $i++) {
+              $this->params[] = $this->uriExploded[$i];
+          }
+      } else {
+          for($i=2; $i<count($this->uriExploded); $i++) {
+              $this->params[] = $this->uriExploded[$i];
+          }
+      }
   }
 
   /*

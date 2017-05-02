@@ -14,7 +14,7 @@
                 die("Erreur SQL : ".$e->getMessage());
             }
 
-            $this->table = DB_PREFIXE.strtolower(get_class($this));
+            $this->table = strtolower(get_class($this));
 
             // Devoir : trouver solution pour columns
             $this->columns = array_diff_key(get_class_vars($this->table), get_class_vars(get_parent_class($this)));
@@ -28,6 +28,7 @@
                 unset($this->columns['id']);
                 $sqlCol = null;
                 $sqlKey = null;
+
                 foreach ($this->columns as $columns => $value) {
                     $data[$columns] = $this->$columns;
                     $sqlCol .= ",".$columns;
@@ -35,7 +36,8 @@
                 }
                 $sqlCol = trim($sqlCol, ",");
                 $sqlKey = trim($sqlKey, ",");
-                $req = $this->db->prepare("INSERT INTO ".$this->table." (".$sqlCol.") VALUES (".$sqlKey.");");
+                $req = $this->db->prepare("INSERT INTO ".DB_PREFIXE.$this->table." (".$sqlCol.") VALUES (".$sqlKey.");");
+
                 $req->execute($data);
                 echo "insert";
 

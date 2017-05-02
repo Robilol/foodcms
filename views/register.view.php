@@ -3,6 +3,6 @@
 </header>
 <section id="content">
     <?php
-    $this->includeModal("form", User::getForm());
+    $this->includeModal("form", User::getRegisterForm());
     ?>
 </section>
