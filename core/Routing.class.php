@@ -59,7 +59,7 @@ class Routing {
   */
 
   public function checkRoute() {
-    if($this->uriExploded[0]){
+    if($this->uriExploded[0]=="admin"){
       $pathController = "controllers".DS."Admin".DS.ucfirst($this->controllerName).".class.php";
     }else{
       $pathController = "controllers".DS.ucfirst($this->controllerName).".class.php";
