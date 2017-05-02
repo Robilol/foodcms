@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
 define("DS", DIRECTORY_SEPARATOR);
 define("PATH_RELATIVE", "/MVC/");
