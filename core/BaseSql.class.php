@@ -14,7 +14,7 @@
                 die("Erreur SQL : ".$e->getMessage());
             }
 
-            $this->table = strtolower(get_class($this));
+            $this->table = DB_PREFIXE.strtolower(get_class($this));
 
             // Devoir : trouver solution pour columns
             $this->columns = array_diff_key(get_class_vars($this->table), get_class_vars(get_parent_class($this)));
