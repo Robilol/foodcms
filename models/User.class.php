@@ -8,7 +8,7 @@
         protected $username;
         protected $firstname;
         protected $lastname;
-        protected $flag_archived;
+        protected $archived;
         protected $role;
 
         public function setId($id) {
@@ -55,12 +55,12 @@
             echo $this->lastname;
         }
 
-        public function setFlag_archived($flag_archived) {
-            $this->flag_archived = $flag_archived;
+        public function setarchived($archived) {
+            $this->archived = $archived;
         }
 
-        public function getFlag_archived() {
-            echo $this->flag_archived;
+        public function getarchived() {
+            echo $this->archived;
         }
 
         public function setRole($role) {

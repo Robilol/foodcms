@@ -9,9 +9,9 @@
         protected $thumbnail;
         protected $active;
         protected $user;
-        protected $flag_archived;
-        protected $date_created;
-        protected $date_modified;
+        protected $archived;
+        protected $ctime;
+        protected $utime;
 
         /**
          * @param mixed $text
@@ -50,7 +50,7 @@
          */
         public function getFlagArchived()
         {
-            return $this->flag_archived;
+            return $this->archived;
         }
 
         /**
@@ -102,11 +102,11 @@
         }
 
         /**
-         * @param mixed $flag_archived
+         * @param mixed $archived
          */
-        public function setFlagArchived($flag_archived)
+        public function setFlagArchived($archived)
         {
-            $this->flag_archived = $flag_archived;
+            $this->archived = $archived;
         }
 
         /**
@@ -127,49 +127,49 @@
 
     
     /**
-     * Gets the value of date_created.
+     * Gets the value of ctime.
      *
      * @return mixed
      */
     public function getDateCreated()
     {
-        return $this->date_created;
+        return $this->ctime;
     }
 
     /**
-     * Sets the value of date_created.
+     * Sets the value of ctime.
      *
-     * @param mixed $date_created the date created
+     * @param mixed $ctime the date created
      *
      * @return self
      */
-    protected function setDateCreated($date_created)
+    protected function setDateCreated($ctime)
     {
-        $this->date_created = $date_created;
+        $this->ctime = $ctime;
 
         return $this;
     }
 
     /**
-     * Gets the value of date_modified.
+     * Gets the value of utime.
      *
      * @return mixed
      */
     public function getDateModified()
     {
-        return $this->date_modified;
+        return $this->utime;
     }
 
     /**
-     * Sets the value of date_modified.
+     * Sets the value of utime.
      *
-     * @param mixed $date_modified the date modified
+     * @param mixed $utime the date modified
      *
      * @return self
      */
-    protected function setDateModified($date_modified)
+    protected function setDateModified($utime)
     {
-        $this->date_modified = $date_modified;
+        $this->utime = $utime;
 
         return $this;
     }
