@@ -64,6 +64,7 @@ fabric.properties
 logs/
 
 .idea/
+.idea/*
 
 # End of https://www.gitignore.io/api/phpstorm
 
