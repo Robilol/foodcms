@@ -70,4 +70,36 @@
             echo $this->role;
         }
 
+        static function getForm(){
+            return [
+
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"user/add",
+                    "class"     =>"form-group",
+                    "id"        =>"monFormulaire",
+                    "submit"    =>"S'incrire"
+                ],
+
+                "struct"=>[
+                    "email"=>[
+                        "id"            =>"email",
+                        "label"         =>"Votre email :",
+                        "type"          =>"email",
+                        "placeholder"   =>"Votre email",
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>true
+                    ]
+                ]
+
+
+            ];
+        }
+
     }

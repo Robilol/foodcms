@@ -36,15 +36,13 @@ class Routing {
   }
 
   public function setAction() {
-    if(isset($this->uriExploded)){
-      $this->action = (empty($this->uriExploded[2])) ? "index" : $this->uriExploded[2];
-      $this->actionName = $this->action."Action";
-    }else{
-      $this->action = (empty($this->uriExploded[1])) ? "index" : $this->uriExploded[1];
-      $this->actionName = $this->action."Action";
-    }
-
-
+      if ($this->uriExploded[0] == "admin") {
+          $this->action = (empty($this->uriExploded[2])) ? "index" : $this->uriExploded[2];
+          $this->actionName = $this->action."Action";
+      } else {
+          $this->action = (empty($this->uriExploded[1])) ? "index" : $this->uriExploded[1];
+          $this->actionName = $this->action."Action";
+      }
   }
 
   public function setParams() {
