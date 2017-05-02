@@ -16,8 +16,8 @@
       Praesent condimentum lobortis tincidunt. Aliquam mollis ac dui ut elementum. Curabitur pretium porta nunc sed elementum.
       Maecenas sed felis sit amet diam porta posuere quis a sapien. Nullam interdum odio id nisl blandit, non pretium elit consequat.
       In at accumsan elit.</p>
-    </div>
-    <div class="article">
+    </div><!--
+ --><div class="article">
       <h2 class="titre_article">Lorem impsum</h2>
       <div class="infos_article">
         <hr>
@@ -31,8 +31,8 @@
         Praesent condimentum lobortis tincidunt. Aliquam mollis ac dui ut elementum. Curabitur pretium porta nunc sed elementum.
         Maecenas sed felis sit amet diam porta posuere quis a sapien. Nullam interdum odio id nisl blandit, non pretium elit consequat.
         In at accumsan elit.</p>
-      </div>
-      <div class="article">
+      </div><!--
+      --><div class="article">
         <h2 class="titre_article">Lorem impsum</h2>
         <div class="infos_article">
           <hr>
@@ -46,8 +46,8 @@
           Praesent condimentum lobortis tincidunt. Aliquam mollis ac dui ut elementum. Curabitur pretium porta nunc sed elementum.
           Maecenas sed felis sit amet diam porta posuere quis a sapien. Nullam interdum odio id nisl blandit, non pretium elit consequat.
           In at accumsan elit.</p>
-        </div>
-        <div class="article">
+        </div><!--
+        --><div class="article">
           <h2 class="titre_article">Lorem impsum</h2>
           <div class="infos_article">
             <hr>
@@ -61,8 +61,8 @@
             Praesent condimentum lobortis tincidunt. Aliquam mollis ac dui ut elementum. Curabitur pretium porta nunc sed elementum.
             Maecenas sed felis sit amet diam porta posuere quis a sapien. Nullam interdum odio id nisl blandit, non pretium elit consequat.
             In at accumsan elit.</p>
-          </div>
-          <div class="article">
+          </div><!--
+          --><div class="article">
             <h2 class="titre_article">Lorem impsum</h2>
             <div class="infos_article">
               <hr>

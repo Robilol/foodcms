@@ -3,14 +3,14 @@
 class Tag extends BaseSql{
     protected $id;
     protected $name;
-    protected $flag_archived;
+    protected $archived;
 
     /**
      * @return mixed
      */
     public function getFlagArchived()
     {
-        return $this->flag_archived;
+        return $this->archived;
     }
 
     /**
@@ -30,11 +30,11 @@ class Tag extends BaseSql{
     }
 
     /**
-     * @param mixed $flag_archived
+     * @param mixed $archived
      */
-    public function setFlagArchived($flag_archived)
+    public function setFlagArchived($archived)
     {
-        $this->flag_archived = $flag_archived;
+        $this->archived = $archived;
     }
 
     /**
