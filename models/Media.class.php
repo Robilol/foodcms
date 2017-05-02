@@ -19,7 +19,7 @@ class Media extends BaseSql{
     /**
      * @param mixed $archived
      */
-    public function setFlagArchived($archived)
+    public function setArchived($archived)
     {
         $this->archived = $archived;
     }
@@ -35,7 +35,7 @@ class Media extends BaseSql{
     /**
      * @return mixed
      */
-    public function getFlagArchived()
+    public function getArchived()
     {
         return $this->archived;
     }
