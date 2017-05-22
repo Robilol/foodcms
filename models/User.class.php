@@ -44,7 +44,7 @@
         }
 
         public function getId() {
-            echo $this->id;
+            return $this->id;
         }
 
         public function setEmail($email) {
@@ -52,11 +52,15 @@
         }
 
         public function getEmail() {
-            echo $this->email;
+             $this->email;
         }
 
         public function setPassword($pwd) {
-            $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            $this->password = password_hash($pwd, PASSWORD_DEFAULT);
+        }
+
+        public function getPassword($pwd) {
+            return $this->password;
         }
 
         public function setUsername($username) {
@@ -64,14 +68,14 @@
         }
 
         public function getUsername() {
-            echo $this->username;
+            return $this->username;
         }
         public function setFirstname($firstname) {
             $this->firstname = ($firstname);
         }
 
         public function getFirstname() {
-            echo $this->firstname;
+            return $this->firstname;
         }
 
         public function setLastname($lastname) {
@@ -79,7 +83,7 @@
         }
 
         public function getLastname() {
-            echo $this->lastname;
+            return $this->lastname;
         }
 
         public function setStatus($status) {
@@ -87,7 +91,7 @@
         }
 
         public function getStatus() {
-            echo $this->status;
+            return $this->status;
         }
 
         public function setRoleId($role_id) {
@@ -95,7 +99,7 @@
         }
 
         public function getRoleId() {
-            echo $this->role_id;
+            return $this->role_id;
         }
 
         /**
@@ -112,6 +116,18 @@
         public function setToken($token)
         {
             $this->token = $token;
+        }
+
+        public function getUserByUsername($username) {
+            $user =  parent::getOneBy(["username" => $username]);
+            $this->id           = $user['id'];
+            $this->email        = $user['email'];
+            $this->password     = $user['password'];
+            $this->username     = $user['username'];
+            $this->firstname    = $user['firstname'];
+            $this->lastname     = $user['lastname'];
+            $this->token        = $user['token'];
+            $this->status       = $user['status'];
         }
 
         static function getRegisterForm(){
@@ -151,6 +167,35 @@
                         "label"         =>"Votre email :",
                         "type"          =>"email",
                         "placeholder"   =>"Votre email",
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>true
+                    ]
+                ]
+            ];
+        }
+
+        static function getLoginForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/user/login",
+                    "class"     =>"form-group",
+                    "id"        =>"loginForm",
+                    "submit"    =>"Se connecter"
+                ],
+
+                "struct"=>[
+                    "login"=>[
+                        "id"            =>"login",
+                        "label"         =>"Login :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre login",
                         "required"      =>true
                     ],
                     "pwd"=>[

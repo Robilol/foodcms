@@ -12,7 +12,7 @@
       <li><img id="logo" src="/assets/img/logo.png"></li>
       <div id="liens" style="float:right">
         <li><a href="/index/register">S'INSCRIRE</a></li>
-        <li><a href="/">S'IDENTIFIER</a></li>
+        <li><a href="/index/login">S'IDENTIFIER</a></li>
         <li><a href="/">RECETTES</a></li>
         <li><a href="/">CATEGORIES</a></li>
         <li><a href="/">RECHERCHE</a></li>

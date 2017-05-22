@@ -65,16 +65,15 @@
             return $object;
         }
 
-        public function getOneBy($search = [], $returnQuery = false)
-        {
-            foreach ($search as $key => $value) {
-                $where[] = $key.'=:'.$key;
+        public function getOneBy($search = [], $returnQuery = false){
+            foreach($search as $key => $value){
+                $where[] = $key.' = :'.$key;
+                $param[":".$key] = $value;
             }
+            $query = $this->db->prepare("SELECT * FROM ".DB_PREFIXE.$this->table." WHERE ".implode(" AND ", $where));
+            $query->execute($param);
 
-            $query = $this->db->prepare("SELECT * FROM ".$this->table." WHERE ".implode(" AND ", $where));
-            $query->execute($search);
-
-            if ($returnQuery) {
+            if($returnQuery){
                 return $query;
             }
             return $query->fetch(PDO::FETCH_ASSOC);
