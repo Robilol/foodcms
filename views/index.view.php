@@ -1,3 +1,4 @@
+<?php if (!empty($this->data) && array_key_exists("alert", $this->data)) { $this->includeAlert("success", $this->data['alert']); } ?>
 <header>
   <h1 id="titre">FOOD CMS</h1>
 </header>
