@@ -8,15 +8,43 @@
         protected $username;
         protected $firstname;
         protected $lastname;
-        protected $archived;
-        protected $role;
+        protected $status;
+        protected $token;
+        protected $role_id;
+
+        /**
+         * User constructor.
+         * @param $id
+         * @param $email
+         * @param $password
+         * @param $username
+         * @param $firstname
+         * @param $lastname
+         */
+        public function __construct($id, $email = null, $password = null, $username = null, $firstname = null, $lastname = null)
+        {
+            parent::__construct();
+
+            if ($id > 0) {
+                parent::getOneBy(["id" => $id]);
+            } else {
+                $this->id           = $id;
+                $this->email        = $email;
+                $this->password     = $password;
+                $this->username     = $username;
+                $this->firstname    = $firstname;
+                $this->lastname     = $lastname;
+                $this->token        = uniqid('token', true);
+                $this->status       = 0;
+            }
+        }
 
         public function setId($id) {
             $this->id = $id;
         }
 
         public function getId() {
-            echo $this->id;
+            return $this->id;
         }
 
         public function setEmail($email) {
@@ -24,11 +52,15 @@
         }
 
         public function getEmail() {
-            echo $this->email;
+             $this->email;
         }
 
         public function setPassword($pwd) {
-            $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            $this->password = password_hash($pwd, PASSWORD_DEFAULT);
+        }
+
+        public function getPassword($pwd) {
+            return $this->password;
         }
 
         public function setUsername($username) {
@@ -36,15 +68,14 @@
         }
 
         public function getUsername() {
-            echo $this->username;
+            return $this->username;
         }
-
         public function setFirstname($firstname) {
             $this->firstname = ($firstname);
         }
 
         public function getFirstname() {
-            echo $this->firstname;
+            return $this->firstname;
         }
 
         public function setLastname($lastname) {
@@ -52,22 +83,129 @@
         }
 
         public function getLastname() {
-            echo $this->lastname;
+            return $this->lastname;
         }
 
-        public function setarchived($archived) {
-            $this->archived = $archived;
+        public function setStatus($status) {
+            $this->status = $status;
         }
 
-        public function getarchived() {
-            echo $this->archived;
+        public function getStatus() {
+            return $this->status;
         }
 
-        public function setRole($role) {
-            $this->role = $role;
-        }
-        public function getRole() {
-            echo $this->role;
+        public function setRoleId($role_id) {
+            $this->role_id = $role_id;
         }
 
+        public function getRoleId() {
+            return $this->role_id;
+        }
+
+        /**
+         * @return string
+         */
+        public function getToken()
+        {
+            return $this->token;
+        }
+
+        /**
+         * @param string $token
+         */
+        public function setToken($token)
+        {
+            $this->token = $token;
+        }
+
+        public function getUserByUsername($username) {
+            $user =  parent::getOneBy(["username" => $username]);
+            $this->id           = $user['id'];
+            $this->email        = $user['email'];
+            $this->password     = $user['password'];
+            $this->username     = $user['username'];
+            $this->firstname    = $user['firstname'];
+            $this->lastname     = $user['lastname'];
+            $this->token        = $user['token'];
+            $this->status       = $user['status'];
+        }
+
+        static function getRegisterForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/user/register",
+                    "class"     =>"form-group",
+                    "id"        =>"registerForm",
+                    "submit"    =>"S'incrire"
+                ],
+
+                "struct"=>[
+                    "firstname"=>[
+                        "id"            =>"firstname",
+                        "label"         =>"Votre prenom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre prenom",
+                        "required"      =>true
+                    ],
+                    "lastname"=>[
+                        "id"            =>"lastname",
+                        "label"         =>"Votre nom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre nom",
+                        "required"      =>true
+                    ],
+                    "username"=>[
+                        "id"            =>"pseudo",
+                        "label"         =>"Votre pseudo :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre pseudo",
+                        "required"      =>true
+                    ],
+                    "email"=>[
+                        "id"            =>"email",
+                        "label"         =>"Votre email :",
+                        "type"          =>"email",
+                        "placeholder"   =>"Votre email",
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>true
+                    ]
+                ]
+            ];
+        }
+
+        static function getLoginForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/user/login",
+                    "class"     =>"form-group",
+                    "id"        =>"loginForm",
+                    "submit"    =>"Se connecter"
+                ],
+
+                "struct"=>[
+                    "login"=>[
+                        "id"            =>"login",
+                        "label"         =>"Login :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre login",
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>true
+                    ]
+                ]
+            ];
+        }
     }

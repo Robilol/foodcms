@@ -15,7 +15,6 @@ class View {
             $this->view = $view;
         } else {
             // logs
-
             die("La vue n'existe pas");
         }
     }

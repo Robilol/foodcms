@@ -1,6 +1,8 @@
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+ini_set("SMTP","smtp.gmail.com");
+ini_set("smtp_port","25");
 
 define("DS", DIRECTORY_SEPARATOR);
 define("PATH_RELATIVE", "/MVC/");
@@ -8,6 +10,7 @@ define("PATH_RELATIVE_PATTERN", "\/MVC\/");
 
 switch ($_SERVER['SERVER_NAME']) {
     case "foodcms.dev":
+        define('HOSTNAME', 'foodcms.dev');
         define('DB_HOST', '51.255.160.240');
         define('DB_NAME', 'foodcms');
         define('DB_USER', 'user');
@@ -17,6 +20,7 @@ switch ($_SERVER['SERVER_NAME']) {
         define('DIR', $_SERVER['DOCUMENT_ROOT']);
         break;
     case "92.222.69.26":
+        define('HOSTNAME', 'foodcms.robin-regis.com');
         define('DB_HOST', '127.0.0.1');
         define('DB_NAME', 'foodcms');
         define('DB_USER', 'root');
@@ -26,6 +30,7 @@ switch ($_SERVER['SERVER_NAME']) {
         define('DIR', $_SERVER['DOCUMENT_ROOT']);
         break;
     default:
+        define('HOSTNAME', 'foodcms.dev');
         define('DB_HOST', '51.255.160.240');
         define('DB_NAME', 'foodcms');
         define('DB_USER', 'user');

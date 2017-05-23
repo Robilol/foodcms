@@ -36,19 +36,25 @@ class Routing {
   }
 
   public function setAction() {
-    if(isset($this->uriExploded)){
-      $this->action = (empty($this->uriExploded[2])) ? "index" : $this->uriExploded[2];
-      $this->actionName = $this->action."Action";
-    }else{
-      $this->action = (empty($this->uriExploded[1])) ? "index" : $this->uriExploded[1];
-      $this->actionName = $this->action."Action";
-    }
-
-
+      if ($this->uriExploded[0] == "admin") {
+          $this->action = (empty($this->uriExploded[2])) ? "index" : $this->uriExploded[2];
+          $this->actionName = $this->action."Action";
+      } else {
+          $this->action = (empty($this->uriExploded[1])) ? "index" : $this->uriExploded[1];
+          $this->actionName = $this->action."Action";
+      }
   }
 
   public function setParams() {
-    $this->params = array_merge(array_values($this->uriExploded), $_POST);
+      if ($this->uriExploded[0] == "admin") {
+          for($i=3; $i<count($this->uriExploded); $i++) {
+              $this->params[] = $this->uriExploded[$i];
+          }
+      } else {
+          for($i=2; $i<count($this->uriExploded); $i++) {
+              $this->params[] = $this->uriExploded[$i];
+          }
+      }
   }
 
   /*
