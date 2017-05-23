@@ -152,3 +152,45 @@ input.submit {
     margin-right: auto;
     display: block;
 }
+
+.alert {
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert.success {
+    background-color: #DFF0D8;
+    color: #3c763d;
+}
+
+.alert.warning {
+    background-color: #FCF8E3;
+    color: #8a6d3b;
+}
+
+.alert.info {
+    background-color: #D9EDF7;
+    color: #31708f;
+}
+
+.alert.danger {
+    background-color: #F2DEDE;
+    color: #a94442;
+}
+
+.closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}

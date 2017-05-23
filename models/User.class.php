@@ -52,26 +52,26 @@
         }
 
         public function getEmail() {
-             $this->email;
+             return $this->email;
         }
 
         public function setPassword($pwd) {
             $this->password = password_hash($pwd, PASSWORD_DEFAULT);
         }
 
-        public function getPassword($pwd) {
+        public function getPassword() {
             return $this->password;
         }
 
         public function setUsername($username) {
-            $this->username = ($username);
+            $this->username = $username;
         }
 
         public function getUsername() {
             return $this->username;
         }
         public function setFirstname($firstname) {
-            $this->firstname = ($firstname);
+            $this->firstname = $firstname;
         }
 
         public function getFirstname() {
@@ -79,7 +79,7 @@
         }
 
         public function setLastname($lastname) {
-            $this->lastname = ($lastname);
+            $this->lastname = $lastname;
         }
 
         public function getLastname() {

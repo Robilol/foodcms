@@ -10,7 +10,3 @@ spl_autoload_register(function ($class) {
 });
 
 $routing = new Routing();
-
-// echo "<pre>";
-// print_r($routing);
-// echo "</pre>";

@@ -1,6 +1,3 @@
-<!--<pre>
-<?php// print_r($config); ?>
-</pre>-->
 <form id="<?php echo $config["options"]["id"]; ?>" class="<?php echo $config["options"]["class"]; ?>" method="<?php echo $config["options"]["method"]; ?>" action="<?php echo $config["options"]["action"]; ?>">
     
     <?php foreach ($config["struct"] as $name => $attributs):?>

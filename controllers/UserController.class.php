@@ -3,27 +3,26 @@
 class UserController {
 
 	public function loginAction() {
-	    echo "<pre>";
         $data = $_POST;
         $user = new User(0);
         $user->getUserByUsername($data['login']);
 
-        var_dump($user);
-        var_dump($data['pwd']);
-
+        session_destroy();
 
         if ($user->getPassword() == $data['pwd']) {
             session_start();
             $_SESSION['id']         = $user->getId();
             $_SESSION['username']   = $user->getUsername();
+            header('Location: /index/index/connected');
         } else {
-            die("mauvais login");
+            header('Location: /index/login/error');
         }
     }
 
 	public function logoutAction() {
-
+        session_destroy();
 	}
+
 	public function registerAction() {
         $data = $_POST;
 
