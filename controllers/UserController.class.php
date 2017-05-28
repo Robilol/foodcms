@@ -9,13 +9,18 @@ class UserController {
 
         session_destroy();
 
-        if ($user->getPassword() == $data['pwd']) {
+        if (password_verify($data['pwd'], $user->getPassword())) {
+            if ($user->getStatus() == 0) {
+                header('Location: /index/login/verify');
+                exit();
+            }
             session_start();
             $_SESSION['id']         = $user->getId();
             $_SESSION['username']   = $user->getUsername();
             header('Location: /index/index/connected');
         } else {
             header('Location: /index/login/error');
+            exit();
         }
     }
 
@@ -23,30 +28,44 @@ class UserController {
         session_destroy();
 	}
 
-	public function registerAction() {
+	public function resetPassword($params) {
+        $email = $params[0];
+        $user = new User(0);
+        if (!$user->getUserByEmail($email)) {
+            header('Location: /index/login/wrongAccount');
+            exit();
+        } else {
+            $variables['username']   = $user->getUsername();
+            $variables['pwd']        = $user->generateNewPassword();
+
+            $mail = new Mailer($user->getEmail(), "Votre nouveau mot de passe", "resetPassword", $variables);
+            $mail->send();
+
+            header('Location: /index/login/newPassword');
+            exit();
+        }
+    }
+
+	public function registerAction($params) {
         $data = $_POST;
 
-        $user = new User(-1, $data['email'], $data['pwd'], $data['firstname'], $data['lastname'], $data['username']);
+        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname']);
+
+        if ($user->getUserByEmail($data['email'])) {
+
+        }
+
+        $user->setPassword($data['pwd']);
         $user->save();
 
         $variables['username']  = $user->getUsername();
         $variables['hostname']  = HOSTNAME;
         $variables['token']     = $user->getToken();
 
-        $template = file_get_contents("./templates/register.mail.html");
+        $mail = new Mailer($user->getEmail(), "Confirmation d'inscription", "register", $variables);
+        $mail->send();
 
-        foreach($variables as $key => $value)
-        {
-            $template = str_replace('{{'.$key.'}}', $value, $template);
-        }
-
-        if(mail($user->getEmail(), "Confirmation d'inscription", $template)){
-            echo "envoyé";
-        }else{
-            print_r(error_get_last());
-        }
-
-        header('Location: /index');
+        header('Location: /index/index/verify');
         exit();
 	}
 	public function editAction() {
@@ -61,8 +80,18 @@ class UserController {
 
 	public function validateRegistrationAction($params) {
         $token = $params[0];
+        $user = new User(0);
 
-        $user = new User(4);
+        if ($user->getUserByToken($token)) {
+            $user->setStatus(1);
+            $user->save();
+
+            header('Location: /index/login/tokenVerified');
+            exit();
+        } else {
+            header('Location: /index/login/wrongAccount');
+            exit();
+        }
 
     }
 }
