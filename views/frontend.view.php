@@ -12,6 +12,7 @@
     <ul id="navigation">
         <li><img id="logo" src="/assets/img/logo.png"></li>
         <div id="liens" style="float:right">
+            <li><div id="search-bar"><input id="search" type="text" name="search-bar" placeholder="Votre recherche"><input id="submit" type="submit" value=">"></div></li>
             <li><a href="/">RECETTES</a></li>
             <li><a href="/">CATEGORIES</a></li>
             <li><a href="/">RECHERCHE</a></li>
