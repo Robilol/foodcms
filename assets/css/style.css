@@ -56,8 +56,7 @@ position:relative;
   overflow: hidden;
   /*background-color: #BDBDBD;*/
   width:85%;
-  margin-left: 204px;
-
+  margin-left: 14.9%;
     border-bottom: thin solid #BDBDBD;
     border-left: thin solid #BDBDBD;
 }
@@ -67,18 +66,6 @@ position:relative;
   height: inherit;
 }
 
-#headerBack li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  height: inherit;
-}
-
-#headerBack li a:hover {
-    background-color: #790000;
-}
 
 #logo {
   max-width: 100%;
@@ -114,7 +101,7 @@ position:relative;
 }
 
 #navigationBE li{
-  height: 10%;
+  height: 8%;
 }
 
 #navigationBE li a {
@@ -171,7 +158,7 @@ position:relative;
 
 #navigationList {
   list-style-type: none;
-  margin-right: 0;
+  /* margin-right: 61px; */
   padding-right: 0px;
   /* padding: 0; */
   width: 15%;
@@ -179,8 +166,11 @@ position:relative;
   float: right;
   position: initial;
   bottom: 0;
-  height: 100%;
-  min-height: 583px;
+  right: 0;
+  position: absolute;
+  /* height: 100%; */
+  top: 79px;
+  /* min-height: 583px; */
 }
 
 #navigationList li a {
