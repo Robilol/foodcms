@@ -8,6 +8,12 @@ class IndexController
 
     public function indexAction($params) {
         $v = new View("index");
+
+        $article = new Article(-1);
+        $articleArray = $article->getAll();
+
+        $v->assign("articlesArray", $articleArray);
+
         if (!empty($params)) {
             foreach ($params as $key => $value) {
                 if ($value == "connected") {

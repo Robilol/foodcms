@@ -71,12 +71,23 @@
                 $param[":".$key] = $value;
             }
             $query = $this->db->prepare("SELECT * FROM ".DB_PREFIXE.$this->table." WHERE ".implode(" AND ", $where));
+
             $query->execute($param);
 
             if($returnQuery){
                 return $query;
             }
             return $query->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function getAll($returnQuery = false){
+            $query = $this->db->prepare("SELECT * FROM ".DB_PREFIXE.$this->table);
+            $query->execute();
+
+            if($returnQuery){
+                return $query;
+            }
+            return $query->fetchAll();
         }
 
     }

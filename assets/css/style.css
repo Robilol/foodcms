@@ -195,37 +195,7 @@ input.submit {
     color: black;
 }
 
-#search {
-    width: 180px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url("../img/searchicon.png");
-    background-position: 10px 12px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width .4s ease-in-out;
-    transition: width .4s ease-in-out;
-    margin-left: -400px;
-
-}
-
-#search:focus {
-    width: 400px;
-}
-
-#search {
-    padding-top: 10px;
-}
-
-#submit {
-    margin-left: -20px;
-    height: 40px;
-    width: 17px;
-    background: white;
-    color: black;
-    border: 0;
-    -webkit-appearance: none;
+.search-selector {
+    width: 48%;
+    vertical-align: middle;
 }

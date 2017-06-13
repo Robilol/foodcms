@@ -88,4 +88,8 @@ class Category extends BaseSql{
     {
         $this->id = $id;
     }
+
+    public function getAllCategories() {
+        return parent::getAll();
+    }
 }

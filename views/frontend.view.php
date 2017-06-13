@@ -6,16 +6,16 @@
     <meta name="description" content="description de la page">
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
+    <script src="/assets/js/jquery.js"></script>
 </head>
 <body>
 <div id="main">
     <ul id="navigation">
         <li><img id="logo" src="/assets/img/logo.png"></li>
         <div id="liens" style="float:right">
-            <li><div id="search-bar"><input id="search" type="text" name="search-bar" placeholder="Votre recherche"><input id="submit" type="submit" value=">"></div></li>
             <li><a href="/">RECETTES</a></li>
             <li><a href="/">CATEGORIES</a></li>
-            <li><a href="/">RECHERCHE</a></li>
+            <li><a href="/search/index">RECHERCHE</a></li>
             <?php if (!empty($_SESSION['id'])): ?>
                 <li><?php echo $_SESSION['username'] ?></li>
                 <li><a href="/index/logout">Se deconnecter</a></li>
