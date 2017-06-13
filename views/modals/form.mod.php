@@ -6,16 +6,29 @@
         <?php if($attributs["type"] == "email"): ?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
             placeholder="<?php echo $attributs["placeholder"]; ?>"
-            required="<?php isset($attributs["required"])?"required":"" ?>"
+            <?php echo ($attributs["required"])?"required":"" ?>
             >
         <?php elseif($attributs["type"] == "password"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
                    placeholder="<?php echo $attributs["placeholder"]; ?>"
-                   required="<?php isset($attributs["required"])?"required":"" ?>"
+                   <?php echo ($attributs["required"])?"required":"" ?>
             >
         <?php elseif($attributs["type"] == "text"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
                    placeholder="<?php echo $attributs["placeholder"]; ?>"
+
+                     <?php echo ($attributs["required"])?"required":"" ?>
+            >
+          <?php elseif($attributs["type"] == "textarea"):?>
+              <textarea id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>"
+                     placeholder="<?php echo $attributs["placeholder"]; ?>"
+                       <?php echo ($attributs["required"])?"required":"" ?>
+              ></textarea>
+          <?php elseif($attributs["type"] == "checkbox"):?>
+              <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
+                        <?php echo ($attributs["required"])?"required":"" ?>
+                >
+
                    <?php echo ($attributs["required"])?"required":"" ?>
             >
           <?php elseif($attributs["type"] == "select"):?>
@@ -24,6 +37,7 @@
                   <option value="<?php echo $selectName; ?>"><?php echo $selectValue; ?></option>
                 <?php endforeach; ?>
               </select>
+
 
         <?php endif; ?>
         </div>
