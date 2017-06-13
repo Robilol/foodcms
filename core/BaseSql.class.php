@@ -38,9 +38,7 @@
                 $sqlKey = trim($sqlKey, ",");
                 $req = $this->db->prepare("INSERT INTO ".DB_PREFIXE.$this->table." (".$sqlCol.") VALUES (".$sqlKey.");");
                 $req->execute($data);
-
-                $req->execute($data);
-
+                
             } else {
 
                 $sqlQuery = null;
