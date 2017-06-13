@@ -3,14 +3,12 @@
 
 class ArticleController {
 
-    public function listAction(){
-
+    public function indexAction(){
+      $v = new View("admin/articleCreate","backend");
     }
 
-
-    public function writeAction(){
-
-
+    public function listAction(){
+        $v= new View("admin/articleList", "backend");
     }
 
     public function editAction(){
@@ -22,5 +20,19 @@ class ArticleController {
 
     }
 
+    public function createAction()
+    {
+        $v= new View("admin/articleCreate", "backend");
+    }
 
+    public function registerAction()
+    {
+      $data = $_POST;
+
+      $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 34);
+      $article->save();
+
+      header('Location: /admin/article/');
+      exit();
+    }
 }

@@ -6,6 +6,20 @@ class Menu extends BaseSql{
     protected $active;
     protected $archived;
 
+    public function __construct($id, $name = null)
+     {
+         parent::__construct();
+
+         if ($id > 0) {
+             parent::getOneBy(["id" => $id]);
+         } else {
+           $this->id                = $id;
+           $this->name             = $name;
+           $this->active          = 0;  
+           $this->archived          = 0;
+         }
+     }
+
     /**
      * @param mixed $name
      */
@@ -68,5 +82,31 @@ class Menu extends BaseSql{
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    static function getMenuForm(){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/menu/create",
+                "class"     =>"form-group",
+                "id"        =>"menuForm",
+                "submit"    =>"Valider"
+            ],
+
+            "struct"=>[
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
+                "name"=>[
+                    "id"            =>"name",
+                    "label"         =>"Nom :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Le nom du menu: ",
+                    "required"      =>true
+                ]
+            ]
+        ];
     }
 }

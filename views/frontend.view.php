@@ -25,6 +25,7 @@
             <?php endif; ?>
         </div>
     </ul>
+    </div>
     <?php
     include $this->view.".view.php";
     ?>

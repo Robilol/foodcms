@@ -8,11 +8,26 @@
         protected $text;
         protected $thumbnail;
         protected $active;
-        protected $user;
+        protected $food_user_id;
         protected $archived;
         protected $ctime;
         protected $utime;
 
+        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $food_user_id = null)
+        {
+            parent::__construct();
+
+            if ($id > 0) {
+                parent::getOneBy(["id" => $id]);
+            } else {
+                $this->id           = $id;
+                $this->title        = $title;
+                $this->text         = $text;
+                $this->thumbnail    = $thumbnail;
+                $this->active       = $active;
+                $this->food_user_id = $food_user_id;
+            }
+        }
         /**
          * Article constructor.
          * @param $id
@@ -65,9 +80,10 @@
         /**
          * @param mixed $id_user
          */
+      
         public function setUser($id_user)
         {
-            $this->user = $user;
+            $this->food_user_id = $food_user_id;
         }
 
         /**
@@ -105,9 +121,9 @@
         /**
          * @return mixed
          */
-        public function getUser()
+        public function getFoodUserId()
         {
-            return $this->user;
+            return $this->food_user_id;
         }
 
         /**
@@ -167,7 +183,7 @@
         }
 
 
-        /**
+    /**
      * Gets the value of ctime.
      *
      * @return mixed
@@ -211,5 +227,47 @@
     protected function setUtime($utime)
     {
         $this->utime = $utime;
+    }
+
+    static function getArticleCreationForm(){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/register",
+                "class"     =>"form-group",
+                "id"        =>"articleCreationForm",
+                "submit"    =>"Ajouter"
+            ],
+
+            "struct"=>[
+                "title"=>[
+                    "id"            =>"title",
+                    "label"         =>"Titre :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Votre titre",
+                    "required"      =>true
+                ],
+                "thumbnail"=>[
+                    "id"            =>"thumbnail",
+                    "label"         =>"Image :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Votre image",
+                    "required"      =>false
+                ],
+                "text"=>[
+                    "id"            =>"text",
+                    "label"         =>"Contenu :",
+                    "type"          =>"textarea",
+                    "placeholder"   =>"Votre contenu",
+                    "required"      =>true
+                ],
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "required"      =>false
+                ]
+            ]
+        ];
     }
 }
