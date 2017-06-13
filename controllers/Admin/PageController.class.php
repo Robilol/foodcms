@@ -13,12 +13,7 @@ public function indexAction(){
     public function createAction()
     {
         $data = $_POST;
-        print_r($data);
         $page = new Page(-1, $data['title']);
-        echo $page->getTitle();
-        echo $page->getCategory();
-        echo $page->getArchived();
-        echo $page->getId();
         $page->save();
 
         //header("Location: /admin/page/index");
