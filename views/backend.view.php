@@ -14,7 +14,7 @@
       <h1 id="titreBE">Food CMS</h1>
     </ul>
     <ul id="navigationBE">
-      <li><a href="/">Articles</a></li>
+      <li><a href="/admin/article">Articles</a></li>
       <li><a href="/">Commentaires</a></li>
       <li><a href="/">Catégories</a></li>
       <li><a href="/">Utilisateurs / droits</a></li>

@@ -3,8 +3,12 @@
 
 class ArticleController {
 
+    public function indexAction(){
+      $v = new View("admin/articleCreate","backend");
+    }
+
     public function listAction(){
-        $v= new View("articleList", "backend");
+        $v= new View("admin/articleList", "backend");
     }
 
     public function editAction(){
@@ -18,7 +22,7 @@ class ArticleController {
 
     public function createAction()
     {
-        $v= new View("articleCreate", "backend");
+        $v= new View("admin/articleCreate", "backend");
     }
 
     public function registerAction()
@@ -28,7 +32,7 @@ class ArticleController {
       $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 34);
       $article->save();
 
-      header('Location: /admin/article/list');
+      header('Location: /admin/article/');
       exit();
     }
 }

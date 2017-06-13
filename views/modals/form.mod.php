@@ -29,8 +29,6 @@
                         <?php echo ($attributs["required"])?"required":"" ?>
                 >
 
-                   <?php echo ($attributs["required"])?"required":"" ?>
-            >
           <?php elseif($attributs["type"] == "select"):?>
               <select id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
                 <?php foreach ($attributs["option"] as $selectName => $selectValue):?>
