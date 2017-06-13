@@ -24,7 +24,7 @@ class TagController
         $data = $_POST;
         // faux trouver où récupérer le data[id]
         $tag = new Tag($data['id']);
-        $tag->setName($data['tag']);
+        $tag->setName($data['name']);
         $tag->save();
 
         header("Location: /admin/tag/index");
@@ -35,7 +35,7 @@ class TagController
         $data = $_POST;
         // faux trouver où récupérer le data[id]
         $tag = new Tag($data['id']);
-        $tag->setName($data['tag']);
+        $tag->setName($data['name']);
         $tag->setArchived(1);
         $tag->save();
 

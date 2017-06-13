@@ -105,7 +105,8 @@ class Menu extends BaseSql{
                     "type"          =>"text",
                     "placeholder"   =>"Le nom du menu: ",
                     "required"      =>true
-                ]
+                ],
+                
             ]
         ];
     }
