@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Backend FoodCMS</title>
   <meta name="description" content="description de la page">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
 	<div id="main">
