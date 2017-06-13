@@ -24,7 +24,7 @@ public function indexAction(){
         $data = $_POST;
         // faux trouver où récupérer le data[id]
         $menu = new Menu($data['id']);
-        $menu->setName($data['tag']);
+        $menu->setName($data['name']);
         $menu->save();
 
         header("Location: /admin/menu/index");
@@ -35,7 +35,7 @@ public function indexAction(){
         $data = $_POST;
         // faux trouver où récupérer le data[id]
         $menu = new Menu($data['id']);
-        $menu->setName($data['tag']);
+        $menu->setName($data['name']);
         $menu->setArchived(1);
         $menu->save();
 

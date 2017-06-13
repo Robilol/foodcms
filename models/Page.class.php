@@ -5,8 +5,23 @@ class Page extends BaseSql{
  protected $id;
  protected $title;
  protected $active;
- protected $category;
+ protected $category_id;
  protected $archived;
+
+    public function __construct($id, $title = null, $category_id = null)
+     {
+         parent::__construct();
+
+         if ($id > 0) {
+             parent::getOneBy(["id" => $id]);
+         } else {
+           $this->id                = $id;
+           $this->title             = $title;
+           $this->category_id          = $category_id;
+           $this->active          = 0;  
+           $this->archived          = 0;
+         }
+     }
 
     /**
      * @param mixed $active
@@ -45,7 +60,7 @@ class Page extends BaseSql{
      */
     public function getCategory()
     {
-        return $this->category;
+        return $this->category_id;
     }
 
     /**
@@ -75,9 +90,9 @@ class Page extends BaseSql{
     /**
      * @param mixed $id_category
      */
-    public function setCategory($category)
+    public function setCategory($category_id)
     {
-        $this->category = $category;
+        $this->category_id = $category_id;
     }
 
     /**
@@ -88,5 +103,41 @@ class Page extends BaseSql{
         $this->title = $title;
     }
 
+    static function getPageForm(){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/page/create",
+                "class"     =>"form-group",
+                "id"        =>"pageForm",
+                "submit"    =>"Valider"
+            ],
 
+            "struct"=>[
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
+                "title"=>[
+                    "id"            =>"title",
+                    "label"         =>"Titre :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Le titre: ",
+                    "required"      =>true
+                ],
+                "category"=>[
+                    "id"            =>"category",
+                    "label"         =>"Catégorie :",
+                    "type"          =>"select",
+                    "option"        => [ "category1" => "Categorie1",
+                                        "category2"=>"Categorie2",
+                                        "category3"=>"Categorie3",
+                                        "category4"=>"Categorie4",
+                                        "category5"=>"Categorie5"
+                    ],
+                    "required"      =>true
+                ]
+            ]
+        ];
+    }
 }
