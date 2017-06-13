@@ -1,10 +1,15 @@
 *{
-margin:0;
-padding:0;
+  margin:0;
+  padding:0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+a, input[type="submit"] {
+  cursor: pointer;
 }
 
 body, html{height:100%;}
@@ -97,6 +102,8 @@ position:relative;
   width: 100%;
   float: left;
   margin-top: 20px;
+  bottom: 0;
+  position: absolute;
 }
 
 #footer ul {
@@ -193,4 +200,173 @@ input.submit {
 
 .closebtn:hover {
     color: black;
+}
+
+/* titre dans le header */
+#title-back {
+  margin-left: 43.5%;
+  font-size: 2em;
+  margin-top: 0.8%;
+  color: white;
+}
+
+#container-back{
+  height: 88%;
+  padding: 1%;
+}
+
+#menu-verticale{
+  background-color: #fbadad;
+  width: 15%;
+  height: 100%;
+  border: solid black 2px;
+  float: left;
+  display: block;
+  margin-right: 1%;
+}
+
+/* container double menu sur la gauche (menu de droite séparé en 2) ex:utilisateur-droits */
+#menu-verticale-double-container{
+  float: left;
+  display: block;
+  height: 100%;
+  width: 15%;
+}
+
+/* double menu sur la gauche (menu de droite séparé en 2) ex:utilisateur-droits */
+#menu-verticale-double{
+  background-color: #fbadad;
+  height: 49.3%;
+  border: solid black 2px;
+  display: block;
+  margin-right: 1%;
+  margin-bottom: 3%;  
+}
+
+#menu-verticale h3, #menu-verticale-double h3{
+  padding-top: 5%;
+  text-align: center;
+  font-size: 2.5em;
+  color: white;
+  margin-bottom: 5%;
+  font-style: oblique;
+}
+
+#menu-verticale ul{
+  margin: none;
+  padding: none;
+  margin-top: 10%;
+}
+
+#menu-verticale li{
+  list-style-type: none;
+  color: white;
+  font-size: 1.5em;
+  margin: 3%;
+  text-align: center;
+}
+
+#menu-verticale-double ul{
+  margin-top: 5%;
+}
+
+#menu-verticale-double li{
+  list-style-type: none;
+  margin-left: 3%;
+}
+
+#menu-verticale li:hover, #menu-verticale-double li:hover{
+  background-color: #790000;
+}
+
+/* Dans le cas ou il y a 1 section sur la ligne */
+#section-haut{
+  padding: 1%;
+  margin: 0% 1%;
+  min-height: 44.5%;
+  border: solid black 2px;
+  background-color: #fbadad;
+  float: left;
+  display: block;
+  width: 79%;
+}
+
+/* Dans le cas ou il y a 2 section sur la même ligne*/
+#section-bas{
+  padding: 1% 1% 0% 1%;
+  margin: 1% 1% 0% 1%;
+  min-height: 44%;
+  border: solid black 2px;
+  background-color: #fbadad;
+  float: left;
+  display: block;
+  width: 37.5%;
+}
+
+#section-haut h3, #section-bas h3{
+  font-size: 2em;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+#section-bas div {
+  margin: 3% 3% 3% 3%;
+  padding: 2%;
+  border: solid black 2px;
+}
+
+#section-double-menu{
+  padding: 1%;
+  margin: 0% 1%;
+  min-height: 95.5%;
+  border: solid black 2px;
+  background-color: #fbadad;
+  float: left;
+  display: block;
+  width: 63%;
+  position: relative;
+}
+
+/* menu haut et bas lorsque double menu sur la gauche (menu de droite séparé en 2) ex:utilisateur-droits */
+#section-utilisateur{
+  padding: 1%;
+  margin: 0% 1% 0.5% 1%;
+  min-height: 44.7%;
+  border: solid black 2px;
+  background-color: #fbadad;
+  float: left;
+  display: block;
+  width: 63%;
+  position: relative;
+}
+
+#section-utilisateur h3, #section-double-menu h3{
+  margin-left: 5%;
+  font-size: 1.5em;
+  text-decoration: underline;
+  margin-bottom: 2%;
+}
+
+#util-submit{
+  float: right;
+  margin-bottom: 2%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#util-submit input{
+  padding: 2%;
+  margin: 3%;
+}
+
+#util-label{
+   margin-left: 5%;
+   float: left;
+   display: block;
+}
+
+#util-input{
+  float: left;
+  display: block;
+  margin-left: 5%;
 }
