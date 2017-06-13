@@ -15,7 +15,7 @@
       <h1 id="titreBE">Food CMS</h1>
     </ul>
     <ul id="navigationBE">
-      <li><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
+    <li><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
       <li><a href="/admin/comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Commentaires</a></li>
       <li><a href="/admin/category"><i class="fa fa-clone" aria-hidden="true"></i> Catégories</a></li>
       <li><a href="/admin/page"><i class="fa fa-file-o" aria-hidden="true"></i> Pages</a></li>
@@ -29,6 +29,9 @@
     <?php $uri = $_SERVER['REQUEST_URI'];
     $this->uri = trim($uri, "/");
     $this->uriExploded = explode("/", $this->uri);
+    $link = $this->uriExploded;
+    if(array_key_exists(1,$link))
+    {
     ?>
     <ul id="navigationList">
       <li><a href="/">Article 1</a></li>
@@ -36,6 +39,7 @@
       <li><a href="/">Article 3</a></li>
       <li><a href="/">Article 4</a></li>
     </ul>
+    <?php } ?>
     <?php
     include $this->view.".view.php";
     ?>
