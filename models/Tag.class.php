@@ -8,6 +8,19 @@ class Tag extends BaseSql{
     /**
      * @return mixed
      */
+     public function __construct($id, $name = null)
+     {
+         parent::__construct();
+
+         if ($id > 0) {
+             parent::getOneBy(["id" => $id]);
+         } else {
+           $this->id                = $id;
+           $this->name             = $name;
+           $this->archived          = 0;
+         }
+     }
+
     public function getArchived()
     {
         return $this->archived;
@@ -51,6 +64,32 @@ class Tag extends BaseSql{
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    static function getTagForm(){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/tag/create",
+                "class"     =>"form-group",
+                "id"        =>"tagForm",
+                "submit"    =>"Valider"
+            ],
+
+            "struct"=>[
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
+                "name"=>[
+                    "id"            =>"name",
+                    "label"         =>"Nom :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Le nom du tag: ",
+                    "required"      =>true
+                ]
+            ]
+        ];
     }
 
 }

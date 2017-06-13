@@ -114,10 +114,10 @@ class Category extends BaseSql{
             ],
 
             "struct"=>[
-                "id"=>[
-                    "id"            =>"id",
-                    "type"          =>"hidden"
-                ],
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
                 "libelle"=>[
                     "id"            =>"libelle",
                     "label"         =>"Libelle :",
