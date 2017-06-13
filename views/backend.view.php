@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
+
   <div id="main">
     <ul id="navigation">
       <li><img id="logo" src="../../assets/img/logo.png"></li>
@@ -39,5 +40,6 @@
       </div>
     </footer>
   </div>
+
 </body>
 </html>

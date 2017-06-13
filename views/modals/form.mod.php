@@ -1,6 +1,3 @@
-<!--<pre>
-<?php// print_r($config); ?>
-</pre>-->
 <form id="<?php echo $config["options"]["id"]; ?>" class="<?php echo $config["options"]["class"]; ?>" method="<?php echo $config["options"]["method"]; ?>" action="<?php echo $config["options"]["action"]; ?>">
 
     <?php foreach ($config["struct"] as $name => $attributs):?>
@@ -19,6 +16,7 @@
         <?php elseif($attributs["type"] == "text"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
                    placeholder="<?php echo $attributs["placeholder"]; ?>"
+
                      <?php echo ($attributs["required"])?"required":"" ?>
             >
           <?php elseif($attributs["type"] == "textarea"):?>
@@ -30,6 +28,17 @@
               <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
                         <?php echo ($attributs["required"])?"required":"" ?>
                 >
+
+                   <?php echo ($attributs["required"])?"required":"" ?>
+            >
+          <?php elseif($attributs["type"] == "select"):?>
+              <select id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
+                <?php foreach ($attributs["option"] as $selectName => $selectValue):?>
+                  <option value="<?php echo $selectName; ?>"><?php echo $selectValue; ?></option>
+                <?php endforeach; ?>
+              </select>
+
+
         <?php endif; ?>
         </div>
     <?php endforeach; ?>

@@ -38,10 +38,7 @@
                 $sqlKey = trim($sqlKey, ",");
                 $req = $this->db->prepare("INSERT INTO ".DB_PREFIXE.$this->table." (".$sqlCol.") VALUES (".$sqlKey.");");
 
-                echo "INSERT INTO ".DB_PREFIXE.$this->table." (".$sqlCol.") VALUES (".$sqlKey.");";
 
-                $req->execute($data);
-                echo "insert";
 
             } else {
 
@@ -51,7 +48,7 @@
                     $sqlQuery .= $columns . " = :" . $columns . ", ";
                 }
                 $sqlQuery = trim($sqlQuery, ", ");
-                $req = $this->db->prepare("UPDATE ".$this->table." SET ".$sqlQuery." WHERE id = :id;");
+                $req = $this->db->prepare("UPDATE ".DB_PREFIXE.$this->table." SET ".$sqlQuery." WHERE id = :id;");
                 $req->execute($data);
                 echo "update";
 

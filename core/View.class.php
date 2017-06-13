@@ -29,13 +29,21 @@ class View {
         }
     }
 
+    public function includeAlert($type, $text) {
+        if (file_exists("views/modals/alert.mod.php")) {
+            include "views/modals/alert.mod.php";
+        } else {
+            // logs
+            die("Le modal n'existe pas");
+        }
+    }
+
     public function includeModal($modal, $config)
     {
         if (file_exists("views/modals/".$modal.".mod.php")) {
             include "views/modals/".$modal.".mod.php";
         } else {
             // logs
-
             die("Le modal n'existe pas");
         }
     }

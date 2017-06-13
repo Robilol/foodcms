@@ -52,26 +52,26 @@
         }
 
         public function getEmail() {
-             $this->email;
+             return $this->email;
         }
 
         public function setPassword($pwd) {
-            $this->password = password_hash($pwd, PASSWORD_DEFAULT);
+            $this->password = password_hash($pwd, PASSWORD_BCRYPT);
         }
 
-        public function getPassword($pwd) {
+        public function getPassword() {
             return $this->password;
         }
 
         public function setUsername($username) {
-            $this->username = ($username);
+            $this->username = $username;
         }
 
         public function getUsername() {
             return $this->username;
         }
         public function setFirstname($firstname) {
-            $this->firstname = ($firstname);
+            $this->firstname = $firstname;
         }
 
         public function getFirstname() {
@@ -79,7 +79,7 @@
         }
 
         public function setLastname($lastname) {
-            $this->lastname = ($lastname);
+            $this->lastname = $lastname;
         }
 
         public function getLastname() {
@@ -118,8 +118,20 @@
             $this->token = $token;
         }
 
+        public function generateNewPassword() {
+            $pwd = uniqid("pwd");
+            $this->setPassword($pwd);
+
+            return $pwd;
+        }
+
         public function getUserByUsername($username) {
             $user =  parent::getOneBy(["username" => $username]);
+
+            if (is_null($user['id'])) {
+                return false;
+            }
+
             $this->id           = $user['id'];
             $this->email        = $user['email'];
             $this->password     = $user['password'];
@@ -128,6 +140,46 @@
             $this->lastname     = $user['lastname'];
             $this->token        = $user['token'];
             $this->status       = $user['status'];
+
+            return true;
+        }
+
+        public function getUserByEmail($email) {
+            $user =  parent::getOneBy(["email" => $email]);
+
+            if (is_null($user['id'])) {
+                return false;
+            }
+
+            $this->id           = $user['id'];
+            $this->email        = $user['email'];
+            $this->password     = $user['password'];
+            $this->username     = $user['username'];
+            $this->firstname    = $user['firstname'];
+            $this->lastname     = $user['lastname'];
+            $this->token        = $user['token'];
+            $this->status       = $user['status'];
+
+            return true;
+        }
+
+        public function getUserByToken($token) {
+            $user =  parent::getOneBy(["token" => $token]);
+
+            if (is_null($user['id'])) {
+                return false;
+            }
+
+            $this->id           = $user['id'];
+            $this->email        = $user['email'];
+            $this->password     = $user['password'];
+            $this->username     = $user['username'];
+            $this->firstname    = $user['firstname'];
+            $this->lastname     = $user['lastname'];
+            $this->token        = $user['token'];
+            $this->status       = $user['status'];
+
+            return true;
         }
 
         static function getRegisterForm(){
@@ -141,6 +193,13 @@
                 ],
 
                 "struct"=>[
+                    "username"=>[
+                        "id"            =>"pseudo",
+                        "label"         =>"Votre pseudo :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre pseudo",
+                        "required"      =>true
+                    ],
                     "firstname"=>[
                         "id"            =>"firstname",
                         "label"         =>"Votre prenom :",
@@ -153,13 +212,6 @@
                         "label"         =>"Votre nom :",
                         "type"          =>"text",
                         "placeholder"   =>"Votre nom",
-                        "required"      =>true
-                    ],
-                    "username"=>[
-                        "id"            =>"pseudo",
-                        "label"         =>"Votre pseudo :",
-                        "type"          =>"text",
-                        "placeholder"   =>"Votre pseudo",
                         "required"      =>true
                     ],
                     "email"=>[
