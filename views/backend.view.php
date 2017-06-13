@@ -14,6 +14,7 @@
       <li><img id="logo" src="../../assets/img/logo.png"></li>
       <h1 id="titreBE">Food CMS</h1>
     </ul>
+
     <ul id="navigationBE"><!--
     --><li><a href="/admin/"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a></li>
       <li><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
@@ -23,6 +24,7 @@
       <li><a href="/admin/tag"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a></li>
       <li><a href="/admin/media"><i class="fa fa-image" aria-hidden="true"></i> Médias</a></li>
       <li><a href="/admin/archive"><i class="fa fa-tasks" aria-hidden="true"></i> Archives</a></li>
+
     </ul>
     <ul id="navigationList">
       <li><a href="/">Article 1</a></li>
