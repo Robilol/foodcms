@@ -14,32 +14,50 @@
   </section>
 	<section id="section-bas">
 		<h3>Derniers Articles</h3>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+		<div class="articleDiv">
+      <div>
+        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
     </div>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
-       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+    </div>
+		<div class="articleDiv">
+      <div>
+        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
+    </div>
      </div>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
-       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+		<div class="articleDiv">
+      <div>
+        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
+    </div>
      </div>
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
-       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+		<div class="articleDiv">
+      <div>
+      <p><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i></p><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
+    </div>
      </div>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
-       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+		<div class="articleDiv">
+      <div>
+        <i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
+    </div>
      </div>
-		<div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
-       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+		<div class="articleDiv">
+      <div>
+      <i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus.</p>
+    </div>
      </div>
 
 	</section>
