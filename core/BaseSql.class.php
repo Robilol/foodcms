@@ -78,8 +78,14 @@
             return $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function getAll($returnQuery = false){
-            $query = $this->db->prepare("SELECT * FROM ".DB_PREFIXE.$this->table);
+        public function getAll($limit = 0, $returnQuery = false){
+            $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
+
+            if ($limit > 0) {
+                $sql .= " LIMIT 0, ".$limit;
+            }
+
+            $query = $this->db->prepare($sql);
             $query->execute();
 
             if($returnQuery){
