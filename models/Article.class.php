@@ -12,22 +12,48 @@
         protected $archived;
         protected $ctime;
         protected $utime;
-
-        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $food_user_id = null)
+        
+        /**
+         * Article constructor.
+         * @param $id
+         * @param $title
+         * @param $text
+         * @param $thumbnail
+         * @param $active
+         * @param $user
+         * @param $archived
+         * @param $ctime
+         * @param $utime
+         */
+        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $user = null, $archived = null, $ctime = null, $utime = null)
         {
             parent::__construct();
 
             if ($id > 0) {
-                parent::getOneBy(["id" => $id]);
+                $article = parent::getOneBy(["id" => $id]);
+
+                $this->id           = $article['id'];
+                $this->title        = $article['title'];
+                $this->text         = $article['text'];
+                $this->thumbnail    = $article['thumbnail'];
+                $this->active       = $article['active'];
+                $this->user         = $article['food_user_id'];
+                $this->archived     = $article['archived'];
+                $this->ctime        = $article['ctime'];
+                $this->utime        = $article['utime'];
             } else {
-                $this->id           = $id;
-                $this->title        = $title;
-                $this->text         = $text;
-                $this->thumbnail    = $thumbnail;
-                $this->active       = $active;
-                $this->food_user_id = $food_user_id;
+                $this->id = $id;
+                $this->title = $title;
+                $this->text = $text;
+                $this->thumbnail = $thumbnail;
+                $this->active = $active;
+                $this->user = $user;
+                $this->archived = $archived;
+                $this->ctime = $ctime;
+                $this->utime = $utime;
             }
         }
+
         /**
          * @param mixed $text
          */
@@ -37,9 +63,10 @@
         }
 
         /**
-         * @param mixed $id_users
+         * @param mixed $id_user
          */
-        public function setFoodUserId($food_user_id)
+      
+        public function setUser($id_user)
         {
             $this->food_user_id = $food_user_id;
         }
@@ -146,9 +173,10 @@
      *
      * @return mixed
      */
-    public function getDateCreated()
+    public function getCtime()
     {
-        return $this->ctime;
+        $date = new DateTime($this->ctime);
+        return $date->format("j M Y G:i");
     }
 
     /**
@@ -158,11 +186,9 @@
      *
      * @return self
      */
-    protected function setDateCreated($ctime)
+    protected function setCtime($ctime)
     {
         $this->ctime = $ctime;
-
-        return $this;
     }
 
     /**
@@ -170,9 +196,10 @@
      *
      * @return mixed
      */
-    public function getDateModified()
+    public function getUtime()
     {
-        return $this->utime;
+        $date = new DateTime($this->utime);
+        return $date->format("j M Y G:i");
     }
 
     /**
@@ -182,11 +209,9 @@
      *
      * @return self
      */
-    protected function setDateModified($utime)
+    protected function setUtime($utime)
     {
         $this->utime = $utime;
-
-        return $this;
     }
 
     static function getArticleCreationForm(){

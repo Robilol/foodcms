@@ -103,6 +103,10 @@ class Category extends BaseSql{
         $this->id = $id;
     }
 
+    public function getAllCategories() {
+        return parent::getAll();
+    }
+  
     static function getCategoryForm(){
         return [
             "options"=>[
@@ -141,3 +145,4 @@ class Category extends BaseSql{
         ];
     }
 }
+

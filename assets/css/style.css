@@ -346,6 +346,11 @@ input.submit {
     color: black;
 }
 
+.search-selector {
+    width: 48%;
+    vertical-align: middle;
+}
+
 /* titre dans le header */
 #title-back {
   margin-left: 43.5%;

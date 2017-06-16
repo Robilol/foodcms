@@ -26,7 +26,16 @@
             parent::__construct();
 
             if ($id > 0) {
-                parent::getOneBy(["id" => $id]);
+                $user = parent::getOneBy(["id" => $id]);
+
+                $this->id           = $user['id'];
+                $this->email        = $user['email'];
+                $this->password     = $user['password'];
+                $this->username     = $user['username'];
+                $this->firstname    = $user['firstname'];
+                $this->lastname     = $user['lastname'];
+                $this->token        = $user['token'];
+                $this->status       = $user['status'];
             } else {
                 $this->id           = $id;
                 $this->email        = $email;
