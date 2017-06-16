@@ -433,8 +433,9 @@ input.submit {
   padding: 1%;
   margin: 0% 1%;
   min-height: 44.5%;
-  border: solid black 2px;
-  background-color: #fbadad;
+  border: solid  #BDBDBD 1px;
+  border-radius: 5px;
+  background-color: #EEEEEE;
   float: left;
   display: block;
   width: 79%;
@@ -445,8 +446,9 @@ input.submit {
   padding: 1% 1% 0% 1%;
   margin: 1% 1% 0% 1%;
   min-height: 44%;
-  border: solid black 2px;
-  background-color: #fbadad;
+  border: solid  #BDBDBD 1px;
+  border-radius: 5px;
+  background-color: #EEEEEE;
   float: left;
   display: block;
   width: 37.5%;
@@ -461,7 +463,10 @@ input.submit {
 #section-bas div {
   margin: 3% 3% 3% 3%;
   padding: 2%;
-  border: solid black 2px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  border-bottom: thin solid #BDBDBD;
+  border-right: thin solid #BDBDBD;
 }
 
 #section-double-menu{

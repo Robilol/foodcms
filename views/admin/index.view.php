@@ -1,36 +1,49 @@
 <div id="container-back">
 	<!-- accueil -->
-	<!--	
+
 	<section id="menu-verticale">
-		<ul>
-			<a><li>Articles</li></a>
-			<a><li>Commentaires</li></a>
-			<a><li>Catégories</li></a>
-			<a><li>Utilisateurs / Droits</li></a>
-			<a><li>Medias</li></a>
-			<a><li>Archives</li></a>
-		</ul>
+
 	</section>
 
 	<section id="section-haut">
 		<h3>Statistique</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eos enim eum, vel perferendis temporibus pariatur repellendus voluptate sint debitis eaque quasi adipisci blanditiis consectetur vitae fugit aliquam illum harum.</p>	
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eos enim eum, vel perferendis temporibus pariatur repellendus voluptate sint debitis eaque quasi adipisci blanditiis consectetur vitae fugit aliquam illum harum.</p>
 	</section>
+  <section id="menu-verticale">
 
+  </section>
 	<section id="section-bas">
 		<h3>Derniers Articles</h3>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
+      ecessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+    </div>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
+       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+     </div>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
+       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+     </div>
 	</section>
 	<section id="section-bas">
-		<h3>Dernier Commentaires</h3>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div>
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus. Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?</div> 
+		<h3>Derniers Commentaires</h3>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
+       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+     </div>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
+       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+     </div>
+		<div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati necessitatibus.
+       Ducimus optio, maxime velit aut modi ullam mollitia veniam repudiandae nostrum atque, et quibusdam?
+     </div>
 
 	</section>
-	-->
+
 
 	<!-- Utilisateur Droits -->
 	<!--
@@ -87,7 +100,7 @@
 	</section>
 	<section id="section-utilisateur">
 		<h3>Statistique</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eos enim eum, vel perferendis temporibus pariatur repellendus voluptate sint debitis eaque quasi adipisci blanditiis consectetur vitae fugit aliquam illum harum.</p>	
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eos enim eum, vel perferendis temporibus pariatur repellendus voluptate sint debitis eaque quasi adipisci blanditiis consectetur vitae fugit aliquam illum harum.</p>
 	</section>
 
 -->
