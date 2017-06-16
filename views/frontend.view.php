@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Ma page food CMS</title>
     <meta name="description" content="description de la page">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fo.css">
     <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
     <script src="/assets/js/jquery.js"></script>
 </head>

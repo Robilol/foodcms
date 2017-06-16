@@ -1,0 +1,201 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+    margin: 0;
+}
+
+body, html{height:100%;}
+/*
+#main{
+max-width:1280px;
+min-height:100%;
+margin:0 auto;
+position:relative;
+}*/
+
+/* MENU */
+
+#navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F66767;
+}
+
+#navigation li{
+    float: left;
+    height: inherit;
+}
+
+#navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    height: inherit;
+}
+
+#navigation li a:hover {
+    background-color: #790000;
+}
+
+#logo {
+    max-width: 100%;
+    margin: 7px;
+    margin-left: 12px;
+    max-height: 50px;
+}
+
+#liens {
+    height: 68px;
+    line-height: 36px;
+}
+
+/* TITRE */
+
+#titre {
+    text-align: center;
+    margin: 20px 0;
+}
+/* CONTENT */
+
+.article {
+    display: inline-block;
+    width: 25%;
+    margin: 0;
+}
+.titre_article {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.image_article {
+    width: 80%;
+    margin: 0 10%;
+}
+
+.description_article {
+    width: 80%;
+    margin: 0 10%;
+}
+
+.infos_article {
+    width: 80%;
+    margin: 0 10%;
+}
+/* FOOTER */
+
+#footer {
+    background-color: #F66767;
+    height: 40px;
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+#footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    height: inherit;
+    float: right;
+}
+
+#footer li {
+    float: left;
+    height: inherit;
+}
+
+
+#footer li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 8px;
+    text-decoration: none;
+    height: inherit;
+}
+
+/* Change the link color to #111 (black) on hover */
+#footer li a:hover {
+    background-color: #790000;
+}
+
+/* FORM */
+.form-row label{
+    width: 48%;
+    display: inline-block;
+}
+
+.form-row input{
+    width: 48%;
+    display: inline-block;
+}
+
+.form-group {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input.submit {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.alert {
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert.success {
+    background-color: #DFF0D8;
+    color: #3c763d;
+}
+
+.alert.warning {
+    background-color: #FCF8E3;
+    color: #8a6d3b;
+}
+
+.alert.info {
+    background-color: #D9EDF7;
+    color: #31708f;
+}
+
+.alert.danger {
+    background-color: #F2DEDE;
+    color: #a94442;
+}
+
+.closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.search-selector {
+    width: 48%;
+    vertical-align: middle;
+}
