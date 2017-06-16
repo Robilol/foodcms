@@ -65,7 +65,7 @@ class UserController {
         $mail = new Mailer($user->getEmail(), "Confirmation d'inscription", "register", $variables);
         $mail->send();
 
-        header('Location: /index/index/verify');
+        header('Location: /index/login/verify');
         exit();
 	}
 	public function editAction() {

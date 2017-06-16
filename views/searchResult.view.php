@@ -2,6 +2,8 @@
     <h1 id="titre">Résultats de la recherche</h1>
 </header>
 <section id="content">
+    <?php if (empty($this->data["articlesArray"])) { $this->includeAlert("danger", "Pas de recettes trouvées"); } ?>
+
     <?php foreach ($this->data["articlesArray"] as $article):?>
         <div class="article">
             <h2 class="titre_article"><?php echo $article->getTitle(); ?></h2>

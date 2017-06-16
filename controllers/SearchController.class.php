@@ -11,8 +11,8 @@ class SearchController
     public function indexAction() {
         $v = new View("search");
 
-        $tag = new Tag();
-        $category = new Category();
+        $tag = new Tag(-1);
+        $category = new Category(-1);
 
         $tags_array = $tag->getAllTags();
         $v->assign("tagsArray", $tags_array);

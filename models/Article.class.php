@@ -12,22 +12,7 @@
         protected $archived;
         protected $ctime;
         protected $utime;
-
-        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $food_user_id = null)
-        {
-            parent::__construct();
-
-            if ($id > 0) {
-                parent::getOneBy(["id" => $id]);
-            } else {
-                $this->id           = $id;
-                $this->title        = $title;
-                $this->text         = $text;
-                $this->thumbnail    = $thumbnail;
-                $this->active       = $active;
-                $this->food_user_id = $food_user_id;
-            }
-        }
+        
         /**
          * Article constructor.
          * @param $id
