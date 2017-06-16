@@ -279,7 +279,7 @@ margin-bottom: 10px;
  margin: auto;
 }
 
-.form-row input [type=radio] { 
+.form-row input [type=radio] {
   background-color:transparent;
   border:none;
   width:10px;
