@@ -122,8 +122,12 @@ position:relative;
 }
 
 #navigationBE li a:hover {
-    background-color: #790000;
-    color:white;
+  background-color: #790000;
+  color:white;
+}
+#navigationBE li.active a{
+  background-color: #790000;
+  color:white;
 }
 /* TITRE */
 
