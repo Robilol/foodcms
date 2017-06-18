@@ -6,24 +6,31 @@
   <meta name="description" content="description de la page">
   <link rel="stylesheet" href="../../assets/css/bo.css">
   <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
+  <script src="/assets/js/jquery.js"></script>
+
 </head>
 <body>
-
+  <?php $uri = $_SERVER['REQUEST_URI'];
+  $this->uri = trim($uri, "/");
+  $this->uriExploded = explode("/", $this->uri);
+  $link = $this->uriExploded;
+    ?>
   <div id="main">
     <ul id="headerBack">
       <li><a href="/admin"><img id="logo" src="../../assets/img/logo.png"></a></li>
       <h1 id="titreBE">Food CMS</h1>
     </ul>
     <ul id="navigationBE">
-    <li><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
-      <li><a href="/admin/comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Commentaires</a></li>
-      <li><a href="/admin/category"><i class="fa fa-clone" aria-hidden="true"></i> Catégories</a></li>
-      <li><a href="/admin/page"><i class="fa fa-file-o" aria-hidden="true"></i> Pages</a></li>
-      <li><a href="/admin/user"><i class="fa fa-group" aria-hidden="true"></i> Utilisateurs / droits</a></li>
-      <li><a href="/admin/tag"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a></li>
-      <li><a href="/admin/menu"><i class="fa fa-navicon" aria-hidden="true"></i> Menu</a></li>
-      <li><a href="/admin/media"><i class="fa fa-image" aria-hidden="true"></i> Médias</a></li>
-      <li><a href="/admin/archive"><i class="fa fa-archive" aria-hidden="true"></i> Archives</a></li>
+
+      <li class="menu"><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
+      <li class="menu"><a href="/admin/comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Commentaires</a></li>
+      <li class="menu"><a href="/admin/category"><i class="fa fa-clone" aria-hidden="true"></i> Catégories</a></li>
+      <li class="menu"><a href="/admin/page"><i class="fa fa-file-o" aria-hidden="true"></i> Pages</a></li>
+      <li class="menu"><a href="/admin/user"><i class="fa fa-group" aria-hidden="true"></i> Utilisateurs / droits</a></li>
+      <li class="menu"><a href="/admin/tag"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a></li>
+      <li class="menu"><a href="/admin/menu"><i class="fa fa-navicon" aria-hidden="true"></i> Menu</a></li>
+      <li class="menu"><a href="/admin/media"><i class="fa fa-image" aria-hidden="true"></i> Médias</a></li>
+      <li class="menu"><a href="/admin/archive"><i class="fa fa-archive" aria-hidden="true"></i> Archives</a></li>
 
     </ul>
     <?php $uri = $_SERVER['REQUEST_URI'];
@@ -53,6 +60,7 @@
       </div>
     </footer-->
   </div>
+  <script src="/assets/js/script.js"></script>
 
 </body>
 </html>

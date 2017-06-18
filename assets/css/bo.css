@@ -122,8 +122,12 @@ position:relative;
 }
 
 #navigationBE li a:hover {
-    background-color: #790000;
-    color:white;
+  background-color: #790000;
+  color:white;
+}
+#navigationBE li.active a{
+  background-color: #790000;
+  color:white;
 }
 /* TITRE */
 
@@ -368,7 +372,7 @@ input.submit {
   background-color: #fbadad;
   width: 15%;
   height: 100%;
-  border: solid #F5F5F5 2px;
+  border: solid #ffffff 2px;
   float: left;
   display: block;
   margin-right: 1%;
