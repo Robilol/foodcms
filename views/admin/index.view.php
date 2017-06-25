@@ -14,27 +14,15 @@
   </section>
 	<section id="section-bas">
 		<h3>Derniers Articles</h3>
-		<div class="articleDiv">
-      <div>
-        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
-    </div>
-		<div class="articleDiv">
-      <div>
-        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
-     </div>
-		<div class="articleDiv">
-      <div>
-        <a class="title">Test test test</a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
-     </div>
+		<?php foreach ($this->data["lastArticles"] as $article):?>
+			<div class="articleDiv">
+				<div>
+					<a class="title"><?php echo $article['title']; ?></a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
+						<p><?php echo $article['text']; ?></p>
+			    </div>
+			    </div>
+		<?php endforeach; ?>
+		
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
