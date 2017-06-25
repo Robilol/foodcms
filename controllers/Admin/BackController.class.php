@@ -12,6 +12,11 @@ class BackController{
 
       $v->assign("lastArticles", $lastArticles);
 
+      $comment = new Comment(-1);
+      $lastComment = $comment->getAll(3);
+
+      $v->assign("lastComment", $lastComment);
+
       if (!empty($params)) {
           foreach ($params as $key => $value) {
               if ($value == "connected") {

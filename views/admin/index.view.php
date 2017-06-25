@@ -22,30 +22,18 @@
 			    </div>
 			    </div>
 		<?php endforeach; ?>
-		
+
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
-		<div class="articleDiv">
-      <div>
-      <p><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i></p><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
-     </div>
-		<div class="articleDiv">
-      <div>
-        <i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
-     </div>
-		<div class="articleDiv">
-      <div>
-      <i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum in sed ducimus, impedit quam obcaecati
-      ecessitatibus.</p>
-    </div>
+		<?php foreach ($this->data["lastComment"] as $comment):?>
+			<div class="articleDiv">
+				<div>
+						<p><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i></p>
+						<p><?php echo  substr($comment['text'], 0, 140); ?></p>
+			    </div>
+			    </div>
+		<?php endforeach; ?>
      </div>
 
 	</section>
