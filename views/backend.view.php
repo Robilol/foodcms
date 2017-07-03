@@ -40,6 +40,7 @@
     if(array_key_exists(1,$link))
     {
     ?>
+    
     <ul id="navigationList">
       <li><a href="/">Article 1</a></li>
       <li><a href="/">Article 2</a></li>
