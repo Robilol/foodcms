@@ -36,7 +36,7 @@ class CategoryController {
       $category->save();
 
 
-      header("Location: /admin/category/index");
+      header("Location: /admin/category");
     }
 
     public function deleteAction(){
@@ -50,7 +50,7 @@ class CategoryController {
       $category->setArchived(1);
       $category->save();
 
-      header("Location: /admin/category/index");
+      header("Location: /admin/category");
     }
 
 

@@ -19,7 +19,7 @@ public function indexAction(){
         $page = new Page(-1, $data['title']);
         $page->save();
 
-        //header("Location: /admin/page/index");
+        //header("Location: /admin/page");
     }
 
     public function editAction()
@@ -31,7 +31,7 @@ public function indexAction(){
         $page->setCategory($data['category']);
         $page->save();
 
-        header("Location: /admin/page/index");
+        header("Location: /admin/page");
     }
 
     public function deleteAction()
@@ -45,7 +45,7 @@ public function indexAction(){
         $page->setArchived(1);
         $page->save();
 
-        header("Location: /admin/page/index");
+        header("Location: /admin/page");
 
     }
 }

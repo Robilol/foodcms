@@ -32,7 +32,7 @@ class ArticleController {
     {
       $data = $_POST;
 
-      $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 34);
+      $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 2);
       $article->save();
 
       header('Location: /admin/article');

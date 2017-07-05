@@ -30,7 +30,7 @@ public function indexAction(){
         $menu->setName($data['name']);
         $menu->save();
 
-        header("Location: /admin/menu/index");
+        header("Location: /admin/menu");
     }
 
     public function deleteAction()
@@ -42,7 +42,6 @@ public function indexAction(){
         $menu->setArchived(1);
         $menu->save();
 
-        header("Location: /admin/menu/index");
-
+      header("Location: /admin/menu");
     }
 }
