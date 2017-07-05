@@ -1,3 +1,3 @@
 <section id="content">
-  <?php $this->includeModal("form", Article::getArticleCreationForm()); ?>
+  <?php $this->includeModal("form", Comment::getCommentCreationForm()); ?>
 </section>

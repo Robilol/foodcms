@@ -104,4 +104,25 @@
         {
             $this->text = $text;
         }
+
+        static function getCommentCreationForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/comment/register",
+                    "class"     =>"form-group",
+                    "id"        =>"commentCreationForm",
+                    "submit"    =>"Ajouter"
+                ],
+                "struct"=>[
+                    "text"=>[
+                        "id"            =>"text",
+                        "label"         =>"Contenu :",
+                        "type"          =>"textarea",
+                        "placeholder"   =>"Votre contenu",
+                        "required"      =>true
+                    ]
+                  ]
+            ];
+        }
     }
