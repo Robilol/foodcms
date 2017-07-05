@@ -37,7 +37,7 @@
                 $this->text         = $article['text'];
                 $this->thumbnail    = $article['thumbnail'];
                 $this->active       = $article['active'];
-                $this->user         = $article['food_user_id'];
+                $this->food_user_id         = $article['food_user_id'];
                 $this->archived     = $article['archived'];
                 $this->ctime        = $article['ctime'];
                 $this->utime        = $article['utime'];
@@ -47,7 +47,7 @@
                 $this->text = $text;
                 $this->thumbnail = $thumbnail;
                 $this->active = $active;
-                $this->user = $user;
+                $this->food_user_id = $user;
                 $this->archived = $archived;
                 $this->ctime = $ctime;
                 $this->utime = $utime;

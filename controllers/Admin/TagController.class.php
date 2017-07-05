@@ -16,7 +16,7 @@ class TagController
         $tag = new Tag(-1, $data['name']);
         $tag->save();
 
-        header("Location: /admin/tag/index");
+        header("Location: /admin/tag");
     }
 
     public function editAction()
@@ -27,7 +27,7 @@ class TagController
         $tag->setName($data['name']);
         $tag->save();
 
-        header("Location: /admin/tag/index");
+        header("Location: /admin/tag");
     }
 
     public function deleteAction()
@@ -39,7 +39,7 @@ class TagController
         $tag->setArchived(1);
         $tag->save();
 
-        header("Location: /admin/tag/index");
+        header("Location: /admin/tag");
             
     }
 }
