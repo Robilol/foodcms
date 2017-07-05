@@ -1,13 +1,16 @@
-<?php 
+<?php
 
 class TagController
 {
     public function indexAction(){
         $v = new View("admin/tag","backend");
+        $tag = new Tag(-1);
+        $allTag = $tag->getAll();
+        $v->assign("allTag", $allTag);
     }
     public function listAction()
     {
-        
+
     }
 
     public function createAction()
@@ -40,6 +43,5 @@ class TagController
         $tag->save();
 
         header("Location: /admin/tag");
-            
-    }
+   }
 }

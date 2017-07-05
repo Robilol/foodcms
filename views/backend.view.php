@@ -56,6 +56,12 @@
       if ($link[1]=='page'){
         foreach ($this->data["allPage"] as $page):?>  <li><a href="#"><?php echo $page['title']; ?></a></li><?php endforeach;
       }
+      if ($link[1]=='tag'){
+        foreach ($this->data["allTag"] as $tag):?>  <li><a href="#"><?php echo $tag['name']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='menu'){
+        foreach ($this->data["allMenu"] as $menu):?>  <li><a href="#"><?php echo $menu['name']; ?></a></li><?php endforeach;
+      }
       ?>
     </ul>
     <?php } ?>
