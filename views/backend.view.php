@@ -38,7 +38,7 @@
     $this->uriExploded = explode("/", $this->uri);
     $link = $this->uriExploded;
 
-    if(array_key_exists(1,$link))
+    if(array_key_exists(1,$link) && $link[1]!="media")
     {
     ?>
 
@@ -68,15 +68,7 @@
     <?php
     include $this->view.".view.php";
     ?>
-    <!--footer>
-      <div id="footer">
-        <ul id="liens_footer">
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Plan du site</a></li>
-        </ul>
-      </div>
-    </footer-->
+
   </div>
   <script src="/assets/js/script.js"></script>
 
