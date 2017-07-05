@@ -4,10 +4,13 @@ class MenuController
 {
 public function indexAction(){
         $v = new View("admin/menu","backend");
+        $menu = new Menu(-1);
+        $allMenu = $menu->getAll();
+        $v->assign("allMenu", $allMenu);
     }
     public function listAction()
     {
-        
+
     }
 
     public function createAction()
@@ -16,7 +19,7 @@ public function indexAction(){
         $menu = new Menu(-1, $data['name']);
         $menu->save();
 
-        header("Location: /admin/menu/index");
+        header("Location: /admin/menu");
     }
 
     public function editAction()
@@ -40,6 +43,6 @@ public function indexAction(){
         $menu->save();
 
         header("Location: /admin/menu/index");
-            
+
     }
 }

@@ -35,7 +35,7 @@ class ArticleController {
       $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 34);
       $article->save();
 
-      header('Location: /admin/article/');
+      header('Location: /admin/article');
       exit();
     }
 }

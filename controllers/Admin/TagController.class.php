@@ -19,7 +19,7 @@ class TagController
         $tag = new Tag(-1, $data['name']);
         $tag->save();
 
-        header("Location: /admin/tag/index");
+        header("Location: /admin/tag");
     }
 
     public function editAction()
