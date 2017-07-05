@@ -15,7 +15,7 @@
   $this->uriExploded = explode("/", $this->uri);
   $link = $this->uriExploded;
     ?>
-  <div id="main">
+  <div id="mainBack">
     <ul id="headerBack">
       <li><a href="/admin"><img id="logo" src="../../assets/img/logo.png"></a></li>
       <h1 id="titreBE">Food CMS</h1>
@@ -37,15 +37,26 @@
     $this->uri = trim($uri, "/");
     $this->uriExploded = explode("/", $this->uri);
     $link = $this->uriExploded;
+
     if(array_key_exists(1,$link))
     {
     ?>
-    
+
     <ul id="navigationList">
-      <li><a href="/">Article 1</a></li>
-      <li><a href="/">Article 2</a></li>
-      <li><a href="/">Article 3</a></li>
-      <li><a href="/">Article 4</a></li>
+      <?php
+      if ($link[1]=='article'){
+        foreach ($this->data["allArticles"] as $article):?>  <li><a href="#"><?php echo $article['title']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='comment'){
+        foreach ($this->data["allComment"] as $comment):?>  <li><a href="#"><?php echo $comment['text']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='category'){
+        foreach ($this->data["allCategory"] as $category):?>  <li><a href="#"><?php echo $category['title']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='page'){
+        foreach ($this->data["allPage"] as $page):?>  <li><a href="#"><?php echo $page['title']; ?></a></li><?php endforeach;
+      }
+      ?>
     </ul>
     <?php } ?>
     <?php

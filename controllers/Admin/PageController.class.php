@@ -1,13 +1,16 @@
-<?php 
+<?php
 
 class PageController
 {
 public function indexAction(){
         $v = new View("admin/page","backend");
+        $page = new Page(-1);
+  $allPage = $page->getAll();
+  $v->assign("allPage", $allPage);
     }
     public function listAction()
     {
-        
+
     }
 
     public function createAction()
@@ -43,6 +46,6 @@ public function indexAction(){
         $page->save();
 
         header("Location: /admin/page/index");
-            
+
     }
 }

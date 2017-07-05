@@ -5,6 +5,9 @@ class CategoryController {
 
     public function indexAction(){
         $v = new View("admin/category","backend");
+        $category = new Category(-1);
+  $allCategory = $category->getAll();
+  $v->assign("allCategory", $allCategory);
     }
     public function listAction(){
 
@@ -27,7 +30,7 @@ class CategoryController {
       $category = new Category(3);
       if (isset($data['libelle']))
         $category->setTitle($data['libelle']);
-      
+
       if (isset($data['parentCategory']))
         $category->setCategoryParent($data['parentCategory']);
       $category->save();
