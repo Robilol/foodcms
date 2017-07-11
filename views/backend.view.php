@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Ma page food CMS</title>
   <meta name="description" content="description de la page">
-  <link rel="stylesheet" href="../../assets/css/bo.css">
+  <link rel="stylesheet" href="/assets/css/bo.css">
   <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
   <script src="/assets/js/jquery.js"></script>
 
@@ -17,7 +17,7 @@
     ?>
   <div id="mainBack">
     <ul id="headerBack">
-      <li><a href="/admin"><img id="logo" src="../../assets/img/logo.png"></a></li>
+      <li><a href="/admin"><img id="logo" src="/assets/img/logo.png"></a></li>
       <h1 id="titreBE">Food CMS</h1>
     </ul>
     <ul id="navigationBE">
@@ -45,10 +45,10 @@
     <ul id="navigationList">
       <?php
       if ($link[1]=='article'){
-        foreach ($this->data["allArticles"] as $article):?>  <li><a href="#"><?php echo $article['title']; ?></a></li><?php endforeach;
+        foreach ($this->data["allArticles"] as $article):?>  <li><a href="/admin/article/show/<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></li><?php endforeach;
       }
       if ($link[1]=='comment'){
-        foreach ($this->data["allComment"] as $comment):?>  <li><a href="#"><?php echo $comment['text']; ?></a></li><?php endforeach;
+        foreach ($this->data["allComment"] as $comment):?>  <li><a href="/admin/comment/show/<?php echo $comment['id']; ?>"><?php echo $comment['text']; ?></a></li><?php endforeach;
       }
       if ($link[1]=='category'){
         foreach ($this->data["allCategory"] as $category):?>  <li><a href="#"><?php echo $category['title']; ?></a></li><?php endforeach;
@@ -66,6 +66,7 @@
     </ul>
     <?php } ?>
     <?php
+  //  var_dump($thisArticle);die;
     include $this->view.".view.php";
     ?>
 
