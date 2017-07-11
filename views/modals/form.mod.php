@@ -15,7 +15,7 @@
             >
         <?php elseif($attributs["type"] == "text"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-                   placeholder="<?php echo $attributs["placeholder"]; ?>"
+                   placeholder="<?php echo $attributs["placeholder"]; ?>" 
 
                      <?php echo ($attributs["required"])?"required":"" ?>
             >

@@ -12,7 +12,7 @@
         protected $archived;
         protected $ctime;
         protected $utime;
-        
+
         /**
          * Article constructor.
          * @param $id
@@ -65,7 +65,7 @@
         /**
          * @param mixed $id_user
          */
-      
+
         public function setUser($id_user)
         {
             $this->food_user_id = $food_user_id;
@@ -244,6 +244,48 @@
                     "label"         =>"Contenu :",
                     "type"          =>"textarea",
                     "placeholder"   =>"Votre contenu",
+                    "required"      =>true
+                ],
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "required"      =>false
+                ]
+            ]
+        ];
+    }
+
+    static function getArticleEditForm($thisArticle){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit",
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+
+            "struct"=>[
+                "title"=>[
+                    "id"            =>"title",
+                    "label"         =>"Titre :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisArticle['title'],
+                    "required"      =>true
+                ],
+                "thumbnail"=>[
+                    "id"            =>"thumbnail",
+                    "label"         =>"Image :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Votre image",
+                    "required"      =>false
+                ],
+                "text"=>[
+                    "id"            =>"text",
+                    "label"         =>"Contenu :",
+                    "type"          =>"textarea",
+                    "placeholder"   =>$thisArticle['text'],
                     "required"      =>true
                 ],
                 "active"=>[
