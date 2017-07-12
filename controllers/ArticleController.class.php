@@ -6,7 +6,7 @@ class ArticleController {
   public function indexAction(){
     $v = new View("articleList","frontend");
       $article = new Article(-1);
-      $allArticles = $article->getAll();
+      $allArticles = $article->getAll(0,"DESC",1);
       $v->assign("allArticles", $allArticles);
   }
 
@@ -19,9 +19,7 @@ class ArticleController {
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[2];
-        $allArticles = $article->getAll();
         $thisArticle = $article->getOneBy(["id" => $id]);
-        $v->assign("allArticles", $allArticles);
         $v->assign("thisArticle", $thisArticle);
     }
 
