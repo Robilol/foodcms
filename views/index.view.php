@@ -8,12 +8,13 @@
   <div id="gallery">
     <?php foreach ($this->data["articlesArray"] as $article):?>
 
-          <div class="gallery">
-            <a target="_blank" href="#">
-              <img src="<?php echo $article['thumbnail']; ?>" alt="Trolltunga Norway">
-            </a>
-            <div class="desc"><?php echo $article['title']; ?></div>
-          </div>
-    <?php endforeach; ?>
-  </div>
-</section>
+      <div class="gallery">
+        <a href="/article/show/<?php echo $article['id']; ?>">
+          <img src="<?php echo $article['thumbnail']; ?>" alt="Trolltunga Norway">
+        </a>
+        <div class="desc"><h3><?php echo $article['title']; ?></h3>
+          <p><?php echo substr($article['text'], 0, 140); ?></p></div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </section>
