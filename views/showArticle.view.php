@@ -4,5 +4,5 @@
   <h1 id="titre-article"><?php echo $thisArticle['title']; ?></h1>
 </section>
 <section id="content">
-<?php echo $thisArticle['text']; ?>
+  <div class="text-article"><?php echo $thisArticle['text']; ?></div>
 </section>

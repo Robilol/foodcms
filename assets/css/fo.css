@@ -210,14 +210,20 @@ input.submit {
     padding: 12px 20px 12px 40px;
     width: 40%;
   }
-  #titre-article{
+#titre-article{
     position: absolute;
-      margin-top: -170px;
-      margin-left: 40%;
-      padding: 12px 20px 12px 40px;
-      width: 40%;
+      margin-top: -70px;
+      width: 100%;
       font-size: 30pt;
-    }
+      height: 70px;
+      text-align: center;
+          background: red; /* For browsers that do not support gradients */
+          background: -webkit-linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)); /* For Safari 5.1 to 6.0 */
+          background: -o-linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)); /* For Opera 11.1 to 12.0 */
+          background: -moz-linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)); /* For Firefox 3.6 to 15 */
+          background: linear-gradient( rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9)); /* Standard syntax (must be last) */
+        }
+
   .input-search:active, .input-search:focus{
     border:2px solid #790000;
     outline: none;
@@ -287,7 +293,6 @@ div.desc {
 filter:blur(3px);
   background-position: center center;
   z-index: -5;
-  opacity: 0.7;
 }
 #showArticle img:hover{
 
@@ -296,4 +301,10 @@ filter:blur(3px);
     animation: mymove forwards;
     animation-duration: 2s;
 
+
+}
+.text-article{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 15px;
 }
