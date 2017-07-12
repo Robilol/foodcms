@@ -2,6 +2,7 @@
 
 <section id ="search">
   <img src="/assets/img/desert.jpg" alt="Image de l'article">
+  <input type="text" class="input-search" placeholder="Rechercher..">
 </section>
 <section id="content">
   <div id="gallery">
