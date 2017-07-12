@@ -78,8 +78,14 @@
             return $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function getAll($limit = 0, $returnQuery = false){
+        public function getAll($limit = 0, $orderBy = "", $returnQuery = false){
             $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
+
+            if ($orderBy != "") {
+                reset($this->columns);
+                $columnToOrder = key($this->columns);
+                $sql .= " ORDER BY ".$columnToOrder." ".$orderBy;
+            }
 
             if ($limit > 0) {
                 $sql .= " LIMIT 0, ".$limit;
@@ -91,6 +97,7 @@
             if($returnQuery){
                 return $query;
             }
+
             return $query->fetchAll();
         }
 
