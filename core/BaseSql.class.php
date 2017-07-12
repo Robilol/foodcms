@@ -80,7 +80,7 @@
 
         public function getAll($limit = 0, $orderBy = "", $returnQuery = false){
             $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
-
+            $sql .= " WHERE active=1";
             if ($orderBy != "") {
                 reset($this->columns);
                 $columnToOrder = key($this->columns);
