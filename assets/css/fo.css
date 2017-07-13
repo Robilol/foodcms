@@ -304,7 +304,23 @@ filter:blur(3px);
 
 }
 .text-article{
-  width: 80%;
+  width: 60%;
   margin-left: 10%;
-  margin-top: 15px;
+  margin-top: 25px;
+  position: absolute;
+
+}
+.info-article{
+  width: 15%;
+    background-color: #ffeded;
+    margin-top: 25px;
+    margin-left: 75%;
+    position: absolute;
+    padding-left: 74px;
+    min-height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px #bcbcbc;
 }
