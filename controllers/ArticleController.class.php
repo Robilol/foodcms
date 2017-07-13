@@ -20,7 +20,11 @@ class ArticleController {
         $link = $this->uriExploded;
         $id = $link[2];
         $thisArticle = $article->getOneBy(["id" => $id]);
-        $v->assign("thisArticle", $thisArticle);
+          $user = new User(-1);
+          $userId = $thisArticle['food_user_id'];
+          $thisUser = $user->getOneBy(["id" => $userId]);
+          $v->assign("thisArticle", $thisArticle);
+        $v->assign("thisUser", $thisUser);
     }
 
 
