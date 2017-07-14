@@ -137,9 +137,9 @@
             return [
                 "options"=>[
                     "method"    =>"POST",
-                    "action"    =>"/admin/article/edit",
+                    "action"    =>"/admin/comment/edit",
                     "class"     =>"form-group",
-                    "id"        =>"articleEditForm",
+                    "id"        =>"commentEditForm",
                     "submit"    =>"Modifier"
                 ],
 
@@ -147,7 +147,7 @@
                     "text"=>[
                         "id"            =>"text",
                         "label"         =>"Contenu :",
-                        "type"          =>"text",
+                        "type"          =>"textarea",
                         "placeholder"   =>$thisComment['text'],
                         "required"      =>true
                     ],

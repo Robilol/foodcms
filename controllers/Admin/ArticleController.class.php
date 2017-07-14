@@ -4,7 +4,7 @@
 class ArticleController {
 
     public function indexAction(){
-      $v = new View("admin/article","backend");
+      $v = new View("admin/articleCreate","backend");
         $article = new Article(-1);
         $allArticles = $article->getAll();
         $v->assign("allArticles", $allArticles);

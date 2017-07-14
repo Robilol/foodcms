@@ -96,9 +96,9 @@ class Tag extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/edit/".$thisTag['id'],
+                "action"    =>"/admin/tag/edit/".$thisTag['id'],
                 "class"     =>"form-group",
-                "id"        =>"articleEditForm",
+                "id"        =>"tagEditForm",
                 "submit"    =>"Modifier"
             ],
 

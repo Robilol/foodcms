@@ -148,9 +148,9 @@ class Category extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/edit/".$thisCategory['id'],
+                "action"    =>"/admin/category/edit/".$thisCategory['id'],
                 "class"     =>"form-group",
-                "id"        =>"articleEditForm",
+                "id"        =>"categoryEditForm",
                 "submit"    =>"Modifier"
             ],
             "struct"=>[

@@ -115,9 +115,9 @@ class Menu extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/edit/".$thisMenu['id'],
+                "action"    =>"/admin/menu/edit/".$thisMenu['id'],
                 "class"     =>"form-group",
-                "id"        =>"articleEditForm",
+                "id"        =>"menuEditForm",
                 "submit"    =>"Modifier"
             ],
 

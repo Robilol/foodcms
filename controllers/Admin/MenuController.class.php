@@ -37,14 +37,16 @@ public function indexAction(){
 
     public function editAction()
     {
-        $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $menu = new Menu($data['id']);
-        $menu->setName($data['name']);
-        $menu->save();
-
-        header("Location: /admin/menu");
-    }
+       $data = $_POST;
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        echo $id = $link[3];
+      $menu = new Menu($id, $data['name']);
+      $menu->save();
+      
+      }
 
     public function deleteAction()
     {

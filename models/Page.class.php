@@ -145,9 +145,9 @@ class Page extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/edit/".$thisPage['id'],
+                "action"    =>"/admin/page/edit/".$thisPage['id'],
                 "class"     =>"form-group",
-                "id"        =>"articleEditForm",
+                "id"        =>"pageEditForm",
                 "submit"    =>"Modifier"
             ],
             "struct"=>[
