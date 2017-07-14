@@ -28,8 +28,20 @@ class ArticleController {
     }
 
     public function editAction(){
-
-    }
+      
+      $data = $_POST;
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        echo $id = $link[3];
+        if (!isset($data['active']))
+            $data['active'] = 0;
+      $article = new Article($id, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 2);
+      $article->save();
+      print_r($data);
+      //header('Location: /admin/article/show/'.$id);
+     }
 
     public function  deleteAction(){
 

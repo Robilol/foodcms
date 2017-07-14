@@ -260,7 +260,7 @@
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/edit",
+                "action"    =>"/admin/article/edit/".$thisArticle['id'],
                 "class"     =>"form-group",
                 "id"        =>"articleEditForm",
                 "submit"    =>"Modifier"
@@ -272,6 +272,7 @@
                     "label"         =>"Titre :",
                     "type"          =>"text",
                     "placeholder"   =>$thisArticle['title'],
+                    "value"         =>$thisArticle['title'],
                     "required"      =>true
                 ],
                 "thumbnail"=>[
@@ -279,6 +280,7 @@
                     "label"         =>"Image :",
                     "type"          =>"text",
                     "placeholder"   =>"Votre image",
+                    "value"         =>"Votre image",
                     "required"      =>false
                 ],
                 "text"=>[
@@ -286,6 +288,7 @@
                     "label"         =>"Contenu :",
                     "type"          =>"textarea",
                     "placeholder"   =>$thisArticle['text'],
+                    "value"         =>$thisArticle['text'],
                     "required"      =>true
                 ],
                 "active"=>[

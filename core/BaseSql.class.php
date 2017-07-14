@@ -48,7 +48,7 @@
                 }
                 $sqlQuery = trim($sqlQuery, ", ");
                 $req = $this->db->prepare("UPDATE ".DB_PREFIXE.$this->table." SET ".$sqlQuery." WHERE id = :id;");
-                $req->execute($data);
+               $req->execute($data);
                 echo "update";
 
             }
