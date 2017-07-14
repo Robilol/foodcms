@@ -4,11 +4,27 @@ class MenuController
 {
 public function indexAction(){
         $v = new View("admin/menu","backend");
+        $menu = new Menu(-1);
+        $allMenu = $menu->getAll();
+        $v->assign("allMenu", $allMenu);
     }
-    public function listAction()
-    {
-        
+    public function showAction(){
+        $v = new View("admin/menu","backend");
+        $menu = new Menu(-1);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $allMenu = $menu->getAll();
+        $thisMenu = $menu->getOneBy(["id" => $id]);
+        $v->assign("allMenu", $allMenu);
+        $v->assign("thisMenu", $thisMenu);
     }
+    public function listAction(){
+        $v= new View("admin/menuList", "backend");
+    }
+
 
     public function createAction()
     {
@@ -16,7 +32,7 @@ public function indexAction(){
         $menu = new Menu(-1, $data['name']);
         $menu->save();
 
-        header("Location: /admin/menu/index");
+        header("Location: /admin/menu");
     }
 
     public function editAction()
@@ -27,7 +43,7 @@ public function indexAction(){
         $menu->setName($data['name']);
         $menu->save();
 
-        header("Location: /admin/menu/index");
+        header("Location: /admin/menu");
     }
 
     public function deleteAction()
@@ -39,7 +55,6 @@ public function indexAction(){
         $menu->setArchived(1);
         $menu->save();
 
-        header("Location: /admin/menu/index");
-            
+      header("Location: /admin/menu");
     }
 }

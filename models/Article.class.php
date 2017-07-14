@@ -12,7 +12,7 @@
         protected $archived;
         protected $ctime;
         protected $utime;
-        
+
         /**
          * Article constructor.
          * @param $id
@@ -37,7 +37,7 @@
                 $this->text         = $article['text'];
                 $this->thumbnail    = $article['thumbnail'];
                 $this->active       = $article['active'];
-                $this->user         = $article['food_user_id'];
+                $this->food_user_id         = $article['food_user_id'];
                 $this->archived     = $article['archived'];
                 $this->ctime        = $article['ctime'];
                 $this->utime        = $article['utime'];
@@ -47,7 +47,7 @@
                 $this->text = $text;
                 $this->thumbnail = $thumbnail;
                 $this->active = $active;
-                $this->user = $user;
+                $this->food_user_id = $user;
                 $this->archived = $archived;
                 $this->ctime = $ctime;
                 $this->utime = $utime;
@@ -65,7 +65,7 @@
         /**
          * @param mixed $id_user
          */
-      
+
         public function setUser($id_user)
         {
             $this->food_user_id = $food_user_id;
@@ -244,6 +244,51 @@
                     "label"         =>"Contenu :",
                     "type"          =>"textarea",
                     "placeholder"   =>"Votre contenu",
+                    "required"      =>true
+                ],
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "required"      =>false
+                ]
+            ]
+        ];
+    }
+
+    static function getArticleEditForm($thisArticle){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit/".$thisArticle['id'],
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+
+            "struct"=>[
+                "title"=>[
+                    "id"            =>"title",
+                    "label"         =>"Titre :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisArticle['title'],
+                    "value"         =>$thisArticle['title'],
+                    "required"      =>true
+                ],
+                "thumbnail"=>[
+                    "id"            =>"thumbnail",
+                    "label"         =>"Image :",
+                    "type"          =>"text",
+                    "placeholder"   =>"Votre image",
+                    "value"         =>"Votre image",
+                    "required"      =>false
+                ],
+                "text"=>[
+                    "id"            =>"text",
+                    "label"         =>"Contenu :",
+                    "type"          =>"textarea",
+                    "placeholder"   =>$thisArticle['text'],
+                    "value"         =>$thisArticle['text'],
                     "required"      =>true
                 ],
                 "active"=>[

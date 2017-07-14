@@ -38,7 +38,7 @@
                 $sqlKey = trim($sqlKey, ",");
                 $req = $this->db->prepare("INSERT INTO ".DB_PREFIXE.$this->table." (".$sqlCol.") VALUES (".$sqlKey.");");
                 $req->execute($data);
-                
+
             } else {
 
                 $sqlQuery = null;
@@ -48,7 +48,7 @@
                 }
                 $sqlQuery = trim($sqlQuery, ", ");
                 $req = $this->db->prepare("UPDATE ".DB_PREFIXE.$this->table." SET ".$sqlQuery." WHERE id = :id;");
-                $req->execute($data);
+               $req->execute($data);
                 echo "update";
 
             }
@@ -78,9 +78,16 @@
             return $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function getAll($limit = 0, $returnQuery = false){
+        public function getAll($limit = 0, $orderBy = "", $active = "", $returnQuery = false){
             $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
-
+            if ($active != "") {
+              $sql .=" WHERE active=".$active;
+            }
+            if ($orderBy != "") {
+                reset($this->columns);
+                $columnToOrder = key($this->columns);
+                $sql .= " ORDER BY ".$columnToOrder." ".$orderBy;
+            }
             if ($limit > 0) {
                 $sql .= " LIMIT 0, ".$limit;
             }
@@ -91,6 +98,7 @@
             if($returnQuery){
                 return $query;
             }
+
             return $query->fetchAll();
         }
 

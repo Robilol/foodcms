@@ -10,6 +10,7 @@ class BackController{
       $article = new Article(-1);
       $lastArticles = $article->getAll(3);
 
+
       $v->assign("lastArticles", $lastArticles);
 
       $comment = new Comment(-1);

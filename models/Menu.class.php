@@ -110,4 +110,27 @@ class Menu extends BaseSql{
             ]
         ];
     }
+
+    static function getMenuEditForm($thisMenu){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit/".$thisMenu['id'],
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+
+            "struct"=>[
+                "name"=>[
+                    "id"            =>"name",
+                    "label"         =>"Nom :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisMenu['name'],
+                    "value"         =>$thisMenu['name'],
+                    "required"      =>true
+                ]
+            ]
+        ];
+    }
 }

@@ -104,4 +104,60 @@
         {
             $this->text = $text;
         }
+
+        static function getCommentCreationForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/article/register",
+                    "class"     =>"form-group",
+                    "id"        =>"articleCreationForm",
+                    "submit"    =>"Ajouter"
+                ],
+
+                "struct"=>[
+                    "text"=>[
+                        "id"            =>"text",
+                        "label"         =>"Contenu :",
+                        "type"          =>"textarea",
+                        "placeholder"   =>"Votre contenu",
+                        "required"      =>true
+                    ],
+                    "active"=>[
+                        "id"            =>"active",
+                        "label"         =>"Mettre en ligne :",
+                        "type"          =>"checkbox",
+                        "required"      =>false
+                    ]
+                ]
+            ];
+        }
+
+        static function getCommentEditForm($thisComment){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/article/edit",
+                    "class"     =>"form-group",
+                    "id"        =>"articleEditForm",
+                    "submit"    =>"Modifier"
+                ],
+
+                "struct"=>[
+                    "text"=>[
+                        "id"            =>"text",
+                        "label"         =>"Contenu :",
+                        "type"          =>"text",
+                        "placeholder"   =>$thisComment['text'],
+                        "required"      =>true
+                    ],
+                    "active"=>[
+                        "id"            =>"active",
+                        "label"         =>"Mettre en ligne :",
+                        "type"          =>"checkbox",
+                        "required"      =>false
+                    ]
+                ]
+            ];
+        }
     }

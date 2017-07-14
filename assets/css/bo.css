@@ -20,7 +20,13 @@ min-height:100%;
 margin:0 auto;
 position:relative;
 }
-
+#mainBack{
+min-height:100%;
+max-height: 100%;
+margin:0 auto;
+position:relative;
+overflow: hidden;
+}
 /* MENU */
 
 #navigation {
@@ -168,7 +174,38 @@ position:relative;
 #contentBE {
   margin-left: 300px;
 }
+#content{
+  overflow-y: auto;
+  max-height: 80vh;
+  min-height: 1%;
 
+}
+#gallery {
+    margin: 5px;
+    margin-left: 20%;
+
+        display: inline-block;
+      }
+#gallery .gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 18%;
+}
+
+#gallery .gallery:hover {
+    border: 1px solid #777;
+}
+
+#gallery .gallery img {
+    width: 100%;
+    height: 200px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
 #navigationList {
   list-style-type: none;
   /* margin-right: 61px; */
@@ -177,6 +214,7 @@ position:relative;
   width: 15%;
   background-color: #E0E0E0;
   float: right;
+  overflow: auto;
   position: initial;
   bottom: 0;
   right: 0;

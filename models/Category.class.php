@@ -144,5 +144,43 @@ class Category extends BaseSql{
             ]
         ];
     }
+    static function getCategoryEditForm($thisCategory){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit/".$thisCategory['id'],
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+            "struct"=>[
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
+                "libelle"=>[
+                    "id"            =>"libelle",
+                    "label"         =>"Libelle :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisCategory['title'],
+                    "value"         =>$thisCategory['title'],
+                    "required"      =>false
+                ],
+                "select"=>[
+                    "id"            =>"parentCategory",
+                    "label"         =>"Catégorie parente",
+                    "type"          =>"select",
+                    "option"        => [ "category1" => "Categorie1",
+                                        "category2"=>"Categorie2",
+                                        "category3"=>"Categorie3",
+                                        "category4"=>"Categorie4",
+                                        "category5"=>"Categorie5"
+                    ],
+                    "required"      =>true
+                ]
+            ]
+            
+        ];
+    }
 }
 

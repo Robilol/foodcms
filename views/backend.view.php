@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <title>Ma page food CMS</title>
   <meta name="description" content="description de la page">
-    <link rel="stylesheet" href="/assets/css/bo.css">
-    <script src="../../ckeditor/ckeditor.js"></script>
-    <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
-    <script src="/assets/js/jquery.js"></script>
+  <link rel="stylesheet" href="/assets/css/bo.css">
+  <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
+  <script src="/assets/js/jquery.js"></script>
 
 </head>
 <body>
@@ -16,9 +15,9 @@
   $this->uriExploded = explode("/", $this->uri);
   $link = $this->uriExploded;
     ?>
-  <div id="main">
+  <div id="mainBack">
     <ul id="headerBack">
-      <li><a href="/admin"><img id="logo" src="../../assets/img/logo.png"></a></li>
+      <li><a href="/admin"><img id="logo" src="/assets/img/logo.png"></a></li>
       <h1 id="titreBE">Food CMS</h1>
     </ul>
     <ul id="navigationBE">
@@ -38,29 +37,43 @@
     $this->uri = trim($uri, "/");
     $this->uriExploded = explode("/", $this->uri);
     $link = $this->uriExploded;
-    if(array_key_exists(1,$link))
+
+    if(array_key_exists(1,$link) && $link[1]!="media")
     {
     ?>
-    
+
     <ul id="navigationList">
-      <li><a href="/">Article 1</a></li>
-      <li><a href="/">Article 2</a></li>
-      <li><a href="/">Article 3</a></li>
-      <li><a href="/">Article 4</a></li>
+      <?php
+      if ($link[1]=='article'){
+        foreach ($this->data["allArticles"] as $article):?>  <li><a href="/admin/article/show/<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='comment'){
+        foreach ($this->data["allComment"] as $comment):?>  <li><a href="/admin/comment/show/<?php echo $comment['id']; ?>"><?php echo $comment['text']; ?></a></li><?php endforeach;
+      }
+      if ($link[1]=='category'){
+        foreach ($this->data["allCategory"] as $category):?>  <li><a href="/admin/category/show/<?php echo $category['id']; ?>"><?php echo $category['title']; ?></a></li>
+        <?php endforeach;
+      }
+      if ($link[1]=='page'){
+        foreach ($this->data["allPage"] as $page):?>  <li><a href="/admin/page/show/<?php echo $page['id']; ?>"><?php echo $page['title']; ?></a></li>
+        <?php endforeach;
+      }
+      if ($link[1]=='tag'){
+        foreach ($this->data["allTag"] as $tag):?>  <li><a href="/admin/tag/show/<?php echo $tag['id']; ?>"><?php echo $tag['name']; ?></a></li>
+        <?php endforeach;
+      }
+      if ($link[1]=='menu'){
+        foreach ($this->data["allMenu"] as $menu):?>  <li><a href="/admin/menu/show/<?php echo $menu['id']; ?>"><?php echo $menu['name']; ?></a></li>
+        <?php endforeach;
+      }
+      ?>
     </ul>
     <?php } ?>
     <?php
+  //  var_dump($thisArticle);die;
     include $this->view.".view.php";
     ?>
-    <!--footer>
-      <div id="footer">
-        <ul id="liens_footer">
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Plan du site</a></li>
-        </ul>
-      </div>
-    </footer-->
+
   </div>
   <script src="/assets/js/script.js"></script>
   <script>

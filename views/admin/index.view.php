@@ -18,7 +18,7 @@
 			<div class="articleDiv">
 				<div>
 					<a class="title"><?php echo $article['title']; ?></a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
-						<p><?php echo $article['text']; ?></p>
+						<p><?php echo substr( $article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>
 			    </div>
 			    </div>
 		<?php endforeach; ?>

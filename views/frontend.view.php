@@ -13,7 +13,7 @@
     <ul id="navigation">
         <li><img id="logo" src="/assets/img/logo.png"></li>
         <div id="liens" style="float:right">
-            <li><a href="/">RECETTES</a></li>
+            <li><a href="/article">RECETTES</a></li>
             <li><a href="/">CATEGORIES</a></li>
             <li><a href="/search/index">RECHERCHE</a></li>
             <?php if (!empty($_SESSION['id'])): ?>
