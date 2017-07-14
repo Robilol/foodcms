@@ -35,4 +35,12 @@ class ArticleController {
       header('Location: /admin/article/');
       exit();
     }
+    public function getTagsAction()
+    {
+        $tag = new Tag(-1);
+        $tags_array = $tag->getAll();
+
+        echo json_encode($tags_array);
+    }
+
 }
