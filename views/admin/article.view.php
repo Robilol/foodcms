@@ -11,11 +11,14 @@
   if(!array_key_exists(2,$link)) {
 
     $this->includeModal("form", Article::getArticleCreationForm());
-  }else{
+  }
+  else{
     if($link[2]!="show") {
-    $this->includeModal("form", Article::getArticleCreationForm());
-  }else{
-    $this->includeModal("form", Article::getArticleEditForm($thisArticle));
-  }}
-   ?>
+      $this->includeModal("form", Article::getArticleCreationForm());
+    }
+    else{
+      $this->includeModal("form", Article::getArticleEditForm($thisArticle));
+    }
+  }
+  ?>
 </section>
