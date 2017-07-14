@@ -140,4 +140,42 @@ class Page extends BaseSql{
             ]
         ];
     }
+
+    static function getPageEditForm($thisPage){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit/".$thisPage['id'],
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+            "struct"=>[
+                // "id"=>[
+                //     "id"            =>"id",
+                //     "type"          =>"hidden"
+                // ],
+                "title"=>[
+                    "id"            =>"title",
+                    "label"         =>"Titre :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisPage['title'],
+                    "value"         =>$thisPage['title'],
+                    "required"      =>true
+                ],
+                "category"=>[
+                    "id"            =>"category",
+                    "label"         =>"Catégorie :",
+                    "type"          =>"select",
+                    "option"        => [ "category1" => "Categorie1",
+                                        "category2"=>"Categorie2",
+                                        "category3"=>"Categorie3",
+                                        "category4"=>"Categorie4",
+                                        "category5"=>"Categorie5"
+                    ],
+                    "required"      =>true
+                ]
+            ]
+        ];
+    }
 }

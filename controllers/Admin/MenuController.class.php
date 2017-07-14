@@ -8,10 +8,23 @@ public function indexAction(){
         $allMenu = $menu->getAll();
         $v->assign("allMenu", $allMenu);
     }
-    public function listAction()
-    {
-
+    public function showAction(){
+        $v = new View("admin/menu","backend");
+        $menu = new Menu(-1);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $allMenu = $menu->getAll();
+        $thisMenu = $menu->getOneBy(["id" => $id]);
+        $v->assign("allMenu", $allMenu);
+        $v->assign("thisMenu", $thisMenu);
     }
+    public function listAction(){
+        $v= new View("admin/menuList", "backend");
+    }
+
 
     public function createAction()
     {

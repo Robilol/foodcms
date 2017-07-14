@@ -8,10 +8,23 @@ class TagController
         $allTag = $tag->getAll();
         $v->assign("allTag", $allTag);
     }
-    public function listAction()
-    {
-
+    public function showAction(){
+        $v = new View("admin/tag","backend");
+        $tag = new Tag(-1);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $allTag = $tag->getAll();
+        $thisTag = $tag->getOneBy(["id" => $id]);
+        $v->assign("allTag", $allTag);
+        $v->assign("thisTag", $thisTag);
     }
+    public function listAction(){
+        $v= new View("admin/tagList", "backend");
+    }
+
 
     public function createAction()
     {

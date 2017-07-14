@@ -51,16 +51,20 @@
         foreach ($this->data["allComment"] as $comment):?>  <li><a href="/admin/comment/show/<?php echo $comment['id']; ?>"><?php echo $comment['text']; ?></a></li><?php endforeach;
       }
       if ($link[1]=='category'){
-        foreach ($this->data["allCategory"] as $category):?>  <li><a href="#"><?php echo $category['title']; ?></a></li><?php endforeach;
+        foreach ($this->data["allCategory"] as $category):?>  <li><a href="/admin/category/show/<?php echo $category['id']; ?>"><?php echo $category['title']; ?></a></li>
+        <?php endforeach;
       }
       if ($link[1]=='page'){
-        foreach ($this->data["allPage"] as $page):?>  <li><a href="#"><?php echo $page['title']; ?></a></li><?php endforeach;
+        foreach ($this->data["allPage"] as $page):?>  <li><a href="/admin/page/show/<?php echo $page['id']; ?>"><?php echo $page['title']; ?></a></li>
+        <?php endforeach;
       }
       if ($link[1]=='tag'){
-        foreach ($this->data["allTag"] as $tag):?>  <li><a href="#"><?php echo $tag['name']; ?></a></li><?php endforeach;
+        foreach ($this->data["allTag"] as $tag):?>  <li><a href="/admin/tag/show/<?php echo $tag['id']; ?>"><?php echo $tag['name']; ?></a></li>
+        <?php endforeach;
       }
       if ($link[1]=='menu'){
-        foreach ($this->data["allMenu"] as $menu):?>  <li><a href="#"><?php echo $menu['name']; ?></a></li><?php endforeach;
+        foreach ($this->data["allMenu"] as $menu):?>  <li><a href="/admin/menu/show/<?php echo $menu['id']; ?>"><?php echo $menu['name']; ?></a></li>
+        <?php endforeach;
       }
       ?>
     </ul>
