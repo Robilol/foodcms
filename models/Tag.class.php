@@ -96,4 +96,26 @@ class Tag extends BaseSql{
         ];
     }
 
+ static function getTagEditForm($thisTag){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/edit/".$thisTag['id'],
+                "class"     =>"form-group",
+                "id"        =>"articleEditForm",
+                "submit"    =>"Modifier"
+            ],
+
+            "struct"=>[
+                "name"=>[
+                    "id"            =>"name",
+                    "label"         =>"Nom :",
+                    "type"          =>"text",
+                    "placeholder"   =>$thisTag['name'],
+                    "value"         =>$thisTag['name'],
+                    "required"      =>true
+                ]
+            ]
+        ];
+    }
 }
