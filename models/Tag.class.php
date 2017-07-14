@@ -65,10 +65,6 @@ class Tag extends BaseSql{
     {
         $this->name = $name;
     }
-
-    public function getAllTags() {
-        return parent::getAll();
-    }
   
     static function getTagForm(){
         return [
