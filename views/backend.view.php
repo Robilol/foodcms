@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <title>Ma page food CMS</title>
   <meta name="description" content="description de la page">
-  <link rel="stylesheet" href="/assets/css/bo.css">
-  <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
-  <script src="/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="/assets/css/bo.css">
+    <script src="../../ckeditor/ckeditor.js"></script>
+    <script src="https://use.fontawesome.com/e97a5a7c76.js"></script>
+    <script src="/assets/js/jquery.js"></script>
 
 </head>
 <body>
