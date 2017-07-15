@@ -244,7 +244,8 @@
                     "label"         =>"Contenu :",
                     "type"          =>"textarea",
                     "placeholder"   =>"Votre contenu",
-                    "required"      =>true
+                    "required"      =>true,
+                    "text"          =>""
                 ],
                 "active"=>[
                     "id"            =>"active",
@@ -289,7 +290,8 @@
                     "type"          =>"textarea",
                     "placeholder"   =>$thisArticle['text'],
                     "value"         =>$thisArticle['text'],
-                    "required"      =>true
+                    "required"      =>true,
+                    "text"          =>$thisArticle['text']
                 ],
                 "active"=>[
                     "id"            =>"active",

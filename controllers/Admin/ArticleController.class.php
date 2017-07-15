@@ -28,7 +28,7 @@ class ArticleController {
     }
 
     public function editAction(){
-      
+
         $data = $_POST;
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
