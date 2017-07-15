@@ -38,23 +38,27 @@ class TagController
     public function editAction()
     {
         $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $tag = new Tag($data['id']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $tag = new Tag($id);
         $tag->setName($data['name']);
         $tag->save();
-
-        header("Location: /admin/tag");
+        header('Location: /admin/tag/show/'.$id);
     }
 
     public function deleteAction()
     {
-        $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $tag = new Tag($data['id']);
-        $tag->setName($data['name']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $tag = new Tag($id);
         $tag->setArchived(1);
         $tag->save();
-
-        header("Location: /admin/tag");
+        header('Location: /admin/tag/');
    }
 }

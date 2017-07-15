@@ -13,7 +13,13 @@ class Page extends BaseSql{
          parent::__construct();
 
          if ($id > 0) {
-             parent::getOneBy(["id" => $id]);
+            $page = parent::getOneBy(["id" => $id]);
+
+           $this->id                = $page['id'];
+           $this->title             = $page['title'];
+           $this->category_id          = $page['category_id'];
+           $this->active          = $page['active'];  
+           $this->archived          = $page['archived'];
          } else {
            $this->id                = $id;
            $this->title             = $title;

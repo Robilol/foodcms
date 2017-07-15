@@ -29,23 +29,34 @@ class ArticleController {
 
     public function editAction(){
       
-      $data = $_POST;
+        $data = $_POST;
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
-        echo $id = $link[3];
+        $id = $link[3];
         if (!isset($data['active']))
             $data['active'] = 0;
-      $article = new Article($id, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 2);
-      $article->save();
-      print_r($data);
-      //header('Location: /admin/article/show/'.$id);
+        $article = new Article($id);
+        $article->setTitle($data['title']);
+        $article->setText($data['text']);
+        $article->setThumbnail($data['thumbnail']);
+        $article->setActive($data['active']);
+        $article->save();
+        header('Location: /admin/article/show/'.$id);
      }
 
     public function  deleteAction(){
 
-
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $article = new Article($id);
+        $article->setArchived(1);
+        $article->save();
+        header('Location: /admin/article/');
     }
 
     public function createAction()

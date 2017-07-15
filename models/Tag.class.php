@@ -13,11 +13,15 @@ class Tag extends BaseSql{
          parent::__construct();
 
          if ($id > 0) {
-             parent::getOneBy(["id" => $id]);
+            $tag = parent::getOneBy(["id" => $id]);
+
+            $this->id                = $tag['id'];
+            $this->name             = $tag['name'];
+            $this->archived          = $tag['archived'];
          } else {
-           $this->id                = $id;
-           $this->name             = $name;
-           $this->archived          = 0;
+            $this->id                = $id;
+            $this->name             = $name;
+            $this->archived          = 0;
          }
      }
 
