@@ -16,7 +16,7 @@ $v->assign("allComment", $allComment);
       $this->uriExploded = explode("/", $this->uri);
       $link = $this->uriExploded;
       $id = $link[3];
-$allComment = $comment->getAll();
+      $allComment = $comment->getAll();
       $thisComment = $comment->getOneBy(["id" => $id]);
       $v->assign("allComment", $allComment);
       $v->assign("thisComment", $thisComment);

@@ -39,27 +39,30 @@ public function indexAction(){
     public function editAction()
     {
         $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $page = new Page($data['id']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $page = new Page($id);
         $page->setTitle($data['title']);
         $page->setCategory($data['category']);
         $page->save();
-
-        header("Location: /admin/page");
+        print_r($page);
+        //header('Location: /admin/page/show/'.$id);
     }
 
     public function deleteAction()
     {
-        $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $page = new Page($data['id']);
-        $page->setTitle($data['title']);
 
-        $page->setCategory($data['category']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $page = new Page($id);
         $page->setArchived(1);
         $page->save();
-
-        header("Location: /admin/page");
-
+        header('Location: /admin/page/');
     }
 }

@@ -31,38 +31,34 @@ class CategoryController {
       $category = new Category(-1, $data['libelle']);
       $category->save();
 
-
       header("Location: /admin/category");
     }
 
     public function editAction(){
-
-      $data = $_POST;
-      // faux trouver où récupérer le data[id]
-      $category = new Category(3);
-      if (isset($data['libelle']))
+        $data = $_POST;
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $category = new Category($id);
         $category->setTitle($data['libelle']);
-
-      if (isset($data['parentCategory']))
-        $category->setCategoryParent($data['parentCategory']);
-      $category->save();
-
-
-      header("Location: /admin/category");
-    }
+        $category->setCategoryParent($data['select']);
+        $category->save();
+        print_r($category);
+        //header('Location: /admin/category/show/'.$id);
+      }
 
     public function deleteAction(){
-      $data = $_POST;
-      // faux trouver où récupérer le data[id]
-      $category = new Category($data['id']);
-      if (isset($data['libelle']))
-        $category->setTitle($data['libelle']);
-      if (isset($data['parentCategory']))
-        $category->setCategoryParent($data['parentCategory']);
-      $category->setArchived(1);
-      $category->save();
-
-      header("Location: /admin/category");
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $category = new Category($id);
+        $category->setArchived(1);
+        $category->save();
+        header('Location: /admin/category/');
     }
 
 

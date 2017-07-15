@@ -17,7 +17,13 @@ class Category extends BaseSql{
          parent::__construct();
 
          if ($id > 0) {
-             parent::getOneBy(["id" => $id]);
+            $category = parent::getOneBy(["id" => $id]);
+
+           $this->id                = $category['id'];
+           $this->title             = $category['title'];
+           $this->active            = $category['active'];
+           $this->category_id   = $category['category_id'];
+           $this->archived          = $category['archived'];
          } else {
            $this->id                = $id;
            $this->title             = $title;
