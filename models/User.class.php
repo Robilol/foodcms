@@ -269,4 +269,108 @@
                 ]
             ];
         }
+
+        static function getUserCreationForm(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/user/add",
+                    "class"     =>"form-group",
+                    "id"        =>"userCreationForm",
+                    "submit"    =>"Ajouter"
+                ],
+
+                "struct"=>[
+                    "username"=>[
+                        "id"            =>"pseudo",
+                        "label"         =>"Votre pseudo :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre pseudo",
+                        "required"      =>true
+                    ],
+                    "firstname"=>[
+                        "id"            =>"firstname",
+                        "label"         =>"Votre prenom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre prenom",
+                        "required"      =>true
+                    ],
+                    "lastname"=>[
+                        "id"            =>"lastname",
+                        "label"         =>"Votre nom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre nom",
+                        "required"      =>true
+                    ],
+                    "email"=>[
+                        "id"            =>"email",
+                        "label"         =>"Votre email :",
+                        "type"          =>"email",
+                        "placeholder"   =>"Votre email",
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>true
+                    ]
+                ]
+            ];
+        }
+
+        static function getUserEditForm($thisUser){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/user/edit/".$thisUser['id'],
+                    "class"     =>"form-group",
+                    "id"        =>"userEditForm",
+                    "submit"    =>"Modifier"
+                ],
+
+                "struct"=>[
+                    "username"=>[
+                        "id"            =>"pseudo",
+                        "label"         =>"Votre pseudo :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre pseudo",
+                        "required"      =>true,
+                        "value"         =>$thisUser['username'],
+                    ],
+                    "firstname"=>[
+                        "id"            =>"firstname",
+                        "label"         =>"Votre prenom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre prenom",
+                        "value"         =>$thisUser['firstname'],
+                        "required"      =>true
+                    ],
+                    "lastname"=>[
+                        "id"            =>"lastname",
+                        "label"         =>"Votre nom :",
+                        "type"          =>"text",
+                        "placeholder"   =>"Votre nom",
+                        "value"         =>$thisUser['lastname'],
+                        "required"      =>true
+                    ],
+                    "email"=>[
+                        "id"            =>"email",
+                        "label"         =>"Votre email :",
+                        "type"          =>"email",
+                        "placeholder"   =>"Votre email",
+                        "value"         =>$thisUser['email'],
+                        "required"      =>true
+                    ],
+                    "pwd"=>[
+                        "id"            =>"pwd",
+                        "label"         =>"Votre mot de passe :",
+                        "type"          =>"password",
+                        "placeholder"   =>"Votre mot de passe",
+                        "required"      =>false
+                    ]
+                ]
+            ];
+        }
     }

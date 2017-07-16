@@ -121,6 +121,7 @@
                         "label"         =>"Contenu :",
                         "type"          =>"textarea",
                         "placeholder"   =>"Votre contenu",
+                        "text"   =>"",
                         "required"      =>true
                     ],
                     "active"=>[
@@ -148,7 +149,8 @@
                         "id"            =>"text",
                         "label"         =>"Contenu :",
                         "type"          =>"textarea",
-                        "placeholder"   =>$thisComment['text'],
+                        "placeholder"   =>"Votre contenu",
+                        "text"   =>$thisComment['text'],
                         "required"      =>true
                     ],
                     "active"=>[

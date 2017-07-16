@@ -5,12 +5,12 @@
         <label for="<?php echo $attributs["id"]; ?>"><?php echo $attributs["label"]; ?></label>
         <?php if($attributs["type"] == "email"): ?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-            placeholder="<?php echo $attributs["placeholder"]; ?>"
+            placeholder="<?php echo $attributs["placeholder"]; ?>" <?php if (isset($attributs["value"])) echo "value='".$attributs["value"]."'" ?>
             <?php echo ($attributs["required"])?"required":"" ?>
             >
         <?php elseif($attributs["type"] == "password"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-                   placeholder="<?php echo $attributs["placeholder"]; ?>"
+                   placeholder="<?php echo $attributs["placeholder"]; ?>"  <?php if (isset($attributs["value"])) echo "value='".$attributs["value"]."'" ?>
                    <?php echo ($attributs["required"])?"required":"" ?>
             >
         <?php elseif($attributs["type"] == "text"):?>
