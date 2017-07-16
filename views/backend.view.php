@@ -67,6 +67,10 @@
         foreach ($this->data["allMenu"] as $menu):?>  <li><a href="/admin/menu/show/<?php echo $menu['id']; ?>"><?php echo $menu['name']; ?></a></li>
         <?php endforeach;
       }
+      if ($link[1]=='user'){
+        foreach ($this->data["allUsers"] as $user):?>  <li><a href="/admin/user/show/<?php echo $user['id']; ?>"><?php echo $user['username']; ?></a></li>
+        <?php endforeach;
+      }
       ?>
     </ul>
     <?php } ?>
@@ -78,7 +82,7 @@
   </div>
   <script src="/assets/js/script.js"></script>
   <script>
-     
+
   </script>
 
 </body>

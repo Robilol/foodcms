@@ -233,9 +233,8 @@
                     "required"      =>true
                 ],
                 "thumbnail"=>[
-                    "id"            =>"thumbnail",
                     "label"         =>"Image :",
-                    "type"          =>"text",
+                    "type"          =>"file",
                     "placeholder"   =>"Votre image",
                     "required"      =>false
                 ],
@@ -279,9 +278,9 @@
                 "thumbnail"=>[
                     "id"            =>"thumbnail",
                     "label"         =>"Image :",
-                    "type"          =>"text",
+                    "type"          =>"file",
                     "placeholder"   =>"Votre image",
-                    "value"         =>"Votre image",
+                    "value"         =>$thisArticle['thumbnail'],
                     "required"      =>false
                 ],
                 "text"=>[
