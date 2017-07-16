@@ -250,6 +250,7 @@
                     "id"            =>"active",
                     "label"         =>"Mettre en ligne :",
                     "type"          =>"checkbox",
+                    "checked"       =>0,
                     "required"      =>false
                 ]
             ]
@@ -296,6 +297,7 @@
                     "id"            =>"active",
                     "label"         =>"Mettre en ligne :",
                     "type"          =>"checkbox",
+                    "checked" => $thisArticle['active'],
                     "required"      =>false
                 ]
             ]

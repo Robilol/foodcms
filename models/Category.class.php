@@ -146,8 +146,17 @@ class Category extends BaseSql{
                                         "category5"=>"Categorie5"
                     ],
                     "required"      =>true
+                ],
+                
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "checked"       =>0,
+                    "required"      =>false
                 ]
             ]
+            
         ];
     }
     static function getCategoryEditForm($thisCategory){
@@ -183,6 +192,13 @@ class Category extends BaseSql{
                                         "category5"=>"Categorie5"
                     ],
                     "required"      =>true
+                ],
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "checked"       =>$thisCategory['active'],
+                    "required"      =>false
                 ]
             ]
             

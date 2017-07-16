@@ -26,7 +26,7 @@
               ><?php echo $attributs["text"]; ?></textarea>
           <?php elseif($attributs["type"] == "checkbox"):?>
               <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-                        <?php echo ($attributs["required"])?"required":"" ?>
+                        <?php echo ($attributs["required"])?"required":"" ; echo ($attributs["checked"])?"checked":"" ?>
                 >
               <?php elseif($attributs["type"] == "file"):?>
                   <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
