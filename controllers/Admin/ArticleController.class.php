@@ -67,11 +67,34 @@ class ArticleController {
     public function registerAction()
     {
       $data = $_POST;
+      $avatarFileType = ["png", "jpg", "jpeg", "gif"];
+  		$avatarLimitSize = 10000000;
+      $infoFile = pathinfo($_FILES["thumbnail"]["name"]);
+      if(!in_array( strtolower($infoFile["extension"]) , $avatarFileType)){
+        $error = true;
+        echo '1';
+      }
 
-      $article = new Article(-1, $data['title'], $data['text'], $data['thumbnail'], $data['active'], 2);
+      if($_FILES["thumbnail"]["size"]>$avatarLimitSize){
+        $error = true;
+        echo '2';
+      }
+      //Est ce que le dossier upload existe
+      $pathUpload ="/assets/upload";
+      if( !file_exists($pathUpload) ){
+        //Sinon le créer
+        mkdir($pathUpload);
+      }
+      //Déplacer l'avatar dedans
+      $nameAvatar =$pathUpload.'/'.uniqid().".". strtolower($infoFile["extension"]);
+      move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $nameAvatar);
+      if(!$error){
+      $article = new Article(-1, $data['title'], $data['text'], $nameAvatar, $data['active'], 2);
       $article->save();
-
       header('Location: /admin/article');
+}else{
+  echo "Erreur d'upload d'image";
+}
       exit();
     }
     public function getTagsAction()
