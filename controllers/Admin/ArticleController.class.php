@@ -57,7 +57,7 @@ class ArticleController {
         $article->setArchived(1);
         $article->setActive(0);
         $article->save();
-//        header('Location: /admin/article/');
+        header('Location: /admin/article/');
     }
 
     public function createAction()

@@ -45,7 +45,6 @@ class UserController {
 		header('Location: /admin/user');
 	}
 	public function editAction(){
-
 	}
 	public function deleteAction(){
 

@@ -58,6 +58,7 @@ class TagController
         $id = $link[3];
         $tag = new Tag($id);
         $tag->setArchived(1);
+        $tag->setActive(0);
         $tag->save();
         header('Location: /admin/tag/');
    }

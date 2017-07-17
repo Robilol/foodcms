@@ -58,6 +58,7 @@ public function indexAction(){
         $id = $link[3];
         $menu = new Menu($id);
         $menu->setArchived(1);
+        $menu->setActive(0);
         $menu->save();
         header('Location: /admin/menu/');
     }

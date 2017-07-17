@@ -62,6 +62,7 @@ public function indexAction(){
         $id = $link[3];
         $page = new Page($id);
         $page->setArchived(1);
+        $page->setActive(0);
         $page->save();
         header('Location: /admin/page/');
     }
