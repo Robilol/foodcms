@@ -576,6 +576,14 @@ input.submit {
     width: 50%;
     margin-right: auto;
 }
+#contentMedia {
+    margin-left: auto;
+    margin-right: auto;
+  overflow-y: auto;
+  max-height: 80vh;
+  min-height: 1%;
+
+}
 
 .form-group textarea {
     height: 300px;
@@ -598,6 +606,8 @@ button {
     position: absolute;
 }
 
+
 .form-delete input[type="submit"]{
   margin-right: 8%;
 }
+

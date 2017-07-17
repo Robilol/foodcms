@@ -1,97 +1,21 @@
 <header>
   <h1 id="titre">Media</h1>
 </header>
-<section id="content">
+<section id="contentMedia">
+  <form id="gallery" enctype="multipart/form-data" method="post" action="/admin/media/create">
+    <label>Nom de l'image : </label><input type="text" name="name">
+    <input type="file" name="media">
+    <input type="submit" value="Ajouter" id="addImage">
+  </form>
   <div id="gallery">
+    <?php foreach ($this->data["allMedia"] as $media):?>
+
     <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
+      <a target="_blank" href="<?php echo $media['link']; ?>">
+        <img src="<?php echo $media['link']; ?>" alt="<?php echo $media['title']; ?>" width="300" height="200">
       </a>
-      <div class="desc">Add a description of the image here</div>
+      <div class="desc"><?php echo $media['title']; ?></div>
     </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/logo.png">
-        <img src="../../assets/img/logo.png" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
-    <div class="gallery">
-      <a target="_blank" href="../../assets/img/desert.jpg">
-        <img src="../../assets/img/desert.jpg" alt="Trolltunga Norway" width="300" height="200">
-      </a>
-      <div class="desc">Add a description of the image here</div>
-    </div>
+      <?php endforeach; ?>
   </div>
 </section>
