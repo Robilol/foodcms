@@ -151,4 +151,17 @@ class Menu extends BaseSql{
             ]
         ];
     }
+
+    static function getMenuArchivedForm($thisMenu){
+    return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisMenu['id'],
+                "class"     =>"form-delete",
+                "id"        =>"menuDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+    }
 }

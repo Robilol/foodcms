@@ -4,9 +4,9 @@ class CommentController
 {
   public function indexAction(){
     $v = new View("admin/comment","backend");
-      $comment = new Comment(-1);
-$allComment = $comment->getAll();
-$v->assign("allComment", $allComment);
+    $comment = new Comment(-1);
+    $allComment = $comment->getAll();
+    $v->assign("allComment", $allComment);
   }
   public function showAction(){
       $v = new View("admin/comment","backend");

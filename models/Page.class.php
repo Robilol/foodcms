@@ -199,4 +199,17 @@ class Page extends BaseSql{
             ]
         ];
     }
+
+    static function getPageArchivedForm($thisPage){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisPage['id'],
+                "class"     =>"form-delete",
+                "id"        =>"pageDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+    }
 }

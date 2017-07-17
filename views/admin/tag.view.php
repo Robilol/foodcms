@@ -16,6 +16,7 @@
         }
 	    else{
 	      $this->includeModal("form", Tag::getTagEditForm($thisTag));
+	      $this->includeModal("form", Tag::getTagArchivedForm($thisTag));
 	    }
 	  }
 	  ?>

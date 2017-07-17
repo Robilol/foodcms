@@ -16,6 +16,7 @@
     $this->includeModal("form", Comment::getCommentCreationForm());
   }else{
     $this->includeModal("form", Comment::getCommentEditForm($thisComment));
+      $this->includeModal("form", Comment::getCommentArchivedForm($thisComment));
   }}
    ?>
 </section>

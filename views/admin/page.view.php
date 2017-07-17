@@ -16,6 +16,7 @@
 	    	}
 	    	else{
 	    	  $this->includeModal("form", Page::getPageEditForm($thisPage));
+    		  $this->includeModal("form", Page::getPageArchivedForm($thisPage));
 	    	}
 		}
 	?>

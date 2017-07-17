@@ -118,4 +118,17 @@ class Tag extends BaseSql{
             ]
         ];
     }
+    
+    static function getTagArchivedForm($thisTag){
+    return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisTag['id'],
+                "class"     =>"form-delete",
+                "id"        =>"tagDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+    }
 }
