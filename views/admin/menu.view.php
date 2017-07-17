@@ -16,6 +16,7 @@
     	}
 	    else{
 	      $this->includeModal("form", Menu::getMenuEditForm($thisMenu));
+	      $this->includeModal("form", Menu::getMenuArchivedForm($thisMenu));
 	    }
 	  }
 	  ?>

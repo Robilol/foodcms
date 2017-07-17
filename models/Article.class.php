@@ -303,4 +303,17 @@
             ]
         ];
     }
+
+    static function getArticleArchivedForm($thisArticle){
+            return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisArticle['id'],
+                "class"     =>"form-delete",
+                "id"        =>"articleDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+    }
 }

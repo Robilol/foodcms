@@ -373,4 +373,16 @@
                 ]
             ];
         }
+        static function getUserArchivedForm($thisUser){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisUser['id'],
+                "class"     =>"form-delete",
+                "id"        =>"userDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+        }
     }

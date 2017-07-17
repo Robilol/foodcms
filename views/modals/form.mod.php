@@ -34,7 +34,8 @@
                     >
           <?php elseif($attributs["type"] == "select"):?>
               <select id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
-                <?php foreach ($attributs["option"] as $selectName => $selectValue):?>
+                <?php 
+                foreach ($attributs["option"] as $selectName => $selectValue):?>
                   <option value="<?php echo $selectName; ?>"><?php echo $selectValue; ?></option>
                 <?php endforeach; ?>
               </select>

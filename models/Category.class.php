@@ -204,5 +204,18 @@ class Category extends BaseSql{
             
         ];
     }
+    
+    static function getCategoryArchivedForm($thisCategory){
+        return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisCategory['id'],
+                "class"     =>"form-delete",
+                "id"        =>"categoryDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
+    }
 }
 
