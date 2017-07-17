@@ -80,7 +80,7 @@ class ArticleController {
         echo '2';
       }
       //Est ce que le dossier upload existe
-      $pathUpload ="/assets/upload";
+      $pathUpload ="./assets/upload";
       if( !file_exists($pathUpload) ){
         //Sinon le créer
         mkdir($pathUpload);
