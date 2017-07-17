@@ -45,8 +45,7 @@ class CategoryController {
         $category->setTitle($data['libelle']);
         $category->setCategoryParent($data['select']);
         $category->save();
-        print_r($category);
-        //header('Location: /admin/category/show/'.$id);
+        header('Location: /admin/category/show/'.$id);
       }
 
     public function deleteAction(){

@@ -33,7 +33,7 @@ public function indexAction(){
         $page = new Page(-1, $data['title']);
         $page->save();
 
-        //header("Location: /admin/page");
+        header("Location: /admin/page");
     }
 
     public function editAction()
@@ -48,8 +48,7 @@ public function indexAction(){
         $page->setTitle($data['title']);
         $page->setCategory($data['category']);
         $page->save();
-        print_r($page);
-        //header('Location: /admin/page/show/'.$id);
+        header('Location: /admin/page/show/'.$id);
     }
 
     public function deleteAction()
