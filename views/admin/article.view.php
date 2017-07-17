@@ -18,6 +18,7 @@
     }
     else{
       $this->includeModal("form", Article::getArticleEditForm($thisArticle));
+      $this->includeModal("form", Article::getArticleArchivedForm($thisArticle));
     }
   }
   ?>

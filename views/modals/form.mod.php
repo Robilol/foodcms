@@ -15,7 +15,7 @@
             >
         <?php elseif($attributs["type"] == "text"):?>
             <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-                   placeholder="<?php echo $attributs["placeholder"]; ?>" <?php if (isset($attributs["value"])) echo "value='".$attributs["value"]."'" ?>
+                   placeholder="<?php echo $attributs["placeholder"]; ?>" <?php if (isset($attributs["value"])) echo 'value="'.$attributs["value"].'"' ?>
 
                      <?php echo ($attributs["required"])?"required":"" ?>
             >
@@ -26,7 +26,7 @@
               ><?php echo $attributs["text"]; ?></textarea>
           <?php elseif($attributs["type"] == "checkbox"):?>
               <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
-                        <?php echo ($attributs["required"])?"required":"" ?>
+                        <?php echo ($attributs["required"])?"required":"" ; echo ($attributs["checked"])?"checked":"" ?>
                 >
               <?php elseif($attributs["type"] == "file"):?>
                   <input id="<?php echo $attributs["id"]; ?>" type="<?php echo $attributs["type"]; ?>" name="<?php echo $name; ?>"
@@ -34,7 +34,8 @@
                     >
           <?php elseif($attributs["type"] == "select"):?>
               <select id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
-                <?php foreach ($attributs["option"] as $selectName => $selectValue):?>
+                <?php 
+                foreach ($attributs["option"] as $selectName => $selectValue):?>
                   <option value="<?php echo $selectName; ?>"><?php echo $selectValue; ?></option>
                 <?php endforeach; ?>
               </select>

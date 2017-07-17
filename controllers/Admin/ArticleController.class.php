@@ -55,8 +55,9 @@ class ArticleController {
         $id = $link[3];
         $article = new Article($id);
         $article->setArchived(1);
+        $article->setActive(0);
         $article->save();
-        header('Location: /admin/article/');
+//        header('Location: /admin/article/');
     }
 
     public function createAction()

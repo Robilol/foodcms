@@ -4,6 +4,7 @@
 
         protected $id;
         protected $text;
+        protected $active;
         protected $archived;
         protected $user;
         protected $article;
@@ -31,6 +32,11 @@
         public function getArticle()
         {
             return $this->article;
+        }
+
+        public function getActive()
+        {
+            return $this->active;
         }
 
         /**
@@ -80,6 +86,10 @@
         {
             $this->article = $article;
         }
+        public function setActive($active)
+        {
+            $this->active = $active;
+        }
 
         /**
          * @param mixed $id_comment
@@ -128,6 +138,7 @@
                         "id"            =>"active",
                         "label"         =>"Mettre en ligne :",
                         "type"          =>"checkbox",
+                        "checked"       =>0,
                         "required"      =>false
                     ]
                 ]
@@ -157,9 +168,22 @@
                         "id"            =>"active",
                         "label"         =>"Mettre en ligne :",
                         "type"          =>"checkbox",
+                        "checked"       =>$thisComment['active'],
                         "required"      =>false
                     ]
                 ]
+            ];
+        }
+        static function getCommentArchivedForm($thisComment){
+            return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisComment['id'],
+                "class"     =>"form-delete",
+                "id"        =>"commentDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
             ];
         }
     }

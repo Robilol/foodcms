@@ -250,6 +250,7 @@
                     "id"            =>"active",
                     "label"         =>"Mettre en ligne :",
                     "type"          =>"checkbox",
+                    "checked"       =>0,
                     "required"      =>false
                 ]
             ]
@@ -296,9 +297,23 @@
                     "id"            =>"active",
                     "label"         =>"Mettre en ligne :",
                     "type"          =>"checkbox",
+                    "checked" => $thisArticle['active'],
                     "required"      =>false
                 ]
             ]
         ];
+    }
+
+    static function getArticleArchivedForm($thisArticle){
+            return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisArticle['id'],
+                "class"     =>"form-delete",
+                "id"        =>"articleDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
     }
 }

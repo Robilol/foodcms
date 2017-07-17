@@ -111,7 +111,13 @@ class Menu extends BaseSql{
                     "placeholder"   =>"Le nom du menu: ",
                     "required"      =>true
                 ],
-                
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "checked"       =>0,
+                    "required"      =>false
+                ]
             ]
         ];
     }
@@ -134,8 +140,28 @@ class Menu extends BaseSql{
                     "placeholder"   =>$thisMenu['name'],
                     "value"         =>$thisMenu['name'],
                     "required"      =>true
+                ],
+                "active"=>[
+                    "id"            =>"active",
+                    "label"         =>"Mettre en ligne :",
+                    "type"          =>"checkbox",
+                    "checked"       =>$thisMenu['active'],
+                    "required"      =>false
                 ]
             ]
         ];
+    }
+
+    static function getMenuArchivedForm($thisMenu){
+    return [
+            "options"=>[
+                "method"    =>"POST",
+                "action"    =>"/admin/article/delete/".$thisMenu['id'],
+                "class"     =>"form-delete",
+                "id"        =>"menuDeleteForm",
+                "submit"    =>"Archiver"
+                ],
+            "struct"=>[]
+            ];
     }
 }

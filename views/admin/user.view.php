@@ -18,6 +18,7 @@
     }
     else{
       $this->includeModal("form", User::getUserEditForm($thisUser));
+      $this->includeModal("form", User::getUserArchivedForm($thisUser));
     }
   }
   ?>

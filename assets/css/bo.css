@@ -605,3 +605,9 @@ button {
     margin: auto;
     position: absolute;
 }
+
+
+.form-delete input[type="submit"]{
+  margin-right: 8%;
+}
+

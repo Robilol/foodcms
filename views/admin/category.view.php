@@ -19,6 +19,7 @@
 	    }
 	    else{
 	      $this->includeModal("form", Category::getCategoryEditForm($thisCategory));
+	      $this->includeModal("form", Category::getCategoryArchivedForm($thisCategory));
 	    }
 	  }
 	  ?>
