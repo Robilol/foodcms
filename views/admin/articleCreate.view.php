@@ -1,5 +1,7 @@
+<header>
+    <h1 id="titre">Article</h1>
+</header>
 <section id="content">
-    fsdfsg
     <?php $this->includeModal("form", Article::getArticleCreationForm()); ?>
     <button onclick="generateTags()">Générer les ingrédients</button>
     <div class="tags-list">
