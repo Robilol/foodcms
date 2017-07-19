@@ -84,7 +84,7 @@
 
             if ($active === 0  || $active === 1 ) {
               $sql .=" WHERE active=".$active." AND archived=".$archived;
-            }else{
+            }else {
               $sql .=" WHERE archived=".$archived;
             }
             if ($orderBy != "") {

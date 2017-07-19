@@ -32,7 +32,6 @@
 			<div class="articleDiv">
 				<div>
 						<p><a href="/admin/comment/delete/<?php echo $comment['id']; ?>"><i class="fa fa-trash"></i></a>
-						<a href="/admin/comment/show/<?php echo $comment['id']; ?>"><i class="fa fa-pencil-square-o"></i></a>
 						<a href="/admin/comment/moderate/<?php echo $comment['id']; ?>"><i class="fa fa-check"></i></a></p>
 						<p><?php echo  substr($comment['text'], 0, 140); ?></p>
 			    </div>

@@ -5,7 +5,7 @@ class CommentController
   public function indexAction(){
     $v = new View("admin/comment","backend");
     $comment = new Comment(-1);
-    $allComment = $comment->getAll();
+    $allComment = $comment->getAll(0, "DESC", 0, 0);
     $v->assign("allComment", $allComment);
   }
   public function showAction(){
@@ -16,7 +16,7 @@ class CommentController
       $this->uriExploded = explode("/", $this->uri);
       $link = $this->uriExploded;
       $id = $link[3];
-      $allComment = $comment->getAll();
+      $allComment = $comment->getAll(0, "DESC", 1, 0);
       $thisComment = $comment->getOneBy(["id" => $id]);
       $v->assign("allComment", $allComment);
       $v->assign("thisComment", $thisComment);

@@ -11,6 +11,17 @@
   if(!array_key_exists(2,$link)) {
 
   //  $this->includeModal("form", Comment::getCommentCreationForm());
+    ?>
+         <?php foreach ($this->data["allComment"] as $comment):?>
+      <div class="commentDivInside">
+        <div>
+            <p><?php echo $comment['text']; ?></p>
+            <p><a href="/admin/comment/delete/<?php echo $comment['id']; ?>"><i class="fa fa-trash"></i></a>
+            <a href="/admin/comment/moderate/<?php echo $comment['id']; ?>"><i class="fa fa-check"></i></a></p>
+          </div>
+          </div>
+    <?php endforeach; ?>
+  <?php
   }else{
     if($link[2]!="show") {
     $this->includeModal("form", Comment::getCommentCreationForm());

@@ -496,7 +496,7 @@ input.submit {
   text-align: center;
 }
 
-.articleDiv{
+.articleDiv, .commentDivInside{
   margin: 3% 3% 3% 3%;
   padding: 2%;
   background: #F5F5F5;
@@ -505,11 +505,11 @@ input.submit {
   border-bottom: thin solid #BDBDBD;
   border-right: thin solid #BDBDBD;
 }
-.articleDiv .title {
+.articleDiv .title, .commentDivInside title {
   width: 75%;
   font-size: 20px;
 }
-.articleDiv i{
+.articleDiv i, .commentDivInside i{
   margin-left: 5px;
   width: 5%;
   float: right;
@@ -622,4 +622,10 @@ button {
 
 .form-delete input[type="submit"]{
   margin-right: 8%;
+}
+
+.commentDivInside
+{
+    overflow-y: auto;
+    height: 80vh;
 }
