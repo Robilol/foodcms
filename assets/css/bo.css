@@ -584,7 +584,20 @@ input.submit {
   min-height: 1%;
 
 }
+#contentArchive {
+    margin-left: auto;
+    margin-right: auto;
+  overflow-y: auto;
+  max-height: 80vh;
+  min-height: 1%;
 
+}
+#contentArchive #gallery{
+    margin-left: 27%;
+}
+#contentArchive #gallery .gallery {
+    width: 20%;
+}
 .form-group textarea {
     height: 300px;
     padding: 8px;
@@ -610,4 +623,3 @@ button {
 .form-delete input[type="submit"]{
   margin-right: 8%;
 }
-
