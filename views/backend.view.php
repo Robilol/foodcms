@@ -39,7 +39,7 @@
     $this->uriExploded = explode("/", $this->uri);
     $link = $this->uriExploded;
 
-    if(array_key_exists(1,$link) && $link[1]!="media")
+    if(array_key_exists(1,$link) && $link[1]!="media" && $link[1]!="archive")
     {
     ?>
 

@@ -5,7 +5,10 @@
  */
 class ArchiveController
 {
+    public function indexAction(){
+      $v = new View("admin/archive","backend");
 
+    }
     public function listUserAction(){
 
     }
