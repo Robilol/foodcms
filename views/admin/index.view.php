@@ -17,8 +17,10 @@
 		<?php foreach ($this->data["lastArticles"] as $article):?>
 			<div class="articleDiv">
 				<div>
-					<a class="title"><?php echo $article['title']; ?></a><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i>
-						<p><?php echo substr( $article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>
+					<a href="/admin/article/show/<?php echo $article['id']; ?>" class="title"><?php echo $article['title']; ?></a>
+					<a href="/admin/article/delete/<?php echo $article['id']; ?>"><i class="fa fa-trash"></i></a>
+					<a href="/admin/article/show/<?php echo $article['id']; ?>"><i class="fa fa-pencil-square-o"></i></a>
+					<p><?php echo substr( $article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>
 			    </div>
 			    </div>
 		<?php endforeach; ?>
@@ -29,7 +31,9 @@
 		<?php foreach ($this->data["lastComment"] as $comment):?>
 			<div class="articleDiv">
 				<div>
-						<p><i class="fa fa-trash"></i><i class="fa fa-pencil-square-o"></i><i class="fa fa-check"></i></p>
+						<p><a href="/admin/comment/delete/<?php echo $comment['id']; ?>"><i class="fa fa-trash"></i></a>
+						<a href="/admin/comment/show/<?php echo $comment['id']; ?>"><i class="fa fa-pencil-square-o"></i></a>
+						<a><i class="fa fa-check"></i></a></p>
 						<p><?php echo  substr($comment['text'], 0, 140); ?></p>
 			    </div>
 			    </div>

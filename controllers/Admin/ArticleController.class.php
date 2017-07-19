@@ -18,7 +18,7 @@ class ArticleController {
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[3];
-        $allArticles = $article->getAll(0,"DESC",1);
+        $allArticles = $article->getAll(0,"DESC", 1);
         $thisArticle = $article->getOneBy(["id" => $id]);
         $v->assign("allArticles", $allArticles);
         $v->assign("thisArticle", $thisArticle);
