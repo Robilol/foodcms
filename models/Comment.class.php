@@ -132,10 +132,10 @@
             return [
                 "options"=>[
                     "method"    =>"POST",
-                    "action"    =>"/admin/comment/moderate/".$thisComment['id'],
+                    "action"    =>"/admin/comment/delete/".$thisComment['id'],
                     "class"     =>"form-group",
                     "id"        =>"commentEditForm",
-                    "submit"    =>"Mettre en ligne"
+                    "submit"    =>"Archiver"
                 ],
 
                 "struct"=>[

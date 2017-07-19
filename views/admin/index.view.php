@@ -17,7 +17,7 @@
 		<?php foreach ($this->data["lastArticles"] as $article):?>
 			<div class="articleDiv">
 				<div>
-					<a href="/admin/article/show/<?php echo $article['id']; ?>" class="title"><?php echo $article['title']; ?></a>
+					<p class="title"><?php echo $article['title']; ?></p>
 					<a href="/admin/article/delete/<?php echo $article['id']; ?>"><i class="fa fa-trash"></i></a>
 					<a href="/admin/article/show/<?php echo $article['id']; ?>"><i class="fa fa-pencil-square-o"></i></a>
 					<p><?php echo substr( $article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>

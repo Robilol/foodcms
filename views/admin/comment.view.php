@@ -24,10 +24,10 @@
   <?php
   }else{
     if($link[2]!="show") {
-    $this->includeModal("form", Comment::getCommentCreationForm());
+      //$this->includeModal("form", Comment::getCommentCreationForm());
   }else{
-    $this->includeModal("form", Comment::getCommentEditForm($thisComment));
-      $this->includeModal("form", Comment::getCommentArchivedForm($thisComment));
+      $this->includeModal("form", Comment::getCommentEditForm($thisComment));
+      //$this->includeModal("form", Comment::getCommentArchivedForm($thisComment));
   }}
    ?>
 </section>
