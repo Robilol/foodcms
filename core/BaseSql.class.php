@@ -79,10 +79,12 @@
             return $query->fetch(PDO::FETCH_ASSOC);
         }
 
-        public function getAll($limit = 0, $orderBy = "", $active = "", $returnQuery = false){
+        public function getAll($limit = 0, $orderBy = "", $active = "",$archived=0, $returnQuery = false){
             $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
-            if ($active != "") {
-              $sql .=" WHERE active=".$active;
+            if ($active != "" ) {
+              $sql .=" WHERE active=".$active." AND archived=".$archived;
+            }else{
+              $sql .=" WHERE archived=".$archived;
             }
             if ($orderBy != "") {
                 reset($this->columns);
