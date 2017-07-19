@@ -5,8 +5,10 @@ class CommentController
   public function indexAction(){
     $v = new View("admin/comment","backend");
     $comment = new Comment(-1);
+    $inactiveComment = $comment->getAll(0, "DESC", 1, 0);
     $allComment = $comment->getAll(0, "DESC", 0, 0);
     $v->assign("allComment", $allComment);
+    $v->assign("inactiveComment", $inactiveComment);
   }
   public function showAction(){
       $v = new View("admin/comment","backend");

@@ -12,7 +12,7 @@
 
   //  $this->includeModal("form", Comment::getCommentCreationForm());
     ?>
-         <?php foreach ($this->data["allComment"] as $comment):?>
+         <?php foreach ($this->data["inactiveComment"] as $comment):?>
       <div class="commentDivInside">
         <div>
             <p><?php echo $comment['text']; ?></p>
