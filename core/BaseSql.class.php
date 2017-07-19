@@ -81,7 +81,8 @@
 
         public function getAll($limit = 0, $orderBy = "", $active = "",$archived=0, $returnQuery = false){
             $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
-            if ($active != "") {
+
+            if ($active === 0  || $active === 1 ) {
               $sql .=" WHERE active=".$active." AND archived=".$archived;
             }else {
               $sql .=" WHERE archived=".$archived;
