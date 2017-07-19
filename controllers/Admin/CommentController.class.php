@@ -27,14 +27,28 @@ class CommentController
     }
 
     public function deleteAction() {
-
-    }
-
-    public function displayAction() {
-
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $comment = new Comment($id);
+        $comment->setArchived(1);
+        $comment->setActive(0);
+        $comment->save();
+        header('Location: /admin/comment/');
     }
 
     public function moderateAction() {
-
+      $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $comment = new Comment($id);
+        $comment->setArchived(0);
+        $comment->setActive(1);
+        $comment->save();
+        header('Location: /admin/comment/');
     }
 }

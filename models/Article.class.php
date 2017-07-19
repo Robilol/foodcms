@@ -66,7 +66,7 @@
          * @param mixed $id_user
          */
 
-        public function setUser($id_user)
+        public function setUser($food_user_id)
         {
             $this->food_user_id = $food_user_id;
         }
@@ -244,6 +244,7 @@
                     "type"          =>"textarea",
                     "placeholder"   =>"Votre contenu",
                     "required"      =>true,
+                    "readonly"      =>false,
                     "text"          =>""
                 ],
                 "active"=>[
@@ -291,6 +292,7 @@
                     "placeholder"   =>$thisArticle['text'],
                     "value"         =>$thisArticle['text'],
                     "required"      =>true,
+                    "readonly"      =>false,
                     "text"          =>$thisArticle['text']
                 ],
                 "active"=>[
