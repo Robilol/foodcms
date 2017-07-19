@@ -377,7 +377,7 @@
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisUser['id'],
+                "action"    =>"/admin/user/delete/".$thisUser['id'],
                 "class"     =>"form-delete",
                 "id"        =>"userDeleteForm",
                 "submit"    =>"Archiver"

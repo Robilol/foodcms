@@ -156,7 +156,7 @@ class Menu extends BaseSql{
     return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisMenu['id'],
+                "action"    =>"/admin/menu/delete/".$thisMenu['id'],
                 "class"     =>"form-delete",
                 "id"        =>"menuDeleteForm",
                 "submit"    =>"Archiver"

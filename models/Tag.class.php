@@ -123,7 +123,7 @@ class Tag extends BaseSql{
     return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisTag['id'],
+                "action"    =>"/admin/tag/delete/".$thisTag['id'],
                 "class"     =>"form-delete",
                 "id"        =>"tagDeleteForm",
                 "submit"    =>"Archiver"

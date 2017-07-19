@@ -204,7 +204,7 @@ class Page extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisPage['id'],
+                "action"    =>"/admin/page/delete/".$thisPage['id'],
                 "class"     =>"form-delete",
                 "id"        =>"pageDeleteForm",
                 "submit"    =>"Archiver"

@@ -209,7 +209,7 @@ class Category extends BaseSql{
         return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisCategory['id'],
+                "action"    =>"/admin/category/delete/".$thisCategory['id'],
                 "class"     =>"form-delete",
                 "id"        =>"categoryDeleteForm",
                 "submit"    =>"Archiver"
