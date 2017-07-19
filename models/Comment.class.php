@@ -6,32 +6,46 @@
         protected $text;
         protected $active;
         protected $archived;
-        protected $user;
-        protected $article;
-        protected $comment;
+        protected $food_user_id;
+        protected $article_id;
+        protected $ctime;
+        protected $utime;
 
-        /**
-         * @return mixed
-         */
-        public function getArchived()
+        public function __construct($id, $text = null, $active = null, $archived = null, $user = null, $article = null, $ctime = null, $utime = null)
         {
-            return $this->archived;
-        }
+            parent::__construct();
 
-        /**
-         * @return mixed
-         */
+            if ($id > 0) {
+                $comment = parent::getOneBy(["id" => $id]);
+
+                $this->id           = $comment['id'];
+                $this->text        = $comment['text'];
+                $this->active         = $comment['active'];
+                $this->archived    = $comment['archived'];
+                $this->food_user_id       = $comment['food_user_id'];
+                $this->article_id         = $comment['article_id'];
+                $this->ctime        = $comment['ctime'];
+                $this->utime        = $comment['utime'];
+            } else {
+                $this->id           = $id;
+                $this->text        = $text;
+                $this->active         = $active;
+                $this->archived    = $archived;
+                $this->food_user_id       = $user;
+                $this->article_id         = $article;
+                $this->ctime        = $ctime;
+                $this->utime        = $utime;
+            }
+        }
+        
         public function getId()
         {
             return $this->id;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getArticle()
+        public function getText()
         {
-            return $this->article;
+            return $this->text;
         }
 
         public function getActive()
@@ -39,80 +53,48 @@
             return $this->active;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getComment()
+        public function getArchived()
         {
-            return $this->comment;
+            return $this->archived;
         }
 
-        /**
-         * @return mixed
-         */
         public function getUser()
         {
-            return $this->user;
+            return $this->food_user_id;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getText()
+        public function getArticle()
         {
-            return $this->text;
+            return $this->article_id;
         }
 
-        /**
-         * @param mixed $archived
-         */
+
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
+        public function setText($text)
+        {
+            $this->text = $text;
+        }
+
+        public function setActive($active)
+        {
+            $this->active = $active;
+        }
         public function setArchived($archived)
         {
             $this->archived = $archived;
         }
 
-        /**
-         * @param mixed $id
-         */
-        public function setId($id)
-        {
-            $this->id = $id;
-        }
-
-        /**
-         * @param mixed $id_article
-         */
-        public function setArticle($article)
-        {
-            $this->article = $article;
-        }
-        public function setActive($active)
-        {
-            $this->active = $active;
-        }
-
-        /**
-         * @param mixed $id_comment
-         */
-        public function setComment($comment)
-        {
-            $this->comment = $comment;
-        }
-
-        /**
-         * @param mixed $id_users
-         */
         public function setIdUser($user)
         {
-            $this->users = $user;
+            $this->food_user_id = $user;
         }
 
-        /**
-         * @param mixed $text
-         */
-        public function setText($text)
+        public function setArticle($article)
         {
-            $this->text = $text;
+            $this->article_id = $article;
         }
 
         static function getCommentCreationForm(){
@@ -131,7 +113,8 @@
                         "label"         =>"Contenu :",
                         "type"          =>"textarea",
                         "placeholder"   =>"Votre contenu",
-                        "text"   =>"",
+                        "text"          =>"",
+                        "readonly"      =>false,
                         "required"      =>true
                     ],
                     "active"=>[
@@ -149,10 +132,10 @@
             return [
                 "options"=>[
                     "method"    =>"POST",
-                    "action"    =>"/admin/comment/edit",
+                    "action"    =>"/admin/comment/moderate/".$thisComment['id'],
                     "class"     =>"form-group",
                     "id"        =>"commentEditForm",
-                    "submit"    =>"Modifier"
+                    "submit"    =>"Mettre en ligne"
                 ],
 
                 "struct"=>[
@@ -162,14 +145,8 @@
                         "type"          =>"textarea",
                         "placeholder"   =>"Votre contenu",
                         "text"   =>$thisComment['text'],
-                        "required"      =>true
-                    ],
-                    "active"=>[
-                        "id"            =>"active",
-                        "label"         =>"Mettre en ligne :",
-                        "type"          =>"checkbox",
-                        "checked"       =>$thisComment['active'],
-                        "required"      =>false
+                        "required"      =>false,
+                        "readonly"      =>true
                     ]
                 ]
             ];
@@ -178,7 +155,7 @@
             return [
             "options"=>[
                 "method"    =>"POST",
-                "action"    =>"/admin/article/delete/".$thisComment['id'],
+                "action"    =>"/admin/comment/delete/".$thisComment['id'],
                 "class"     =>"form-delete",
                 "id"        =>"commentDeleteForm",
                 "submit"    =>"Archiver"
