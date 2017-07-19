@@ -4,7 +4,7 @@
 <section id="contentArchive">
   <div id="gallery">
     <div class="gallery">
-      <a  href="/admin/archive/user">
+      <a  href="/admin/archive/userArchive">
         <img src="/assets/img/user.png" alt="Archive user" width="300" height="200">
       </a>
       <div class="desc">Utilisateurs</div>
@@ -28,7 +28,7 @@
       <div class="desc">Pages</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/article">
+      <a  href="/admin/archive/articleArchive">
         <img src="/assets/img/article.png" alt="Archive article" width="300" height="200">
       </a>
       <div class="desc">Articles</div>
