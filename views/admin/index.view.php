@@ -28,12 +28,17 @@
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
-		<?php foreach ($this->data["lastComment"] as $comment):?>
+		<?php foreach ($this->data["lastComment"] as $comment):
+		$user = new User($comment['food_user_id']);
+        $article = new Article($comment['article_id']);
+        ?>
 			<div class="articleDiv">
 				<div>
 						<p><a href="/admin/comment/delete/<?php echo $comment['id']; ?>"><i class="fa fa-trash"></i></a>
 						<a href="/admin/comment/moderate/<?php echo $comment['id']; ?>"><i class="fa fa-check"></i></a></p>
 						<p><?php echo  substr($comment['text'], 0, 140); ?></p>
+						<p style="font-style: italic;"><?php echo "Posté par ".$user->getUsername()." le ".$comment['utime']." sur l'article ".$article->getTitle()."."; ?></p>
+           
 			    </div>
 			    </div>
 		<?php endforeach; ?>
