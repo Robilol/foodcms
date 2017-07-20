@@ -58,12 +58,12 @@
             return $this->archived;
         }
 
-        public function getUser()
+        public function getFoodUserId()
         {
             return $this->food_user_id;
         }
 
-        public function getArticle()
+        public function getArticleId()
         {
             return $this->article_id;
         }
@@ -87,14 +87,33 @@
             $this->archived = $archived;
         }
 
-        public function setIdUser($user)
+        public function setFoodUserId($user)
         {
             $this->food_user_id = $user;
         }
 
-        public function setArticle($article)
+        public function setArticleId($article)
         {
             $this->article_id = $article;
+        }
+
+        public function getCtime()
+        {
+            $date = new DateTime($this->ctime);
+            return $date->format("j M Y G:i");
+        }
+        public function setCtime($ctime)
+        {
+            $this->ctime = $ctime;
+        }
+        public function getUtime()
+        {
+            $date = new DateTime($this->utime);
+            return $date->format("j M Y G:i");
+        }
+        public function setUtime($utime)
+        {
+            $this->utime = $utime;
         }
 
         static function getCommentCreationForm(){

@@ -17,6 +17,9 @@
       $this->includeModal("form", Article::getArticleCreationForm());
     }
     else{
+      $article = new Article($link[3]);
+      $user = new User($article->getFoodUserId());
+      echo "<p>Rédigé le ".$article->getUtime()." par ".$user->getUsername().".</p>";
       $this->includeModal("form", Article::getArticleEditForm($thisArticle));
       $this->includeModal("form", Article::getArticleArchivedForm($thisArticle));
     }

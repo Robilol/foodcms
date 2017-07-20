@@ -302,6 +302,7 @@
                     "checked" => $thisArticle['active'],
                     "required"      =>false
                 ]
+                
             ]
         ];
     }
