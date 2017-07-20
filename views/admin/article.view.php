@@ -19,7 +19,17 @@
     else{
       $article = new Article($link[3]);
       $user = new User($article->getFoodUserId());
-      echo "<p>Rédigé le ".$article->getUtime()." par ".$user->getUsername().".</p>";
+      $media = new Media($article->getThumbnail());
+      
+      echo "<div class='modifArticlePres'>
+      <p>Rédigé le ".$article->getUtime()." par ".$user->getUsername().".</p>";
+      ?>
+      
+      <a target="_blank" href="<?php echo $article->getThumbnail(); ?>">
+        <img src="<?php echo $article->getThumbnail(); ?>" alt="<?php echo $article->getThumbnail(); ?>" width="300" height="200">
+      </a>
+      </div>
+      <?php
       $this->includeModal("form", Article::getArticleEditForm($thisArticle));
       $this->includeModal("form", Article::getArticleArchivedForm($thisArticle));
     }

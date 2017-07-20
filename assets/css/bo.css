@@ -176,7 +176,7 @@ overflow: hidden;
 }
 #content{
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 70vh;
   min-height: 1%;
 
 }
@@ -631,4 +631,15 @@ button {
 .commentDivInside
 {
     overflow-y: auto;
+}
+
+.modifArticlePres
+{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.modifArticlePres img
+{
+    margin-left: 35%;
 }
