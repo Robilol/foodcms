@@ -44,9 +44,14 @@ public function indexAction(){
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[3];
+        if (!isset($data['active']))
+            $data['active'] = 0;
+        else
+            $data['active'] = 1;
         $page = new Page($id);
         $page->setTitle($data['title']);
         $page->setCategory($data['category']);
+        $page->setActive($data['active']);
         $page->save();
         header('Location: /admin/page/show/'.$id);
     }
@@ -61,6 +66,7 @@ public function indexAction(){
         $id = $link[3];
         $page = new Page($id);
         $page->setArchived(1);
+        $page->setActive(0);
         $page->save();
         header('Location: /admin/page/');
     }

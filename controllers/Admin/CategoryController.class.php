@@ -41,9 +41,14 @@ class CategoryController {
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[3];
+        if (!isset($data['active']))
+            $data['active'] = 0;
+        else
+            $data['active'] = 1;
         $category = new Category($id);
-        $category->setTitle($data['libelle']);
-        $category->setCategoryParent($data['select']);
+        $category->setTitle($data['title']);
+        $category->setCategoryParent($data['category']);
+        $category->setActive($data['active']);
         $category->save();
         header('Location: /admin/category/show/'.$id);
       }
@@ -56,6 +61,7 @@ class CategoryController {
         $id = $link[3];
         $category = new Category($id);
         $category->setArchived(1);
+        $category->setActive(0);
         $category->save();
         header('Location: /admin/category/');
     }
