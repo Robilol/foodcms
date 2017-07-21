@@ -1,13 +1,99 @@
 <div id="container-back">
-	<!-- accueil -->
+		<!-- accueil -->
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+	
+	<?php
+		$article = new Article(-1);
+		$commentaire = new Comment(-1);
+
+		$allArticle = $article->getAll();
+		$allCommentaire = $commentaire->getAll();
+		$article7 = 0;
+		$articleTotal = 0;
+		foreach ($allArticle as $i => $value) {
+			$articleMonthExploded = explode("-", $allArticle[$i]['utime']);
+			$articleMonth = $articleMonthExploded[1];
+			if ($articleMonth == "07")
+				$article7++;
+			$articleTotal++;
+		}
+	?>
+	<script>
+	var chart = AmCharts.makeChart("chartdiv", {
+    "theme": "light",
+    "type": "serial",
+    "dataProvider": [{
+        "mois": "Juillet",
+        "articles": <?php echo $article7 ?>,
+        "commentaires": 4.2
+    }, {
+        "mois": "UK",
+        "articles": 1.7,
+        "commentaires": 3.1
+    }, {
+        "mois": "Canada",
+        "articles": 2.8,
+        "commentaires": 2.9
+    }, {
+        "mois": "Japan",
+        "articles": 2.6,
+        "commentaires": 2.3
+    }, {
+        "mois": "France",
+        "articles": 1.4,
+        "commentaires": 2.1
+    }, {
+        "mois": "Brazil",
+        "articles": 2.6,
+        "commentaires": 4.9
+    }],
+    "valueAxes": [{
+        "unit": "",
+        "position": "left",
+        "title": "Nombre",
+    }],
+    "startDuration": 1,
+    "graphs": [{
+        "balloonText": "Nombre d'articles en [[category]]: <b>[[value]]</b>",
+        "fillAlphas": 0.9,
+        "lineAlpha": 0.2,
+        "title": "articles",
+        "type": "column",
+        "valueField": "articles"
+    }, {
+        "balloonText": "Nombre de commentaires en [[category]]: <b>[[value]]</b>",
+        "fillAlphas": 0.9,
+        "lineAlpha": 0.2,
+        "title": "commentaires",
+        "type": "column",
+        "clustered":false,
+        "columnWidth":0.5,
+        "valueField": "commentaires"
+    }],
+    "plotAreaFillAlphas": 0.1,
+    "categoryField": "mois",
+    "categoryAxis": {
+        "gridPosition": "start"
+    },
+    "export": {
+    	"enabled": false
+     }
+
+});
+</script>
 
 	<section id="menu-verticale">
-
 	</section>
 
 	<section id="section-haut">
 		<h3>Statistique</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo eos enim eum, vel perferendis temporibus pariatur repellendus voluptate sint debitis eaque quasi adipisci blanditiis consectetur vitae fugit aliquam illum harum.</p>
+		<p>Nombre total d'article:<?php echo $articleTotal ?></p>
+		<p>Nombre total de commentaires:</p>
+		<div id="chartdiv"></div>
 	</section>
   <section id="menu-verticale">
 
