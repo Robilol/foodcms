@@ -11,6 +11,8 @@
         protected $status;
         protected $token;
         protected $role_id;
+        protected $active;
+        protected $archived;
 
         /**
          * User constructor.
@@ -36,6 +38,8 @@
                 $this->lastname     = $user['lastname'];
                 $this->token        = $user['token'];
                 $this->status       = $user['status'];
+                $this->active       = $user['active'];
+                $this->archived       = $user['archived'];
             } else {
                 $this->id           = $id;
                 $this->email        = $email;
@@ -45,6 +49,8 @@
                 $this->lastname     = $lastname;
                 $this->token        = uniqid('token', true);
                 $this->status       = 0;
+                $this->active       = 1;
+                $this->archived       = 0;
             }
         }
 
@@ -78,6 +84,20 @@
 
         public function getUsername() {
             return $this->username;
+        }
+
+        public function setActive($active) {
+            $this->active = $active;
+        }
+
+        public function getActive() {
+            return $this->active;
+        }public function setArchived($archived) {
+            $this->archived = $archived;
+        }
+
+        public function getArchived() {
+            return $this->archived;
         }
         public function setFirstname($firstname) {
             $this->firstname = $firstname;
