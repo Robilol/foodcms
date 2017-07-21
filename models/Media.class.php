@@ -6,6 +6,7 @@ class Media extends BaseSql{
     protected $title;
     protected $link;
     protected $archived;
+    protected $active;
     protected $ctime;
     protected $utime;
     protected $article_id;
@@ -13,7 +14,7 @@ class Media extends BaseSql{
     /**
      * @param mixed $id
      */
-     public function __construct($id, $title = null, $link = null , $article_id= null, $archived = null, $ctime = null, $utime = null)
+     public function __construct($id, $title = null, $link = null , $article_id= null, $archived = null, $active = null, $ctime = null, $utime = null)
      {
          parent::__construct();
 
@@ -24,6 +25,7 @@ class Media extends BaseSql{
              $this->title        = $media['title'];
              $this->link        = $media['link'];
              $this->archived     = $media['archived'];
+             $this->active     = $media['active'];
              $this->ctime        = $media['ctime'];
              $this->utime        = $media['utime'];
              $this->article_id   = $media['article_id'];
@@ -32,6 +34,7 @@ class Media extends BaseSql{
              $this->title        = $title;
              $this->link        = $link;
              $this->archived    = $archived;
+             $this->active    = $active;
              $this->ctime        = $ctime;
              $this->utime        = $utime;
              $this->article_id   = $article_id;
