@@ -46,9 +46,36 @@ class UserController {
 	}
 	public function editAction(){
 
+        $data = $_POST;
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $user = new User($id);
+        $user->setUsername($data['username']);
+        $user->setFirstname($data['firstname']);
+        $user->setLastname($data['lastname']);
+        $user->setEmail($data['email']);
+        $user->setPassword($data['pwd']);
+        $user->setArchived(0);
+        $user->setActive(1);
+        $user->save();
+        header('Location: /admin/user/show/'.$id);
 	}
 	public function deleteAction(){
-
+	    $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $user = new User($id);
+        $user->setArchived(1);
+        $user->setActive(0);
+        $user->save();
+        print_r($user);
+        //header('Location: /admin/user/');
+    
 	}
 	public function listAction(){
 
