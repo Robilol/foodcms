@@ -12,7 +12,7 @@ class Category extends BaseSql{
     /**
      * @param mixed $title
      */
-     public function __construct($id, $title = null, $category_id = null)
+     public function __construct($id, $title = null, $category_id = null, $active = null)
      {
          parent::__construct();
 
@@ -27,7 +27,7 @@ class Category extends BaseSql{
          } else {
            $this->id                = $id;
            $this->title             = $title;
-           $this->active            = 0;
+           $this->active            = $active;
            $this->category_id   = $category_id;
            $this->archived          = 0;
          }

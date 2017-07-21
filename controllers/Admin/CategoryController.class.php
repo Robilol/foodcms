@@ -28,7 +28,11 @@ class CategoryController {
 
     public function createAction(){
       $data = $_POST;
-      $category = new Category(-1, $data['libelle']);
+      if (!isset($data['active']))
+        $data['active'] = 0;
+      else
+        $data['active'] = 1;
+      $category = new Category(-1, $data['title'], $data['category'], $data['active']);
       $category->save();
 
       header("Location: /admin/category");

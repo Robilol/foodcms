@@ -30,9 +30,12 @@ public function indexAction(){
     public function createAction()
     {
         $data = $_POST;
-        $page = new Page(-1, $data['title']);
+        if (!isset($data['active']))
+            $data['active'] = 0;
+        else
+            $data['active'] = 1;
+        $page = new Page(-1, $data['title'], $data['category'], $data['active']);
         $page->save();
-
         header("Location: /admin/page");
     }
 

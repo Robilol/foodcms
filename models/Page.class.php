@@ -8,7 +8,7 @@ class Page extends BaseSql{
  protected $category_id;
  protected $archived;
 
-    public function __construct($id, $title = null, $category_id = null)
+    public function __construct($id, $title = null, $category_id = null, $active=null)
      {
          parent::__construct();
 
@@ -24,7 +24,7 @@ class Page extends BaseSql{
            $this->id                = $id;
            $this->title             = $title;
            $this->category_id          = $category_id;
-           $this->active          = 0;  
+           $this->active          = $active;  
            $this->archived          = 0;
          }
      }

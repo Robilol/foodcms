@@ -11,11 +11,61 @@
 	  $link = $this->uriExploded;
 	  if(!array_key_exists(2,$link)) {
 
-	    $this->includeModal("form", Category::getCategoryForm());
+	    //$this->includeModal("form", Category::getCategoryForm());
+	  	$category = new Category(-1);
+		        $allCategory = $category->getAll();
+		        echo "
+					<form class='form-group' action='/admin/category/create' method='post' id='categoryCreateForm'>
+				        <div class='form-row'>
+					        <label>Libelle:</label>
+					        <input id='title' name='title' type='text' placeholder='Libelle:' required='required'/>
+				        </div>
+				        <div class='form-row'>
+						    <label>Catégorie parente:</label>
+					        <select id='category' name='category' required='required'>";	
+	                		foreach ($allCategory as $i => $value) {
+			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
+		    				}
+	                		  
+					        echo "</select>
+				        </div>
+				        <div class='form-row'>
+				        	<label>Mettre en ligne:</label>
+				        	<input id='active' name='active' type='checkbox' />
+				        </div>
+				        <div class='form-row'>
+				        	<input class='submit' type='submit' value='Ajouter'>
+				        </div>
+				    </form>";
 	  }
 	  else{
 	    if($link[2]!="show") {
-	      $this->includeModal("form", Category::getCategoryForm());
+	      //$this->includeModal("form", Category::getCategoryForm());
+	    		$category = new Category(-1);
+		        $allCategory = $category->getAll();
+		        echo "
+					<form class='form-group' action='/admin/category/create' method='post' id='categoryCreateForm'>
+				        <div class='form-row'>
+					        <label>Libelle:</label>
+					        <input id='title' name='title' type='text' placeholder='Libelle:' required='required'/>
+				        </div>
+				        <div class='form-row'>
+						    <label>Catégorie parente:</label>
+					        <select id='category' name='category' required='required'>";	
+	                		foreach ($allCategory as $i => $value) {
+			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
+		    				}
+	                		  
+					        echo "</select>
+				        </div>
+				        <div class='form-row'>
+				        	<label>Mettre en ligne:</label>
+				        	<input id='active' name='active' type='checkbox' />
+				        </div>
+				        <div class='form-row'>
+				        	<input class='submit' type='submit' value='Ajouter'>
+				        </div>
+				    </form>";
 	    }
 	    else{
 	      //$this->includeModal("form", Category::getCategoryEditForm($thisCategory));
@@ -23,7 +73,7 @@
 		        $allCategory = $category->getAll();
 		        $category2 = new Category($category->getCategoryParent());
 		        echo "
-					<form class='form-group' action='/admin/category/edit/".$category->getId()."' method='post' id='pageEditForm'>
+					<form class='form-group' action='/admin/category/edit/".$category->getId()."' method='post' id='categoryEditForm'>
 				        <div class='form-row'>
 					        <label>Libelle:</label>
 					        <input id='title' name='title' type='text' placeholder='".$category->getTitle()."' value='".$category->getTitle()."' required='required'/>

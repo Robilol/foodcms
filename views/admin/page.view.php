@@ -8,11 +8,61 @@
 		$this->uriExploded = explode("/", $this->uri);
 		$link = $this->uriExploded;
 		if(!array_key_exists(2,$link)) {
-			$this->includeModal("form", Page::getPageForm());
+			//$this->includeModal("form", Page::getPageForm());
+	    	$category = new Category(-1);
+		        $allCategory = $category->getAll();
+		        echo "
+					<form class='form-group' action='/admin/page/create' method='post' id='pageCreateForm'>
+				        <div class='form-row'>
+					        <label>Titre:</label>
+					        <input id='title' name='title' type='text' placeholder='Titre:' required='required'/>
+				        </div>
+				        <div class='form-row'>
+						    <label>Catégorie:</label>
+					        <select id='category' name='category' required='required'>";	
+	                		foreach ($allCategory as $i => $value) {
+			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
+		    				}
+	                		  
+					        echo "</select>
+				        </div>
+				        <div class='form-row'>
+				        	<label>Mettre en ligne:</label>
+				        	<input id='active' name='active' type='checkbox' />
+				        </div>
+				        <div class='form-row'>
+				        	<input class='submit' type='submit' value='Ajouter'>
+				        </div>
+				    </form>";
 	    }
 		else{
 	    	if($link[2]!="show") {
-	   			$this->includeModal("form", Page::getPageForm());
+	   			//$this->includeModal("form", Page::getPageForm());
+	    		$category = new Category(-1);
+		        $allCategory = $category->getAll();
+		        echo "
+					<form class='form-group' action='/admin/page/create' method='post' id='pageCreateForm'>
+				        <div class='form-row'>
+					        <label>Titre:</label>
+					        <input id='title' name='title' type='text' placeholder='Titre:' required='required'/>
+				        </div>
+				        <div class='form-row'>
+						    <label>Catégorie:</label>
+					        <select id='category' name='category' required='required'>";	
+	                		foreach ($allCategory as $i => $value) {
+			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
+		    				}
+	                		  
+					        echo "</select>
+				        </div>
+				        <div class='form-row'>
+				        	<label>Mettre en ligne:</label>
+				        	<input id='active' name='active' type='checkbox' />
+				        </div>
+				        <div class='form-row'>
+				        	<input class='submit' type='submit' value='Ajouter'>
+				        </div>
+				    </form>";
 	    	}
 	    	else{
 	    	  //$this->includeModal("form", Page::getPageEditForm($thisPage));
