@@ -127,21 +127,26 @@
                 ],
 
                 "struct"=>[
-                    "text"=>[
-                        "id"            =>"text",
-                        "label"         =>"Contenu :",
-                        "type"          =>"textarea",
-                        "placeholder"   =>"Votre contenu",
-                        "text"          =>"",
-                        "readonly"      =>false,
-                        "required"      =>true
-                    ],
-                    "active"=>[
-                        "id"            =>"active",
-                        "label"         =>"Mettre en ligne :",
-                        "type"          =>"checkbox",
-                        "checked"       =>0,
-                        "required"      =>false
+                    [
+                        "fieldset"=> "",
+                        "elements"=>[
+                            "text"=>[
+                                "id"            =>"text",
+                                "label"         =>"Contenu :",
+                                "type"          =>"textarea",
+                                "placeholder"   =>"Votre contenu",
+                                "text"          =>"",
+                                "readonly"      =>false,
+                                "required"      =>true
+                            ],
+                            "active"=>[
+                                "id"            =>"active",
+                                "label"         =>"Mettre en ligne :",
+                                "type"          =>"checkbox",
+                                "checked"       =>0,
+                                "required"      =>false
+                            ]
+                        ]
                     ]
                 ]
             ];
@@ -158,14 +163,19 @@
                 ],
 
                 "struct"=>[
-                    "text"=>[
-                        "id"            =>"text",
-                        "label"         =>"Contenu :",
-                        "type"          =>"textarea",
-                        "placeholder"   =>"Votre contenu",
-                        "text"   =>$thisComment['text'],
-                        "required"      =>false,
-                        "readonly"      =>true
+                    [
+                        "fieldset"=> "",
+                        "elements"=>[
+                            "text"=>[
+                                "id"            =>"text",
+                                "label"         =>"Contenu :",
+                                "type"          =>"textarea",
+                                "placeholder"   =>"Votre contenu",
+                                "text"   =>$thisComment['text'],
+                                "required"      =>false,
+                                "readonly"      =>true
+                            ]
+                        ]
                     ]
                 ]
             ];

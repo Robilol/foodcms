@@ -646,6 +646,26 @@ button {
 
 #chartdiv {
   width   : 100%;
-  height    : 500px;
-  font-size : 11px;
+  height    : 28vh;
+  font-size : 9px;
+}
+
+fieldset {
+    font-family: sans-serif;
+    border: 5px solid #790000;
+    background: #E0E0E0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+fieldset legend {
+    background: #790000;
+    color: #fff;
+    padding: 5px 10px ;
+    font-size: 32px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 5px #ddd;
+    margin-left: 20px;
 }

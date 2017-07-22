@@ -8,48 +8,86 @@
 	
 	<?php
 		$article = new Article(-1);
-		$commentaire = new Comment(-1);
-
-		$allArticle = $article->getAll();
-		$allCommentaire = $commentaire->getAll();
-		$article7 = 0;
+		$allArticle = $article->getAll(0, "DESC");
+		$article1 = 0;
+		$article2 = 0;
+		$article3 = 0;
+		$article4 = 0;
+		$article5 = 0;
 		$articleTotal = 0;
 		foreach ($allArticle as $i => $value) {
 			$articleMonthExploded = explode("-", $allArticle[$i]['utime']);
-			$articleMonth = $articleMonthExploded[1];
-			if ($articleMonth == "07")
-				$article7++;
+			if ($i == 0)
+				$articleMonthFirst = intval($articleMonthExploded[1]);
+			$articleMonth = intval($articleMonthExploded[1]);
+			if ($articleMonth == $articleMonthFirst)
+				$article1++;
+			if ($articleMonth == $articleMonthFirst - 1)
+				$article2++;
+			if ($articleMonth == $articleMonthFirst - 2)
+				$article3++;
+			if ($articleMonth == $articleMonthFirst - 3)
+				$article4++;
+			if ($articleMonth == $articleMonthFirst - 4)
+				$article5++;
 			$articleTotal++;
 		}
-	?>
+
+		$comment = new Comment(-1);
+		$allComment = $comment->getAll(0, "DESC");
+		$comment1 = 0;
+		$comment2 = 0;
+		$comment3 = 0;
+		$comment4 = 0;
+		$comment5 = 0;
+		$commentTotal = 0;
+		foreach ($allComment as $i => $value) {
+			$commentMonthExploded = explode("-", $allComment[$i]['utime']);
+			$commentMonth = intval($commentMonthExploded[1]);
+			if ($commentMonth == $articleMonthFirst)
+				$comment1++;
+			if ($commentMonth == $articleMonthFirst - 1)
+				$comment2++;
+			if ($commentMonth == $articleMonthFirst - 2)
+				$comment3++;
+			if ($commentMonth == $articleMonthFirst - 3)
+				$comment4++;
+			if ($commentMonth == $articleMonthFirst - 4)
+				$comment5++;
+			$commentTotal++;
+		}
+		 
+        
+		?>
 	<script>
 	var chart = AmCharts.makeChart("chartdiv", {
     "theme": "light",
     "type": "serial",
     "dataProvider": [{
-        "mois": "Juillet",
-        "articles": <?php echo $article7 ?>,
-        "commentaires": 4.2
+    	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 4);?>
+        "mois": " <?php echo $dateArticle->format('F'); ?>",
+        "articles": <?php echo $article5 ?>,
+        "commentaires": <?php echo $comment5 ?>
     }, {
-        "mois": "UK",
-        "articles": 1.7,
-        "commentaires": 3.1
+    	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 3);?>
+        "mois": " <?php echo $dateArticle->format('F'); ?>",
+        "articles": <?php echo $article4 ?>,
+        "commentaires": <?php echo $comment4 ?>
     }, {
-        "mois": "Canada",
-        "articles": 2.8,
-        "commentaires": 2.9
+    	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 2);?>
+        "mois": " <?php echo $dateArticle->format('F'); ?>",
+        "articles": <?php echo $article3 ?>,
+        "commentaires": <?php echo $comment3 ?>
     }, {
-        "mois": "Japan",
-        "articles": 2.6,
-        "commentaires": 2.3
+    	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 1);?>
+        "mois": " <?php echo $dateArticle->format('F'); ?>",
+        "articles": <?php echo $article2 ?>,
+        "commentaires": <?php echo $comment2 ?>
     }, {
-        "mois": "France",
-        "articles": 1.4,
-        "commentaires": 2.1
-    }, {
-        "mois": "Brazil",
-        "articles": 2.6,
-        "commentaires": 4.9
+    	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst);?>
+        "mois": " <?php echo $dateArticle->format('F'); ?>",
+        "articles": <?php echo $article1 ?>,
+        "commentaires": <?php echo $comment1 ?>
     }],
     "valueAxes": [{
         "unit": "",
@@ -91,8 +129,7 @@
 
 	<section id="section-haut">
 		<h3>Statistique</h3>
-		<p>Nombre total d'article:<?php echo $articleTotal ?></p>
-		<p>Nombre total de commentaires:</p>
+		<p>Nombre total d'article:<?php echo $articleTotal ?> - Nombre total de commentaires:<?php echo $commentTotal ?></p>
 		<div id="chartdiv"></div>
 	</section>
   <section id="menu-verticale">

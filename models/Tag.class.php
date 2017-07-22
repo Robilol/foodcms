@@ -81,16 +81,21 @@ class Tag extends BaseSql{
             ],
 
             "struct"=>[
-                // "id"=>[
-                //     "id"            =>"id",
-                //     "type"          =>"hidden"
-                // ],
-                "name"=>[
-                    "id"            =>"name",
-                    "label"         =>"Nom :",
-                    "type"          =>"text",
-                    "placeholder"   =>"Le nom du tag: ",
-                    "required"      =>true
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        // "id"=>[
+                        //     "id"            =>"id",
+                        //     "type"          =>"hidden"
+                        // ],
+                        "name"=>[
+                            "id"            =>"name",
+                            "label"         =>"Nom :",
+                            "type"          =>"text",
+                            "placeholder"   =>"Le nom du tag: ",
+                            "required"      =>true
+                        ]
+                    ]
                 ]
             ]
         ];
@@ -107,13 +112,18 @@ class Tag extends BaseSql{
             ],
 
             "struct"=>[
-                "name"=>[
-                    "id"            =>"name",
-                    "label"         =>"Nom :",
-                    "type"          =>"text",
-                    "placeholder"   =>$thisTag['name'],
-                    "value"         =>$thisTag['name'],
-                    "required"      =>true
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "name"=>[
+                            "id"            =>"name",
+                            "label"         =>"Nom :",
+                            "type"          =>"text",
+                            "placeholder"   =>$thisTag['name'],
+                            "value"         =>$thisTag['name'],
+                            "required"      =>true
+                        ]
+                    ]
                 ]
             ]
         ];

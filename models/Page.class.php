@@ -120,35 +120,40 @@ class Page extends BaseSql{
             ],
 
             "struct"=>[
-                // "id"=>[
-                //     "id"            =>"id",
-                //     "type"          =>"hidden"
-                // ],
-                "title"=>[
-                    "id"            =>"title",
-                    "label"         =>"Titre :",
-                    "type"          =>"text",
-                    "placeholder"   =>"Le titre: ",
-                    "required"      =>true
-                ],
-                "category"=>[
-                    "id"            =>"category",
-                    "label"         =>"Catégorie :",
-                    "type"          =>"select",
-                    "option"        => [ "category1" => "Categorie1",
-                                        "category2"=>"Categorie2",
-                                        "category3"=>"Categorie3",
-                                        "category4"=>"Categorie4",
-                                        "category5"=>"Categorie5"
-                    ],
-                    "required"      =>true
-                ],
-                 "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>0,
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        // "id"=>[
+                        //     "id"            =>"id",
+                        //     "type"          =>"hidden"
+                        // ],
+                        "title"=>[
+                            "id"            =>"title",
+                            "label"         =>"Titre :",
+                            "type"          =>"text",
+                            "placeholder"   =>"Le titre: ",
+                            "required"      =>true
+                        ],
+                        "category"=>[
+                            "id"            =>"category",
+                            "label"         =>"Catégorie :",
+                            "type"          =>"select",
+                            "option"        => [ "category1" => "Categorie1",
+                                                "category2"=>"Categorie2",
+                                                "category3"=>"Categorie3",
+                                                "category4"=>"Categorie4",
+                                                "category5"=>"Categorie5"
+                            ],
+                            "required"      =>true
+                        ],
+                         "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked"       =>0,
+                            "required"      =>false
+                        ]
+                    ]
                 ]
             ]
         ];
@@ -161,8 +166,7 @@ class Page extends BaseSql{
         foreach ($allCategory as $i => $value) {
             $select .= $allCategory[$i]["title"]." => ".$allCategory[$i]["title"].",<br>";
         }
-        var_dump($allCategory);
-        echo $select;
+
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -172,29 +176,34 @@ class Page extends BaseSql{
                 "submit"    =>"Modifier"
             ],
             "struct"=>[
-                "title"=>[
-                    "id"            =>"title",
-                    "label"         =>"Titre :",
-                    "type"          =>"text",
-                    "placeholder"   =>$thisPage['title'],
-                    "value"         =>$thisPage['title'],
-                    "required"      =>true
-                ],
-                "category"=>[
-                    "id"            =>"category",
-                    "label"         =>"Catégorie :",
-                    "type"          =>"select",
-                    "option"        => [ 
-                                        $select
-                    ],
-                    "required"      =>true
-                ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>$thisPage['active'],
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "title"=>[
+                            "id"            =>"title",
+                            "label"         =>"Titre :",
+                            "type"          =>"text",
+                            "placeholder"   =>$thisPage['title'],
+                            "value"         =>$thisPage['title'],
+                            "required"      =>true
+                        ],
+                        "category"=>[
+                            "id"            =>"category",
+                            "label"         =>"Catégorie :",
+                            "type"          =>"select",
+                            "option"        => [
+                                                $select
+                            ],
+                            "required"      =>true
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked"       =>$thisPage['active'],
+                            "required"      =>false
+                        ]
+                    ]
                 ]
             ]
         ];

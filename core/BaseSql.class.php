@@ -106,4 +106,14 @@
             return $query->fetchAll();
         }
 
+        public function resetAll() {
+            $sql = "UPDATE ".DB_PREFIXE.$this->table." SET active = 0";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+        }
+
+        public function getLastInsertedId() {
+            return $this->db->lastInsertId();
+        }
+
     }

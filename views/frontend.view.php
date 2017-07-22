@@ -13,16 +13,7 @@
     <ul id="navigation">
         <li><img id="logo" src="/assets/img/logo.png"></li>
         <div id="liens" style="float:right">
-            <li><a href="/article">RECETTES</a></li>
-            <li><a href="/">CATEGORIES</a></li>
-            <li><a href="/search/index">RECHERCHE</a></li>
-            <?php if (!empty($_SESSION['id'])): ?>
-                <li><?php echo $_SESSION['username'] ?></li>
-                <li><a href="/index/logout">Se deconnecter</a></li>
-            <?php else: ?>
-                <li><a href="/index/register">S'INSCRIRE</a></li>
-                <li><a href="/index/login">S'IDENTIFIER</a></li>
-            <?php endif; ?>
+            <?php $menu = new Menu(-1); $menu->getMenuHTML(); ?>
         </div>
     </ul>
     </div>
