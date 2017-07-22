@@ -64,6 +64,9 @@ class ArticleController {
     public function createAction()
     {
         $v= new View("admin/articleCreate", "backend");
+        $article = new Article(-1);
+        $allArticles = $article->getAll();
+        $v->assign("allArticles", $allArticles);
     }
 
     public function registerAction()

@@ -23,26 +23,20 @@
                 console.log(json);
                 for(var i=0;i<json.length;i++){
                     tags_array.push(json[i]);
+                    $(".tags-list").append("<div class='tag' data-id='"+json[i].id+"'>"+json[i].name+"</div>")
                 }
             }
-        });
+    });
 
-        console.log(tags_array);
     }
 
     CKEDITOR.replace( 'text' );
 
-    $(document).ready(function () {
-        console.log("ready");
+    $(document).ready(function(){
 
-
-        $('#text').keyup(function() {
-            var nombreMots = jQuery.trim($(this).val()).split(' ').length;
-            if($(this).val() === '') {
-                nombreMots = 0;
-            }
-            console.log(nombreMots);
-        })
-
+        $('.tag').live('click', function(e) {
+            console.log("bla");
+            $(this).remove();
+        });
     });
 </script>
