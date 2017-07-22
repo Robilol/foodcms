@@ -146,11 +146,11 @@ class Media extends BaseSql{
     {
         $this->utime = $utime;
     }
-    public function setArtcileId($article_id) {
+    public function setArticleId($article_id) {
         $this->article_id = $article_id;
     }
 
-    public function getArtcileId() {
-        return $this->$article_id;
+    public function getArticleId() {
+        return $this-$article_id;
     }
 }

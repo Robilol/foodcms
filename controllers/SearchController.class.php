@@ -14,7 +14,7 @@ class SearchController
         $tag = new Tag(-1);
         $category = new Category(-1);
 
-        $tags_array = $tag->getAllTags();
+        $tags_array = $tag->getAll();
         $v->assign("tagsArray", $tags_array);
 
         $categories_array = $category->getAllCategories();

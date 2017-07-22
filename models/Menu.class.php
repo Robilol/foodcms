@@ -6,7 +6,7 @@ class Menu extends BaseSql{
     protected $active;
     protected $archived;
 
-    public function __construct($id, $name = null)
+    public function __construct($id, $name = null, $active = 0)
      {
          parent::__construct();
 
@@ -20,7 +20,7 @@ class Menu extends BaseSql{
          } else {
            $this->id                = $id;
            $this->name             = $name;
-           $this->active          = 0;  
+           $this->active          = $active;
            $this->archived          = 0;
          }
      }
@@ -89,7 +89,21 @@ class Menu extends BaseSql{
         $this->active = $active;
     }
 
-    static function getMenuForm(){
+    public function loadActive() {
+        $menu = parent::getOneBy(["active" => 1]);
+        return new Menu($menu['id']);
+    }
+
+    static function getMenuForm($menuElements){
+        $options = [];
+        foreach ($menuElements as $menuElement) {
+            $options[] = [
+                "value" => $menuElement['id'],
+                "name" => $menuElement['name'],
+                "selected" => 0,
+            ];
+        }
+
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -104,25 +118,76 @@ class Menu extends BaseSql{
                 //     "id"            =>"id",
                 //     "type"          =>"hidden"
                 // ],
-                "name"=>[
-                    "id"            =>"name",
-                    "label"         =>"Nom :",
-                    "type"          =>"text",
-                    "placeholder"   =>"Le nom du menu: ",
-                    "required"      =>true
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "name"=>[
+                            "id"            =>"name",
+                            "label"         =>"Nom :",
+                            "type"          =>"text",
+                            "placeholder"   =>"Le nom du menu: ",
+                            "required"      =>true
+                        ],
+                        "elements[]"=>[
+                            "id"            =>"elements",
+                            "label"         =>"Redirection :",
+                            "type"          =>"select",
+                            "option"        => $options,
+                            "placeholder"   =>"La redirection du menu: ",
+                            "required"      =>true,
+                            "multiple"      =>true,
+                            "extra"         => '<a href="JavaScript:void(0);" id="btn-up">Monter</a> <a href="JavaScript:void(0);" id="btn-down">Descendre</a>'
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Activer :",
+                            "type"          =>"checkbox",
+                            "checked"       =>0,
+                            "required"      =>false
+                        ]
+                    ]
                 ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>0,
-                    "required"      =>false
-                ]
             ]
         ];
     }
 
-    static function getMenuEditForm($thisMenu){
+    static function getMenuEditForm($thisMenu, $menuElements){
+        $options = [];
+
+        $menuElementsArray = MenuElementAssociation::LoadByMenuId($thisMenu['id']);
+
+        foreach ($menuElementsArray as $me) {
+            $options[] = [
+                "value" => $me->getId(),
+                "name" => $me->getName(),
+                "selected" => 0,
+            ];
+        }
+
+        foreach ($menuElements as $menuElement) {
+            if(!in_array($menuElement['id'], $options)) {
+                $options[] = [
+                    "value" => $menuElement['id'],
+                    "name" => $menuElement['name'],
+                    "selected" => 0,
+                ];
+            }
+        }
+
+        $newArr = array();
+        foreach ($options as $val) {
+            $newArr[$val['value']] = $val;
+        }
+        $options = array_values($newArr);
+
+        foreach ($menuElementsArray as $me) {
+            foreach ($options as $key => $option) {
+                if ($me->getId() == $option['value']) {
+                    $options[$key]['selected'] = 1;
+                }
+            }
+        }
+
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -131,23 +196,37 @@ class Menu extends BaseSql{
                 "id"        =>"menuEditForm",
                 "submit"    =>"Modifier"
             ],
-
             "struct"=>[
-                "name"=>[
-                    "id"            =>"name",
-                    "label"         =>"Nom :",
-                    "type"          =>"text",
-                    "placeholder"   =>$thisMenu['name'],
-                    "value"         =>$thisMenu['name'],
-                    "required"      =>true
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "name"=>[
+                            "id"            =>"name",
+                            "label"         =>"Nom :",
+                            "type"          =>"text",
+                            "value"         => $thisMenu['name'],
+                            "placeholder"   => $thisMenu['name'],
+                            "required"      =>true
+                        ],
+                        "elements[]"=>[
+                            "id"            =>"elements",
+                            "label"         =>"Redirection :",
+                            "type"          =>"select",
+                            "option"        => $options,
+                            "placeholder"   =>"La redirection du menu: ",
+                            "required"      =>true,
+                            "multiple"      =>true,
+                            "extra"         => '<a href="JavaScript:void(0);" id="btn-up">Monter</a> <a href="JavaScript:void(0);" id="btn-down">Descendre</a>'
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Activer :",
+                            "type"          =>"checkbox",
+                            "checked"       => $thisMenu['active'],
+                            "required"      =>false
+                        ]
+                    ]
                 ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>$thisMenu['active'],
-                    "required"      =>false
-                ]
             ]
         ];
     }
@@ -163,5 +242,31 @@ class Menu extends BaseSql{
                 ],
             "struct"=>[]
             ];
+    }
+
+    public function getMenuHTML() {
+        $menu = $this->loadActive();
+
+        $menuElements = MenuElementAssociation::LoadByMenuId($menu->getId());
+
+        $html = "";
+
+        foreach ($menuElements as $menuElement) {
+            if ($menuElement->getRedirection() == "index/login") {
+                if (!empty($_SESSION['id'])) {
+                    $html .= "<li>".$_SESSION['username']."</li>";
+                } else {
+                    $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
+                }
+            } elseif ($menuElement->getRedirection() == "index/logout") {
+                if (empty($_SESSION['id'])) {
+                    $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
+                }
+            } else {
+                $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
+            }
+        }
+
+        echo $html;
     }
 }

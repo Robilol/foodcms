@@ -124,36 +124,41 @@ class Category extends BaseSql{
             ],
 
             "struct"=>[
-                // "id"=>[
-                //     "id"            =>"id",
-                //     "type"          =>"hidden"
-                // ],
-                "libelle"=>[
-                    "id"            =>"libelle",
-                    "label"         =>"Libelle :",
-                    "type"          =>"text",
-                    "placeholder"   =>"Votre libellé",
-                    "required"      =>false
-                ],
-                "select"=>[
-                    "id"            =>"parentCategory",
-                    "label"         =>"Catégorie parente",
-                    "type"          =>"select",
-                    "option"        => [ "category1" => "Categorie1",
-                                        "category2"=>"Categorie2",
-                                        "category3"=>"Categorie3",
-                                        "category4"=>"Categorie4",
-                                        "category5"=>"Categorie5"
-                    ],
-                    "required"      =>true
-                ],
-                
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>0,
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        // "id"=>[
+                        //     "id"            =>"id",
+                        //     "type"          =>"hidden"
+                        // ],
+                        "libelle"=>[
+                            "id"            =>"libelle",
+                            "label"         =>"Libelle :",
+                            "type"          =>"text",
+                            "placeholder"   =>"Votre libellé",
+                            "required"      =>false
+                        ],
+                        "select"=>[
+                            "id"            =>"parentCategory",
+                            "label"         =>"Catégorie parente",
+                            "type"          =>"select",
+                            "option"        => [ "category1" => "Categorie1",
+                                                "category2"=>"Categorie2",
+                                                "category3"=>"Categorie3",
+                                                "category4"=>"Categorie4",
+                                                "category5"=>"Categorie5"
+                            ],
+                            "required"      =>true
+                        ],
+
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked"       =>0,
+                            "required"      =>false
+                        ]
+                    ]
                 ]
             ]
             
@@ -169,36 +174,41 @@ class Category extends BaseSql{
                 "submit"    =>"Modifier"
             ],
             "struct"=>[
-                // "id"=>[
-                //     "id"            =>"id",
-                //     "type"          =>"hidden"
-                // ],
-                "libelle"=>[
-                    "id"            =>"libelle",
-                    "label"         =>"Libelle :",
-                    "type"          =>"text",
-                    "placeholder"   =>$thisCategory['title'],
-                    "value"         =>$thisCategory['title'],
-                    "required"      =>false
-                ],
-                "select"=>[
-                    "id"            =>"parentCategory",
-                    "label"         =>"Catégorie parente",
-                    "type"          =>"select",
-                    "option"        => [ "category1" => "Categorie1",
-                                        "category2"=>"Categorie2",
-                                        "category3"=>"Categorie3",
-                                        "category4"=>"Categorie4",
-                                        "category5"=>"Categorie5"
-                    ],
-                    "required"      =>true
-                ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>$thisCategory['active'],
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        // "id"=>[
+                        //     "id"            =>"id",
+                        //     "type"          =>"hidden"
+                        // ],
+                        "libelle"=>[
+                            "id"            =>"libelle",
+                            "label"         =>"Libelle :",
+                            "type"          =>"text",
+                            "placeholder"   =>$thisCategory['title'],
+                            "value"         =>$thisCategory['title'],
+                            "required"      =>false
+                        ],
+                        "select"=>[
+                            "id"            =>"parentCategory",
+                            "label"         =>"Catégorie parente",
+                            "type"          =>"select",
+                            "option"        => [ "category1" => "Categorie1",
+                                                "category2"=>"Categorie2",
+                                                "category3"=>"Categorie3",
+                                                "category4"=>"Categorie4",
+                                                "category5"=>"Categorie5"
+                            ],
+                            "required"      =>true
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked"       =>$thisCategory['active'],
+                            "required"      =>false
+                        ]
+                    ]
                 ]
             ]
             

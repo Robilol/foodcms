@@ -29,6 +29,7 @@ position:relative;
 #navigation li{
     float: left;
     height: inherit;
+    text-transform: uppercase;
 }
 
 #navigation li a {

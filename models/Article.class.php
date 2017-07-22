@@ -225,34 +225,39 @@
             ],
 
             "struct"=>[
-                "title"=>[
-                    "id"            =>"title",
-                    "label"         =>"Titre :",
-                    "type"          =>"text",
-                    "placeholder"   =>"Votre titre",
-                    "required"      =>true
-                ],
-                "thumbnail"=>[
-                    "label"         =>"Image :",
-                    "type"          =>"file",
-                    "placeholder"   =>"Votre image",
-                    "required"      =>false
-                ],
-                "text"=>[
-                    "id"            =>"text",
-                    "label"         =>"Contenu :",
-                    "type"          =>"textarea",
-                    "placeholder"   =>"Votre contenu",
-                    "required"      =>true,
-                    "readonly"      =>false,
-                    "text"          =>""
-                ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked"       =>0,
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "title"=>[
+                            "id"            =>"title",
+                            "label"         =>"Titre :",
+                            "type"          =>"text",
+                            "placeholder"   =>"Votre titre",
+                            "required"      =>true
+                        ],
+                        "thumbnail"=>[
+                            "label"         =>"Image :",
+                            "type"          =>"file",
+                            "placeholder"   =>"Votre image",
+                            "required"      =>false
+                        ],
+                        "text"=>[
+                            "id"            =>"text",
+                            "label"         =>"Contenu :",
+                            "type"          =>"textarea",
+                            "placeholder"   =>"Votre contenu",
+                            "required"      =>true,
+                            "readonly"      =>false,
+                            "text"          =>""
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked"       =>0,
+                            "required"      =>false
+                        ]
+                    ]
                 ]
             ]
         ];
@@ -269,40 +274,44 @@
             ],
 
             "struct"=>[
-                "title"=>[
-                    "id"            =>"title",
-                    "label"         =>"Titre :",
-                    "type"          =>"text",
-                    "placeholder"   =>$thisArticle['title'],
-                    "value"         =>$thisArticle['title'],
-                    "required"      =>true
-                ],
-                "thumbnail"=>[
-                    "id"            =>"thumbnail",
-                    "label"         =>"Image :",
-                    "type"          =>"file",
-                    "placeholder"   =>"Votre image",
-                    "value"         =>$thisArticle['thumbnail'],
-                    "required"      =>false
-                ],
-                "text"=>[
-                    "id"            =>"text",
-                    "label"         =>"Contenu :",
-                    "type"          =>"textarea",
-                    "placeholder"   =>$thisArticle['text'],
-                    "value"         =>$thisArticle['text'],
-                    "required"      =>true,
-                    "readonly"      =>false,
-                    "text"          =>$thisArticle['text']
-                ],
-                "active"=>[
-                    "id"            =>"active",
-                    "label"         =>"Mettre en ligne :",
-                    "type"          =>"checkbox",
-                    "checked" => $thisArticle['active'],
-                    "required"      =>false
+                [
+                    "fieldset"=> "",
+                    "elements"=>[
+                        "title"=>[
+                            "id"            =>"title",
+                            "label"         =>"Titre :",
+                            "type"          =>"text",
+                            "placeholder"   =>$thisArticle['title'],
+                            "value"         =>$thisArticle['title'],
+                            "required"      =>true
+                        ],
+                        "thumbnail"=>[
+                            "id"            =>"thumbnail",
+                            "label"         =>"Image :",
+                            "type"          =>"file",
+                            "placeholder"   =>"Votre image",
+                            "value"         =>$thisArticle['thumbnail'],
+                            "required"      =>false
+                        ],
+                        "text"=>[
+                            "id"            =>"text",
+                            "label"         =>"Contenu :",
+                            "type"          =>"textarea",
+                            "placeholder"   =>$thisArticle['text'],
+                            "value"         =>$thisArticle['text'],
+                            "required"      =>true,
+                            "readonly"      =>false,
+                            "text"          =>$thisArticle['text']
+                        ],
+                        "active"=>[
+                            "id"            =>"active",
+                            "label"         =>"Mettre en ligne :",
+                            "type"          =>"checkbox",
+                            "checked" => $thisArticle['active'],
+                            "required"      =>false
+                        ]
+                    ]
                 ]
-                
             ]
         ];
     }
