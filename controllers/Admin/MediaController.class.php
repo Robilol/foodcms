@@ -60,12 +60,13 @@ public function indexAction(){
 
     public function deleteAction()
     {
-        $data = $_POST;
-        // faux trouver où récupérer le data[id]
-        $media = new Media($data['id']);
-        $media->setName($data['name']);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[3];
+        $media = new Media($id);
         $media->setArchived(1);
-        $media->setActive(0);
         $media->save();
 
         header("Location: /admin/media");
