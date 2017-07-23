@@ -17,6 +17,7 @@ class UserController {
             session_start();
             $_SESSION['id']         = $user->getId();
             $_SESSION['username']   = $user->getUsername();
+            $_SESSION['role']   = $user->getRoleId();
             header('Location: /index/index/connected');
         } else {
             header('Location: /index/login/error');
