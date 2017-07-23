@@ -4,7 +4,8 @@
 class BackController{
 
     public function indexAction(){
-
+      if (!isset($_SESSION['username']))
+        header('Location: /admin/back/login');
       $v = new View("admin/index","backend");
 
 
@@ -47,11 +48,11 @@ class BackController{
           $commentVariables['comment5']++;
         $commentVariables['commentTotal']++;
       }
-       
+
       $v->assign("articleVariables", $articleVariables);
       $v->assign("commentVariables", $commentVariables);
       $v->assign("articleMonthFirst", $articleMonthFirst);
-      
+
       $article2 = new Article(-1);
       $lastArticles = $article2->getAll(3);
       $v->assign("lastArticles", $lastArticles);
@@ -68,6 +69,31 @@ class BackController{
           }
       }
     }
+    public function loginAction() {
 
+            $v = new View("admin/login","empty");
+    }
+    public function loginVerifAction() {
+
+          $data = $_POST;
+          $user = new User(0);
+          $user->getUserByUsername($data['login']);
+
+          session_destroy();
+
+          if (password_verify($data['pwd'], $user->getPassword())) {
+              if ($user->getStatus() == 0) {
+                  header('Location: /index/login/verify');
+                  exit();
+              }
+              session_start();
+              $_SESSION['id']         = $user->getId();
+              $_SESSION['username']   = $user->getUsername();
+              header('Location: /index/index/connected');
+          } else {
+              header('Location: /index/login/error');
+              exit();
+          }
+      }
 
 }
