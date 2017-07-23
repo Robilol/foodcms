@@ -100,17 +100,19 @@ class Routing {
           exit();
         }
       } 
-      if (!isset($_SESSION['username']))
-          header('Location: /admin/back/login');
-      else if ($_SESSION['role'] == 3)
-          header('Location: /admin/back/login');
-      else if (isset($this->uriExploded[1]) && $_SESSION['role'] != 1) {
-        if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "user")
-          header('Location: /admin');
-        else if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "menu")
-          header('Location: /admin');
-        else if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "menuElement")
-          header('Location: /admin');
+      if ($this->uriExploded[0] == "admin"){
+        if (!isset($_SESSION['username']))
+            header('Location: /admin/back/login');
+        else if (isset($_SESSION['role']) && $_SESSION['role'] == 3)
+            header('Location: /admin/back/login');
+        else if (isset($this->uriExploded[1]) && $_SESSION['role'] != 1) {
+          if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "user")
+            header('Location: /admin');
+          else if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "menu")
+            header('Location: /admin');
+          else if ($this->uriExploded[0] == "admin" && $this->uriExploded[1] == "menuElement")
+            header('Location: /admin');
+        }
       }
 
       $controller = new $this->controllerName;
