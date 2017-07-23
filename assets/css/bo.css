@@ -13,7 +13,31 @@ a, input[type="submit"] {
 }
 
 body, html{height:100%;}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+td img{
+  width:50px;
+  height: 50px;
+  border-radius: 5px;
+}
+td img:hover{
+  width:100px;
+  height: 100px;
+  border-radius: 10px;
+}
+tr:nth-child(even) {
+    background-color: #F5F5F5;
+}
 
 #main{
 min-height:100%;
@@ -601,6 +625,14 @@ input.submit {
 }
 #contentArchive #gallery .gallery {
     width: 20%;
+}
+#contentArchived {
+    margin-left: 18%;
+  overflow-y: auto;
+  width: 80%;
+  max-height: 80vh;
+  min-height: 1%;
+
 }
 .form-group textarea {
     height: 300px;
