@@ -10,13 +10,13 @@
       <div class="desc">Utilisateurs</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/comment">
+      <a  href="/admin/archive/commentArchive">
         <img src="/assets/img/comment.png" alt="Archive comment" width="300" height="200">
       </a>
       <div class="desc">Commentaires</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/category">
+      <a  href="/admin/archive/categoryArchive">
         <img src="/assets/img/category.png" alt="Archive category" width="300" height="200">
       </a>
       <div class="desc">Categories</div>

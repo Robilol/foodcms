@@ -7,8 +7,8 @@ class UserController {
 		$user = new User(-1);
 		$allUsers = $user->getAll();
 		$v->assign("allUsers", $allUsers);
-		if (!isset($_SESSION['username']))
-			header('Location: /admin/login');
+		//if (!isset($_SESSION['username']))
+			//header('Location: /admin/login');
 	}
 
 	public function showAction(){
@@ -77,7 +77,7 @@ class UserController {
         $user->save();
         print_r($user);
         header('Location: /admin/user/');
-    
+
 	}
 	public function listAction(){
 
