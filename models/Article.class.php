@@ -25,7 +25,7 @@
          * @param $ctime
          * @param $utime
          */
-        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $user = null, $archived = null, $ctime = null, $utime = null)
+        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $user = null, $archived = 0, $ctime = null, $utime = null)
         {
             parent::__construct();
 
@@ -254,7 +254,7 @@
                             "id"            =>"active",
                             "label"         =>"Mettre en ligne :",
                             "type"          =>"checkbox",
-                            "checked"       =>0,
+                            "checked"       =>1,
                             "required"      =>false
                         ]
                     ]
