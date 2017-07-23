@@ -71,6 +71,7 @@ class ArticleController {
       $data = $_POST;
       $avatarFileType = ["png", "jpg", "jpeg", "gif"];
   		$avatarLimitSize = 10000000;
+      $error = false;
       $infoFile = pathinfo($_FILES["thumbnail"]["name"]);
       if(!in_array( strtolower($infoFile["extension"]) , $avatarFileType)){
         $error = true;
@@ -82,16 +83,24 @@ class ArticleController {
         echo '2';
       }
       //Est ce que le dossier upload existe
-      $pathUpload ="./assets/upload";
+      $pathUpload ="./assets/media";
+      $pathUpload1 ="/assets/media";
       if( !file_exists($pathUpload) ){
         //Sinon le créer
         mkdir($pathUpload);
       }
       //Déplacer l'avatar dedans
-      $nameAvatar =$pathUpload.'/'.uniqid().".". strtolower($infoFile["extension"]);
-      move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $nameAvatar);
+      $nameAvatar =uniqid().".". strtolower($infoFile["extension"]);
+      $avatar =$pathUpload."/".$nameAvatar;
+      $avatar1 =$pathUpload1."/".$nameAvatar;
+      move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $avatar);
+      if($data['active'] == "on"){
+        $active = 1;
+      }else{
+        $active = 0;
+      }
       if(!$error){
-      $article = new Article(-1, $data['title'], $data['text'], $nameAvatar, $data['active'], 2);
+      $article = new Article(-1, $data['title'], $data['text'], $avatar1, $active, 2);
       $article->save();
       header('Location: /admin/article');
 }else{
