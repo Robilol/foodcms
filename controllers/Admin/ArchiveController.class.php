@@ -35,7 +35,16 @@ class ArchiveController
       $v->assign("allMedia", $allMedia);
     }
     public function tagArchiveAction(){
-
+      $v = new View("admin/tagArchive","backend");
+      $tag = new Tag(-1);
+      $allTag = $tag->getAll(0,"DESC","",1);
+      $v->assign("allTag", $allTag);
+    }
+    public function menuArchiveAction(){
+      $v = new View("admin/menuArchive","backend");
+      $menu = new Menu(-1);
+      $allMenu = $menu->getAll(0,"DESC","",1);
+      $v->assign("allMenu", $allMenu);
     }
     public function categoryArchiveAction(){
       $v = new View("admin/categoryArchive","backend");
@@ -44,7 +53,10 @@ class ArchiveController
       $v->assign("allCategories", $allCategories);
     }
     public function pageArchiveAction(){
-
+      $v = new View("admin/pageArchive","backend");
+      $page = new Page(-1);
+      $allPages = $page->getAll(0,"DESC","",1);
+      $v->assign("allPages", $allPages);
     }
     public function activateAction(){
       $uri = $_SERVER['REQUEST_URI'];
@@ -80,6 +92,31 @@ class ArchiveController
           $category->setActive(0);
           $category->save();
           header('Location: /admin/archive/categoryArchive');
+        }
+        if($table == "page"){
+          $page = new Page($id);
+          $page->setArchived(0);
+          $page->setActive(0);
+          $page->save();
+          header('Location: /admin/archive/pageArchive');
+        }
+        if($table == "tag"){
+          $tag = new Tag($id);
+          $tag->setArchived(0);
+          $tag->save();
+          header('Location: /admin/archive/tagArchive');
+        }
+        if($table == "menu"){
+          $menu = new Menu($id);
+          $menu->setArchived(0);
+          $menu->save();
+          header('Location: /admin/archive/menuArchive');
+        }
+        if($table == "media"){
+          $media = new Media($id);
+          $media->setArchived(0);
+          $media->save();
+          header('Location: /admin/archive/mediaArchive');
         }
     }
 }

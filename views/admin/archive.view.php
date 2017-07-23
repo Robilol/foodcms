@@ -22,7 +22,7 @@
       <div class="desc">Categories</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/page">
+      <a  href="/admin/archive/pageArchive">
         <img src="/assets/img/page.png" alt="Archive page" width="300" height="200">
       </a>
       <div class="desc">Pages</div>
@@ -34,19 +34,19 @@
       <div class="desc">Articles</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/tag">
+      <a  href="/admin/archive/tagArchive">
         <img src="/assets/img/tag.png" alt="Archive tag" width="300" height="200">
       </a>
       <div class="desc">Tags</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/menu">
+      <a  href="/admin/archive/menuArchive">
         <img src="/assets/img/menu.png" alt="Archive menu" width="300" height="200">
       </a>
       <div class="desc">Menus</div>
     </div>
     <div class="gallery">
-      <a  href="/admin/archive/media">
+      <a  href="/admin/archive/mediaArchive">
         <img src="/assets/img/media.png" alt="Archive media" width="300" height="200">
       </a>
       <div class="desc">Medias</div>
