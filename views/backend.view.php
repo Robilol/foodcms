@@ -24,16 +24,16 @@ $link = $this->uriExploded;
     <ul id="navigationBE">
 
         <li class="menu"><a href="/admin/article"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Articles</a></li>
-        <li class="menu"><a href="/admin/comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Commentaires</a>
-        </li>
+        <li class="menu"><a href="/admin/comment"><i class="fa fa-comment-o" aria-hidden="true"></i> Commentaires</a></li>
         <li class="menu"><a href="/admin/category"><i class="fa fa-clone" aria-hidden="true"></i> Catégories</a></li>
         <li class="menu"><a href="/admin/page"><i class="fa fa-file-o" aria-hidden="true"></i> Pages</a></li>
-        <li class="menu"><a href="/admin/user"><i class="fa fa-group" aria-hidden="true"></i> Utilisateurs / droits</a></li>
+        <?php if ($_SESSION['role'] == 1) echo'<li class="menu"><a href="/admin/user"><i class="fa fa-group" aria-hidden="true"></i> Utilisateurs / droits</a></li>' ?>
         <li class="menu"><a href="/admin/tag"><i class="fa fa-tags" aria-hidden="true"></i> Tags</a></li>
-        <li class="menu"><a href="/admin/menu"><i class="fa fa-navicon" aria-hidden="true"></i> Menu</a></li>
-        <li class="menu"><a href="/admin/menuElement"><i class="fa fa-navicon" aria-hidden="true"></i> Menu Elements</a></li>
+        <?php if ($_SESSION['role'] == 1) echo '<li class="menu"><a href="/admin/menu"><i class="fa fa-navicon" aria-hidden="true"></i> Menu</a></li>' ?>
+        <?php if ($_SESSION['role'] == 1) echo '<li class="menu"><a href="/admin/menuElement"><i class="fa fa-navicon" aria-hidden="true"></i> Menu Elements</a></li>'?>
         <li class="menu"><a href="/admin/media"><i class="fa fa-image" aria-hidden="true"></i> Médias</a></li>
         <li class="menu"><a href="/admin/archive"><i class="fa fa-archive" aria-hidden="true"></i> Archives</a></li>
+        <li class="menu"><a href="/admin/user/logout"><i class="fa fa-power-off" aria-hidden="true"></i> Se déconnecter</a></li>
 
     </ul>
     <?php $uri = $_SERVER['REQUEST_URI'];

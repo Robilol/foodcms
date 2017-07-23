@@ -3,12 +3,10 @@
 class UserController {
 
 	public function indexAction(){
-        $v = new View("admin/user","backend");
+      	$v = new View("admin/user","backend");
 		$user = new User(-1);
 		$allUsers = $user->getAll();
 		$v->assign("allUsers", $allUsers);
-		//if (!isset($_SESSION['username']))
-			//header('Location: /admin/login');
 	}
 
 	public function showAction(){
@@ -87,29 +85,32 @@ class UserController {
 	}
 
 	public function loginAction() {
-        $v = new View("admin/login","backend");
-		// $data = $_POST;
-  //       $user = new User(0);
-  //       $user->getUserByUsername($data['login']);
+		$data = $_POST;
+        $user = new User(0);
+        $user->getUserByUsername($data['login']);
 
-  //       session_destroy();
+        session_destroy();
 
-  //       if (password_verify($data['pwd'], $user->getPassword())) {
-  //           if ($user->getStatus() == 0) {
-  //               header('Location: /index/login/verify');
-  //               exit();
-  //           }
-  //           session_start();
-  //           $_SESSION['id']         = $user->getId();
-  //           $_SESSION['username']   = $user->getUsername();
-  //           header('Location: /index/index/connected');
-  //       } else {
-  //           header('Location: /index/login/error');
-  //           exit();
-  //       }
+        if (password_verify($data['pwd'], $user->getPassword())) {
+            if ($user->getStatus() == 0) {
+                header('Location: /index/login/verify');
+                exit();
+            }
+            session_start();
+            $_SESSION['id']         = $user->getId();
+            $_SESSION['username']   = $user->getUsername();
+            $_SESSION['role']   = $user->getRoleId();
+
+			header('Location: /admin');
+        } else {
+            header('Location: /admin/back/login/error');
+            exit();
+        }
     }
 
 	public function logoutAction() {
+        print_r($_SESSION);
         session_destroy();
+        header('Location: /admin/back/login');
 	}
 }

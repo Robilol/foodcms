@@ -113,6 +113,7 @@ overflow: hidden;
 /* MENU BACK-END */
 
 #navigationBE {
+    overflow-y: auto;
     list-style-type: none;
     margin: 0;
     padding: 0;

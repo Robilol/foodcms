@@ -4,7 +4,6 @@
 class BackController{
 
     public function indexAction(){
-
       $v = new View("admin/index","backend");
 
 
@@ -47,17 +46,17 @@ class BackController{
           $commentVariables['comment5']++;
         $commentVariables['commentTotal']++;
       }
-       
+
       $v->assign("articleVariables", $articleVariables);
       $v->assign("commentVariables", $commentVariables);
       $v->assign("articleMonthFirst", $articleMonthFirst);
-      
+
       $article2 = new Article(-1);
-      $lastArticles = $article2->getAll(3);
+      $lastArticles = $article2->getAll(3, "DESC");
       $v->assign("lastArticles", $lastArticles);
 
       $comment2 = new Comment(-1);
-      $lastComment = $comment2->getAll(3);
+      $lastComment = $comment2->getAll(3, "DESC");
       $v->assign("lastComment", $lastComment);
 
       if (!empty($params)) {
@@ -68,6 +67,36 @@ class BackController{
           }
       }
     }
+    public function loginAction() {
 
+            $v = new View("admin/login","empty");
+    }
+    public function loginVerifAction() {
+          $data = $_POST;
+          $user = new User(0);
+          $user->getUserByUsername($data['login']);
 
+          session_destroy();
+
+          if (password_verify($data['pwd'], $user->getPassword())) {
+              if ($user->getStatus() == 0) {
+                  header('Location: /index/login/verify');
+                  exit();
+              }
+              session_start();
+              $_SESSION['id']         = $user->getId();
+              $_SESSION['username']   = $user->getUsername();
+              $_SESSION['role']   = $user->getRoleId();
+
+              header('Location: /admin');
+          } else {
+              header('Location: /index/login/error');
+              exit();
+          }
+      }
+
+    public function logoutAction() {
+        session_destroy();
+        header('Location: /admin/back/login');
+    }
 }
