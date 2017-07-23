@@ -34,6 +34,8 @@ public function indexAction(){
             $data['active'] = 0;
         else
             $data['active'] = 1;
+        if ($data['category'] == "")
+            $data['category'] = null; 
         $page = new Page(-1, $data['title'], $data['category'], $data['active']);
         $page->save();
         header("Location: /admin/page");
@@ -51,6 +53,8 @@ public function indexAction(){
             $data['active'] = 0;
         else
             $data['active'] = 1;
+        if ($data['category'] == "")
+            $data['category'] = null; 
         $page = new Page($id);
         $page->setTitle($data['title']);
         $page->setCategory($data['category']);

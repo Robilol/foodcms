@@ -3,10 +3,12 @@
 class UserController {
 
 	public function indexAction(){
-		$v = new View("admin/user","backend");
-			$user = new User(-1);
-			$allUsers = $user->getAll();
-			$v->assign("allUsers", $allUsers);
+        $v = new View("admin/user","backend");
+		$user = new User(-1);
+		$allUsers = $user->getAll();
+		$v->assign("allUsers", $allUsers);
+		if (!isset($_SESSION['username']))
+			header('Location: /admin/login');
 	}
 
 	public function showAction(){
@@ -74,7 +76,7 @@ class UserController {
         $user->setActive(0);
         $user->save();
         print_r($user);
-        //header('Location: /admin/user/');
+        header('Location: /admin/user/');
     
 	}
 	public function listAction(){
@@ -84,4 +86,30 @@ class UserController {
 
 	}
 
+	public function loginAction() {
+        $v = new View("admin/login","backend");
+		// $data = $_POST;
+  //       $user = new User(0);
+  //       $user->getUserByUsername($data['login']);
+
+  //       session_destroy();
+
+  //       if (password_verify($data['pwd'], $user->getPassword())) {
+  //           if ($user->getStatus() == 0) {
+  //               header('Location: /index/login/verify');
+  //               exit();
+  //           }
+  //           session_start();
+  //           $_SESSION['id']         = $user->getId();
+  //           $_SESSION['username']   = $user->getUsername();
+  //           header('Location: /index/index/connected');
+  //       } else {
+  //           header('Location: /index/login/error');
+  //           exit();
+  //       }
+    }
+
+	public function logoutAction() {
+        session_destroy();
+	}
 }
