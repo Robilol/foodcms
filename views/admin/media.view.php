@@ -14,7 +14,7 @@
       <a target="_blank" href="<?php echo $media['link']; ?>">
         <img src="<?php echo $media['link']; ?>" alt="<?php echo $media['title']; ?>" width="300" height="200">
       </a>
-      <div class="desc"><?php echo $media['title']; ?></div>
+      <div class="desc"><?php echo $media['title']; ?><a href="/admin/media/delete/<?php echo $media['id']; ?>"><i class="fa fa-trash"></i></a></div>
     </div>
       <?php endforeach; ?>
   </div>
