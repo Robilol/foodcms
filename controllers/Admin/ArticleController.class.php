@@ -4,7 +4,7 @@
 class ArticleController {
 
     public function indexAction(){
-      $v = new View("admin/articleCreate","backend");
+        $v = new View("admin/articleCreate","backend");
         $article = new Article(-1);
         $allArticles = $article->getAll(0,"DESC","",0);
         $v->assign("allArticles", $allArticles);
@@ -43,6 +43,7 @@ class ArticleController {
         $article->setText($data['text']);
         $article->setThumbnail($data['thumbnail']);
         $article->setActive($data['active']);
+        $article->setUser($_SESSION['id']);
         $article->save();
         header('Location: /admin/article/show/'.$id);
      }
@@ -69,6 +70,11 @@ class ArticleController {
     public function registerAction()
     {
       $data = $_POST;
+      if (!isset($data['active']))
+        $data['active'] = 0;
+      else
+        $data['active'] = 1;
+      $error = false;
       $avatarFileType = ["png", "jpg", "jpeg", "gif"];
   		$avatarLimitSize = 10000000;
       $infoFile = pathinfo($_FILES["thumbnail"]["name"]);
@@ -91,9 +97,9 @@ class ArticleController {
       $nameAvatar =$pathUpload.'/'.uniqid().".". strtolower($infoFile["extension"]);
       move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $nameAvatar);
       if(!$error){
-      $article = new Article(-1, $data['title'], $data['text'], $nameAvatar, $data['active'], 2);
+      $article = new Article(-1, $data['title'], $data['text'], $nameAvatar, $data['active'], $_SESSION['id']);
       $article->save();
-      header('Location: /admin/article');
+//      header('Location: /admin/article');
 }else{
   echo "Erreur d'upload d'image";
 }

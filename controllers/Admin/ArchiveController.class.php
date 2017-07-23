@@ -7,7 +7,6 @@ class ArchiveController
 {
     public function indexAction(){
       $v = new View("admin/archive","backend");
-
     }
     public function userArchiveAction(){
         $v = new View("admin/userArchive","backend");

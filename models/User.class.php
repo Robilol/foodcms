@@ -23,7 +23,7 @@
          * @param $firstname
          * @param $lastname
          */
-        public function __construct($id, $email = null, $password = null, $username = null, $firstname = null, $lastname = null)
+        public function __construct($id, $email = null, $password = null, $username = null, $firstname = null, $lastname = null, $role_id = null)
         {
             parent::__construct();
 
@@ -40,6 +40,8 @@
                 $this->status       = $user['status'];
                 $this->active       = $user['active'];
                 $this->archived       = $user['archived'];
+                $this->role_id       = $user['role_id'];
+
             } else {
                 $this->id           = $id;
                 $this->email        = $email;
@@ -51,6 +53,7 @@
                 $this->status       = 0;
                 $this->active       = 1;
                 $this->archived       = 0;
+                $this->role_id       = $role_id;
             }
         }
 
@@ -169,6 +172,7 @@
             $this->lastname     = $user['lastname'];
             $this->token        = $user['token'];
             $this->status       = $user['status'];
+            $this->role_id       = $user['role_id'];
 
             return true;
         }
@@ -271,6 +275,39 @@
                 "options"=>[
                     "method"    =>"POST",
                     "action"    =>"/user/login",
+                    "class"     =>"form-group",
+                    "id"        =>"loginForm",
+                    "submit"    =>"Se connecter"
+                ],
+
+                "struct"=>[
+                    [
+                        "fieldset"=> "",
+                        "elements"=>[
+                            "login"=>[
+                                "id"            =>"login",
+                                "label"         =>"Login :",
+                                "type"          =>"text",
+                                "placeholder"   =>"Votre login",
+                                "required"      =>true
+                            ],
+                            "pwd"=>[
+                                "id"            =>"pwd",
+                                "label"         =>"Votre mot de passe :",
+                                "type"          =>"password",
+                                "placeholder"   =>"Votre mot de passe",
+                                "required"      =>true
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+        }
+        static function getLoginFormAdmin(){
+            return [
+                "options"=>[
+                    "method"    =>"POST",
+                    "action"    =>"/admin/user/login",
                     "class"     =>"form-group",
                     "id"        =>"loginForm",
                     "submit"    =>"Se connecter"

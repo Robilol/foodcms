@@ -9,6 +9,7 @@
     <?php if (!empty($this->data) && array_key_exists("newPassword", $this->data)) { $this->includeAlert("info", $this->data['newPassword']); } ?>
 
     <?php
-    $this->includeModal("form", User::getLoginForm());
+    $this->includeModal("form", User::getLoginFormAdmin());
     ?>
 </section>
+>

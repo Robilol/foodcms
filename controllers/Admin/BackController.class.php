@@ -4,8 +4,6 @@
 class BackController{
 
     public function indexAction(){
-      if (!isset($_SESSION['username']))
-        header('Location: /admin/back/login');
       $v = new View("admin/index","backend");
 
 
@@ -54,11 +52,11 @@ class BackController{
       $v->assign("articleMonthFirst", $articleMonthFirst);
 
       $article2 = new Article(-1);
-      $lastArticles = $article2->getAll(3);
+      $lastArticles = $article2->getAll(3, "DESC");
       $v->assign("lastArticles", $lastArticles);
 
       $comment2 = new Comment(-1);
-      $lastComment = $comment2->getAll(3);
+      $lastComment = $comment2->getAll(3, "DESC");
       $v->assign("lastComment", $lastComment);
 
       if (!empty($params)) {
@@ -74,7 +72,6 @@ class BackController{
             $v = new View("admin/login","empty");
     }
     public function loginVerifAction() {
-
           $data = $_POST;
           $user = new User(0);
           $user->getUserByUsername($data['login']);
@@ -89,11 +86,17 @@ class BackController{
               session_start();
               $_SESSION['id']         = $user->getId();
               $_SESSION['username']   = $user->getUsername();
-              header('Location: /index/index/connected');
+              $_SESSION['role']   = $user->getRoleId();
+
+              header('Location: /admin');
           } else {
               header('Location: /index/login/error');
               exit();
           }
       }
 
+    public function logoutAction() {
+        session_destroy();
+        header('Location: /admin/back/login');
+    }
 }
