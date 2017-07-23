@@ -32,6 +32,8 @@ class CategoryController {
         $data['active'] = 0;
       else
         $data['active'] = 1;
+      if ($data['category'] == "")
+        $data['category'] = null;   
       $category = new Category(-1, $data['title'], $data['category'], $data['active']);
       $category->save();
 
@@ -49,6 +51,8 @@ class CategoryController {
             $data['active'] = 0;
         else
             $data['active'] = 1;
+        if ($data['category'] == "")
+            $data['category'] = null; 
         $category = new Category($id);
         $category->setTitle($data['title']);
         $category->setCategoryParent($data['category']);

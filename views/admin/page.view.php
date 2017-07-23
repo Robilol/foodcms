@@ -19,8 +19,9 @@
 				        </div>
 				        <div class='form-row'>
 						    <label>Catégorie:</label>
-					        <select id='category' name='category' required='required'>";	
-	                		foreach ($allCategory as $i => $value) {
+					        <select id='category' name='category'>
+					        <option> </option>";
+					        foreach ($allCategory as $i => $value) {
 			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
 		    				}
 	                		  
@@ -48,8 +49,9 @@
 				        </div>
 				        <div class='form-row'>
 						    <label>Catégorie:</label>
-					        <select id='category' name='category' required='required'>";	
-	                		foreach ($allCategory as $i => $value) {
+					        <select id='category' name='category'>
+					        <option> </option>";
+					        foreach ($allCategory as $i => $value) {
 			            		echo "<option value='".$allCategory[$i]["id"]."'>".$allCategory[$i]["title"]."</option>";
 		    				}
 	                		  
@@ -78,7 +80,8 @@
 				        </div>
 				        <div class='form-row'>
 						    <label>Catégorie:</label>
-					        <select id='category' name='category' required='required'>";	
+					        <select id='category' name='category'>
+					        <option> </option>";
 	                		foreach ($allCategory as $i => $value) {
 			            		echo "<option value='".$allCategory[$i]["id"]."'";
 			            		if ($allCategory[$i]["title"] == $category->getTitle()) echo "selected = 'selected'";
