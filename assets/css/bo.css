@@ -656,6 +656,20 @@ button {
     position: absolute;
 }
 
+.tags-list {
+    padding: 8px;
+    border: 1px solid #790000;
+    border-radius: 5px;
+    width: 170px;
+    display: block;
+    margin-top: 40px;
+}
+
+.tags-list > .tag:hover {
+    background-color: #790000;
+    color: white;
+;
+}
 
 .form-delete input[type="submit"]{
   margin-right: 8%;
