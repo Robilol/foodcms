@@ -12,6 +12,7 @@
         protected $archived;
         protected $ctime;
         protected $utime;
+        protected $food_category_id;
 
         /**
          * Article constructor.
@@ -24,8 +25,9 @@
          * @param $archived
          * @param $ctime
          * @param $utime
+         * @param $category
          */
-        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $user = null, $archived = 0, $ctime = null, $utime = null)
+        public function __construct($id, $title = null, $text = null, $thumbnail = null, $active = null, $user = null, $category = null, $archived = 0, $ctime = null, $utime = null)
         {
             parent::__construct();
 
@@ -38,6 +40,7 @@
                 $this->thumbnail    = $article['thumbnail'];
                 $this->active       = $article['active'];
                 $this->food_user_id         = $article['food_user_id'];
+                $this->food_category_id         = $article['food_category_id'];
                 $this->archived     = $article['archived'];
                 $this->ctime        = $article['ctime'];
                 $this->utime        = $article['utime'];
@@ -51,6 +54,7 @@
                 $this->archived = $archived;
                 $this->ctime = $ctime;
                 $this->utime = $utime;
+                $this->food_category_id = $category;
             }
         }
 
@@ -71,6 +75,10 @@
             $this->food_user_id = $food_user_id;
         }
 
+        public function setCategory($food_category_id)
+        {
+            $this->food_category_id = $food_category_id;
+        }
         /**
          * @param mixed $id
          */
@@ -109,6 +117,11 @@
         public function getFoodUserId()
         {
             return $this->food_user_id;
+        }
+
+        public function getFoodCategoryId()
+        {
+            return $this->food_category_id;
         }
 
         /**

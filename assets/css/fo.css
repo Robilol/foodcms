@@ -369,3 +369,20 @@ min-height: 50px;
   width: 5%;
   float: right;
 }
+.categoryDiv{
+  padding: 1%;
+  margin: 1% 1%;
+  border: solid  #BDBDBD 1px;
+  border-radius: 5px;
+  background-color: #EEEEEE;
+  float: left;
+  display: block;
+  width: 20%;
+
+  padding-bottom: 20px;
+}
+
+.categoryDiv a{
+  color: #790000;
+  text-decoration: none;
+ }
