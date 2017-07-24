@@ -107,6 +107,37 @@
             return $query->fetchAll();
         }
 
+        public function getAllComment($limit = 0, $orderBy = "", $active = "",$archived=0,$id = "", $returnQuery = false){
+            $sql = "SELECT * FROM ".DB_PREFIXE.$this->table;
+
+            if ($active === 0  || $active === 1 ) {
+              $sql .=" WHERE active=".$active." AND archived=".$archived;
+            }else {
+              $sql .=" WHERE archived=".$archived;
+            }
+
+            if($id != ""){
+              $sql .=" AND article_id=".$id;
+            }
+            if ($orderBy != "") {
+                reset($this->columns);
+                $columnToOrder = key($this->columns);
+                $sql .= " ORDER BY ".$columnToOrder." ".$orderBy;
+            }
+            if ($limit > 0) {
+                $sql .= " LIMIT 0, ".$limit;
+            }
+
+            $query = $this->db->prepare($sql);
+            $query->execute();
+
+            if($returnQuery){
+                return $query;
+            }
+
+            return $query->fetchAll();
+        }
+
         public function resetAll() {
             $sql = "UPDATE ".DB_PREFIXE.$this->table." SET active = 0";
             $query = $this->db->prepare($sql);
