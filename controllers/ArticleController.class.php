@@ -19,10 +19,14 @@ class ArticleController {
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[2];
+        $comment = new Comment(-1);
+        $allComment = $comment->getAllComment(0, "DESC", 1, 0,$id);
+        $v->assign("allComment", $allComment);
         $thisArticle = $article->getOneBy(["id" => $id]);
           $user = new User(-1);
           $userId = $thisArticle['food_user_id'];
           $thisUser = $user->getOneBy(["id" => $userId]);
+
           $v->assign("thisArticle", $thisArticle);
         $v->assign("thisUser", $thisUser);
     }

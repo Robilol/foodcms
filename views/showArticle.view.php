@@ -19,4 +19,16 @@
       <input type="submit" value="Ajouter un commentaire" id="addComment">
     </form>
   </div>
+  <div class="commentArea">
+    <?php foreach ($this->data["allComment"] as $comment):
+      $user = new User($comment['food_user_id']);
+      ?>
+      <div class="articleDiv">
+        <div>
+          <p><?php echo $comment['text']; ?></p><br>
+          <p style="font-style: italic;"><?php echo "Posté par ".$user->getUsername()." le ".$comment['utime']; ?></p>
+    </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
 </section>
