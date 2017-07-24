@@ -7,8 +7,9 @@ class Page extends BaseSql{
  protected $active;
  protected $category_id;
  protected $archived;
+ protected $text;
 
-    public function __construct($id, $title = null, $category_id = null, $active=null)
+    public function __construct($id, $title = null, $text = null, $active=null, $category_id = null)
      {
          parent::__construct();
 
@@ -17,18 +18,36 @@ class Page extends BaseSql{
 
            $this->id                = $page['id'];
            $this->title             = $page['title'];
+           $this->text              =$page['text']; 
            $this->category_id          = $page['category_id'];
            $this->active          = $page['active'];  
            $this->archived          = $page['archived'];
          } else {
            $this->id                = $id;
            $this->title             = $title;
+           $this->text              = $text;
            $this->category_id          = $category_id;
            $this->active          = $active;  
            $this->archived          = 0;
          }
      }
 
+    /**
+     * @param mixed $active
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+    
     /**
      * @param mixed $active
      */
@@ -123,10 +142,6 @@ class Page extends BaseSql{
                 [
                     "fieldset"=> "",
                     "elements"=>[
-                        // "id"=>[
-                        //     "id"            =>"id",
-                        //     "type"          =>"hidden"
-                        // ],
                         "title"=>[
                             "id"            =>"title",
                             "label"         =>"Titre :",
@@ -134,17 +149,14 @@ class Page extends BaseSql{
                             "placeholder"   =>"Le titre: ",
                             "required"      =>true
                         ],
-                        "category"=>[
-                            "id"            =>"category",
-                            "label"         =>"Catégorie :",
-                            "type"          =>"select",
-                            "option"        => [ "category1" => "Categorie1",
-                                                "category2"=>"Categorie2",
-                                                "category3"=>"Categorie3",
-                                                "category4"=>"Categorie4",
-                                                "category5"=>"Categorie5"
-                            ],
-                            "required"      =>true
+                        "text"=>[
+                            "id"            =>"text",
+                            "label"         =>"Contenu :",
+                            "type"          =>"textarea",
+                            "placeholder"   =>"Votre contenu",
+                            "required"      =>true,
+                            "readonly"      =>false,
+                            "text"          =>""
                         ],
                          "active"=>[
                             "id"            =>"active",
@@ -160,13 +172,6 @@ class Page extends BaseSql{
     }
 
     static function getPageEditForm($thisPage){
-        $category = new Category(-1);
-        $allCategory = $category->getAll();
-        $select = NULL;
-        foreach ($allCategory as $i => $value) {
-            $select .= $allCategory[$i]["title"]." => ".$allCategory[$i]["title"].",<br>";
-        }
-
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -187,14 +192,15 @@ class Page extends BaseSql{
                             "value"         =>$thisPage['title'],
                             "required"      =>true
                         ],
-                        "category"=>[
-                            "id"            =>"category",
-                            "label"         =>"Catégorie :",
-                            "type"          =>"select",
-                            "option"        => [
-                                                $select
-                            ],
-                            "required"      =>true
+                        "text"=>[
+                            "id"            =>"text",
+                            "label"         =>"Contenu :",
+                            "type"          =>"textarea",
+                            "placeholder"   =>$thisPage['text'],
+                            "value"         =>$thisPage['text'],
+                            "required"      =>true,
+                            "readonly"      =>false,
+                            "text"          =>$thisPage['text']
                         ],
                         "active"=>[
                             "id"            =>"active",
