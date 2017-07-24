@@ -3,8 +3,8 @@
 </header>
 <section id="contentMedia">
   <form id="gallery" enctype="multipart/form-data" method="post" action="/admin/media/create">
-    <label>Nom de l'image : </label><input type="text" name="name">
-    <input type="file" name="media">
+    <label>Nom de l'image : </label><input type="text" name="name" required="required">
+    <input type="file" name="media" required="required">
     <input type="submit" value="Ajouter" id="addImage">
   </form>
   <div id="gallery">
