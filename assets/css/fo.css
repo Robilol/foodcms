@@ -315,6 +315,7 @@ filter:blur(3px);
   display: block;
   width: 75%;
 
+  padding-bottom: 20px;
 }
 .info-article{
   padding: 1% 1% 0% 1%;
@@ -343,4 +344,6 @@ min-height: 50px;
   display: block;
   width: 95%;
   margin-bottom: 80px;
+
+  padding-bottom: 20px;
 }
