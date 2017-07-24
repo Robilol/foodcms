@@ -35,6 +35,8 @@ class BackController{
       $commentVariables = array('comment1' => 0, 'comment2' => 0, 'comment3' => 0, 'comment4' => 0, 'comment5' => 0, 'commentTotal' => 0);
       foreach ($allComment as $i => $value) {
         $commentMonthExploded = explode("-", $allComment[$i]['utime']);
+        if (!isset($commentMonthExploded[1]))
+          $commentMonthExploded = explode("-", $allComment[$i]['ctime']);
         $commentMonth = intval($commentMonthExploded[1]);
         if ($commentMonth == $articleMonthFirst)
           $commentVariables['comment1']++;
