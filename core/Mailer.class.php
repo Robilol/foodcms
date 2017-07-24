@@ -7,6 +7,7 @@ class Mailer
     private $object;
     private $template;
     private $data;
+    private $headers;
 
     /**
      * Mailer constructor.
@@ -20,6 +21,7 @@ class Mailer
         $this->to = $to;
         $this->object = $object;
         $this->setTemplate($template);
+        $this->headers = "From \"FoodCMS\"<foodcms@foodcms.fr>\r\nMIME-Version:1.0\r\nContent-Type: text/html; charset=utf-8\r\nContent-Transfer-Encoding: 8bit\r\n";
 
         if (!is_null($data)) {
             $this->data = $data;
@@ -99,7 +101,7 @@ class Mailer
     }
 
     public function send() {
-        mail($this->to, $this->object, $this->template);
+        mail($this->to, $this->object, $this->template, $this->headers);
     }
 
 

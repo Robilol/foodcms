@@ -6,59 +6,7 @@
 	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	
-	<?php
-		$article = new Article(-1);
-		$allArticle = $article->getAll(0, "DESC");
-		$article1 = 0;
-		$article2 = 0;
-		$article3 = 0;
-		$article4 = 0;
-		$article5 = 0;
-		$articleTotal = 0;
-		foreach ($allArticle as $i => $value) {
-			$articleMonthExploded = explode("-", $allArticle[$i]['utime']);
-			if ($i == 0)
-				$articleMonthFirst = intval($articleMonthExploded[1]);
-			$articleMonth = intval($articleMonthExploded[1]);
-			if ($articleMonth == $articleMonthFirst)
-				$article1++;
-			if ($articleMonth == $articleMonthFirst - 1)
-				$article2++;
-			if ($articleMonth == $articleMonthFirst - 2)
-				$article3++;
-			if ($articleMonth == $articleMonthFirst - 3)
-				$article4++;
-			if ($articleMonth == $articleMonthFirst - 4)
-				$article5++;
-			$articleTotal++;
-		}
-
-		$comment = new Comment(-1);
-		$allComment = $comment->getAll(0, "DESC");
-		$comment1 = 0;
-		$comment2 = 0;
-		$comment3 = 0;
-		$comment4 = 0;
-		$comment5 = 0;
-		$commentTotal = 0;
-		foreach ($allComment as $i => $value) {
-			$commentMonthExploded = explode("-", $allComment[$i]['utime']);
-			$commentMonth = intval($commentMonthExploded[1]);
-			if ($commentMonth == $articleMonthFirst)
-				$comment1++;
-			if ($commentMonth == $articleMonthFirst - 1)
-				$comment2++;
-			if ($commentMonth == $articleMonthFirst - 2)
-				$comment3++;
-			if ($commentMonth == $articleMonthFirst - 3)
-				$comment4++;
-			if ($commentMonth == $articleMonthFirst - 4)
-				$comment5++;
-			$commentTotal++;
-		}
-		 
-        
-		?>
+	
 	<script>
 	var chart = AmCharts.makeChart("chartdiv", {
     "theme": "light",
@@ -66,28 +14,28 @@
     "dataProvider": [{
     	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 4);?>
         "mois": " <?php echo $dateArticle->format('F'); ?>",
-        "articles": <?php echo $article5 ?>,
-        "commentaires": <?php echo $comment5 ?>
+        "articles": <?php echo $articleVariables['article5'] ?>,
+        "commentaires": <?php echo $commentVariables['comment5'] ?>
     }, {
     	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 3);?>
         "mois": " <?php echo $dateArticle->format('F'); ?>",
-        "articles": <?php echo $article4 ?>,
-        "commentaires": <?php echo $comment4 ?>
+        "articles": <?php echo $articleVariables['article4'] ?>,
+        "commentaires": <?php echo $commentVariables['comment4'] ?>
     }, {
     	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 2);?>
         "mois": " <?php echo $dateArticle->format('F'); ?>",
-        "articles": <?php echo $article3 ?>,
-        "commentaires": <?php echo $comment3 ?>
+        "articles": <?php echo $articleVariables['article3'] ?>,
+        "commentaires": <?php echo $commentVariables['comment3'] ?>
     }, {
     	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst - 1);?>
         "mois": " <?php echo $dateArticle->format('F'); ?>",
-        "articles": <?php echo $article2 ?>,
-        "commentaires": <?php echo $comment2 ?>
+        "articles": <?php echo $articleVariables['article2'] ?>,
+        "commentaires": <?php echo $commentVariables['comment2'] ?>
     }, {
     	<?php $dateArticle = DateTime::createFromFormat('!m', $articleMonthFirst);?>
         "mois": " <?php echo $dateArticle->format('F'); ?>",
-        "articles": <?php echo $article1 ?>,
-        "commentaires": <?php echo $comment1 ?>
+        "articles": <?php echo $articleVariables['article1'] ?>,
+        "commentaires": <?php echo $commentVariables['comment1'] ?>
     }],
     "valueAxes": [{
         "unit": "",
@@ -129,7 +77,7 @@
 
 	<section id="section-haut">
 		<h3>Statistique</h3>
-		<p>Nombre total d'article:<?php echo $articleTotal ?> - Nombre total de commentaires:<?php echo $commentTotal ?></p>
+		<p>Nombre total d'articles:<?php echo $articleVariables['articleTotal'] ?> - Nombre total de commentaires:<?php echo $commentVariables['commentTotal'] ?></p>
 		<div id="chartdiv"></div>
 	</section>
   <section id="menu-verticale">
