@@ -12,6 +12,8 @@ class BackController{
       $articleVariables = array('article1' => 0, 'article2' => 0, 'article3' => 0, 'article4' => 0, 'article5' => 0, 'articleTotal' => 0);
       foreach ($allArticle as $i => $value) {
         $articleMonthExploded = explode("-", $allArticle[$i]['utime']);
+        if (!isset($articleMonthExploded[1]))
+          $articleMonthExploded = explode("-", $allArticle[$i]['ctime']);
         if ($i == 0)
           $articleMonthFirst = intval($articleMonthExploded[1]);
         $articleMonth = intval($articleMonthExploded[1]);
@@ -52,7 +54,7 @@ class BackController{
       $v->assign("articleMonthFirst", $articleMonthFirst);
 
       $article2 = new Article(-1);
-      $lastArticles = $article2->getAll(3, "DESC");
+      $lastArticles = $article2->getAll(3, "DESC", 1);
       $v->assign("lastArticles", $lastArticles);
 
       $comment2 = new Comment(-1);

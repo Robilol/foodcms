@@ -239,7 +239,7 @@
                             "label"         =>"Image :",
                             "type"          =>"file",
                             "placeholder"   =>"Votre image",
-                            "required"      =>false
+                            "required"      =>true
                         ],
                         "text"=>[
                             "id"            =>"text",

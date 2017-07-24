@@ -9,6 +9,8 @@ class ArchiveController
       $v = new View("admin/archive","backend");
     }
     public function userArchiveAction(){
+        if ($_SESSION['role'] != 1)
+            header('Location: /admin');
         $v = new View("admin/userArchive","backend");
         $user = new User(-1);
         $allUsers = $user->getAll(0,"DESC","",1);
@@ -40,6 +42,8 @@ class ArchiveController
       $v->assign("allTag", $allTag);
     }
     public function menuArchiveAction(){
+      if ($_SESSION['role'] != 1)
+            header('Location: /admin');
       $v = new View("admin/menuArchive","backend");
       $menu = new Menu(-1);
       $allMenu = $menu->getAll(0,"DESC","",1);
