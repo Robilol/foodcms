@@ -26,6 +26,14 @@ class ArticleController {
           $v->assign("thisArticle", $thisArticle);
         $v->assign("thisUser", $thisUser);
     }
+    public function createCommentAction() {
+        $data = $_POST;
 
+
+        $comment = new Comment(-1, $data['comment'],0,0, $_SESSION['id'], $data['id']);
+        $comment->save();
+
+        header("Location: /article/show/".$data['id']);
+    }
 
 }
