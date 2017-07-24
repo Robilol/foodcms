@@ -23,9 +23,13 @@
     <footer>
         <div id="footer">
             <ul id="liens_footer">
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Plan du site</a></li>
+                <?php
+                    $page = new Page(-1);
+                    $allPage = $page->getAll(0, "DESC", 1);
+                    foreach ($allPage as $i => $value) {
+                         echo "<li><a href='/page/show/".$allPage[$i]['id']."''>".$allPage[$i]['title']."</a></li>";
+                     } 
+                ?>
             </ul>
         </div>
     </footer>

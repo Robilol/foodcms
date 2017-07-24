@@ -3,6 +3,17 @@
 class PageController
 {
     public function showAction() {
-        
+        $v = new View("page","frontend");
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[2];
+        $page = new Page($id);
+        $title = $page->getTitle();
+        $text = $page->getText();
+        $v->assign("title", $title);
+        $v->assign("text", $text);
+
     }
 }
