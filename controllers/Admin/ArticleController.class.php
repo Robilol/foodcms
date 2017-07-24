@@ -97,17 +97,41 @@ class ArticleController {
       $article = new Article(-1, $data['title'], $data['text'], $nameAvatar, $data['active'], 2);
       $article->save();
       header('Location: /admin/article');
-}else{
-  echo "Erreur d'upload d'image";
-}
+    }else{
+      echo "Erreur d'upload d'image";
+    }
       exit();
     }
     public function getTagsAction()
     {
+        $text = $_POST['text'];
+        $text = array_filter($text, function($value) { return $value !== ''; });
+
+        $words = [];
+
+        foreach ($text as $line) {
+            $wordsLine = explode(' ', $line);
+
+            foreach ($wordsLine as $word) {
+                $word = preg_replace("/(\w{4,})s/u","$1",$word);
+                $words[] = strtolower($word);
+            }
+        }
+
         $tag = new Tag(-1);
         $tags_array = $tag->getAll();
 
-        echo json_encode($tags_array);
+        $arrayTagsInText = [];
+
+        foreach ($tags_array as $key => $tag) {
+            if (in_array($tag['name'], $words)) {
+                $arrayTagsInText[] = ["id" => $tag['id'],
+                                    "name" => $tag['name']
+                                    ];
+            }
+        }
+
+        echo json_encode($arrayTagsInText);
     }
 
 }

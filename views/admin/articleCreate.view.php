@@ -3,7 +3,7 @@
 </header>
 <section id="content">
     <?php $this->includeModal("form", Article::getArticleCreationForm()); ?>
-    <button onclick="generateTags()">Générer les ingrédients</button>
+    <button style="position: relative; margin: 0;" onclick="generateTags()">Générer les ingrédients</button>
     <div class="tags-list">
 
     </div>
@@ -11,26 +11,44 @@
 
 <script>
 
-    function generateTags() {
-        var tags_array = [];
+    function strip_tags(html) {
+        if (arguments.length < 3) {
+            html = html.replace(/<\/?(?!\!)[^>]*>/gi, '');
+        } else {
+            var allowed = arguments[1];
+            var specified = eval("[" + arguments[2] + "]");
+            if (allowed) {
+                var regex = '</?(?!(' + specified.join('|') + '))\b[^>]*>';
+                html = html.replace(new RegExp(regex, 'gi'), '');
+            } else {
+                var regex = '</?(' + specified.join('|') + ')\b[^>]*>';
+                html = html.replace(new RegExp(regex, 'gi'), '');
+            }
+        }
 
-        console.log("bla");
+        html = html.replace(/\&nbsp;/g, '');
+
+        return html;
+    }
+
+    function generateTags() {
+        var text = strip_tags(CKEDITOR.instances.text.getData()).split("\n");
 
         $.ajax({
             url: "/admin/article/getTags",
+            type: 'POST',
+            data: { text : text },
             dataType: "JSON",
             success: function (json) {
-                console.log(json);
+                $('.tags-list').html('');
                 for(var i=0;i<json.length;i++){
-                    tags_array.push(json[i]);
-                    $(".tags-list").append("<div class='tag' data-id='"+json[i].id+"'>"+json[i].name+"</div>")
+                    $(".tags-list").append("<div class='tag' data-id='"+json[i].id+"'>"+json[i].name+"</div>");
                 }
             }
-    });
-
+        });
     }
 
-    CKEDITOR.replace( 'text' );
+    CKEDITOR.replace('text');
 
     $(document).ready(function(){
 

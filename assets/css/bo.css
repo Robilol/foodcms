@@ -629,8 +629,6 @@ button {
     border-radius: 5px;
     width: 170px;
     display: block;
-    margin: auto;
-    position: absolute;
     margin-top: 40px;
 }
 
