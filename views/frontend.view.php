@@ -11,7 +11,7 @@
 <body>
 <div id="main">
     <ul id="navigation">
-        <a href="/index"><img id="logo" src="/assets/img/logo.png"></a>
+        <a href="/"><img id="logo" src="/assets/img/logo.png"></a>
         <div id="liens" style="float:right">
             <?php $menu = new Menu(-1); $menu->getMenuHTML(); ?>
         </div>
