@@ -36,10 +36,11 @@ class IndexController
 
       $actions = new Article(-1);
       $actions = $actions->getAll(0,"DESC",1,0);
-
       foreach($actions as $action){
+        $user = new User($action['food_user_id']);
           $feed .= '<item>';
           $feed .= '<title>'.$action['title'].'</title>';
+          $feed .= '<author>Posté par '.$user->getUsername().'</author>';
           $feed .= '<description>'.strip_tags(substr($action['text'],0,140)).'</description>';
           $feed .= '<link>http://foodcms.robin-regis.com/article/show/'.$action['id'].'</link>';
           $feed .= '<pubDate>Date de publication : '.$action['ctime'].'</pubDate>';
