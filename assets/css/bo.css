@@ -148,8 +148,11 @@ tr:nth-child(even) {
   display: block;
   color: #000;
   padding: 30px 16px;
-  margin-top: 15px;
   text-decoration: none;
+}
+
+#navigationBE li:first-child a {
+  margin-top: 15px;
 }
 
 #navigationBE li a:hover {
@@ -353,16 +356,21 @@ div.desc {
 }
 
 input.submit {
-  margin-top: 15px;
-  width:100px;
-  margin-left:5px;
-  box-shadow:1px 1px 1px #790000;
   cursor:pointer;
   display: block;
   margin: auto;
   position: absolute;
   bottom: 50px;
   right: 20%;
+
+  padding:6px 0 6px 0;
+  font:bold 13px Arial;
+  background:#f5f5f5;
+  color:#555;
+  border-radius:2px;
+  width:100px;
+  border:1px solid #ccc;
+  box-shadow:1px 1px 3px #999;
 }
 
 .alert {
@@ -723,4 +731,15 @@ fieldset legend {
 button.submit {
     height: 50px;
     position: relative;
+}
+
+button {
+  padding:6px 0 6px 0;
+  font:bold 13px Arial;
+  background:#f5f5f5;
+  color:#555;
+  border-radius:2px;
+  width:100px;
+  border:1px solid #ccc;
+  box-shadow:1px 1px 3px #999;
 }
