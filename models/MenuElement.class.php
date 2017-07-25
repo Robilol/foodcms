@@ -19,8 +19,8 @@ class MenuElement extends BaseSql{
             $this->archived         = $menuElement['archived'];
         } else {
             $this->id               = $id;
-            $this->name             = $this->setName($name);
-            $this->redirection      = $this->setRedirection($redirection);
+            $this->setName($name);
+            $this->setRedirection($redirection);
             $this->archived         = 0;
         }
     }

@@ -31,8 +31,8 @@ class Media extends BaseSql{
              $this->food_tag_id   = $media['food_tag_id'];
          } else {
              $this->id           = $id;
-             $this->title        = $this->setTitle($title);
-             $this->link        = $this->setLink($link);
+             $this->setTitle($title);
+             $this->setLink($link);
              $this->archived    = $archived;
              $this->active    = $active;
              $this->ctime        = $ctime;

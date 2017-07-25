@@ -28,7 +28,7 @@
                 $this->utime        = $comment['utime'];
             } else {
                 $this->id           = $id;
-                $this->text        = $this->setText($text);
+                $this->setText($text);
                 $this->active         = $active;
                 $this->archived    = $archived;
                 $this->food_user_id       = $user;

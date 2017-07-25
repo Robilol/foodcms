@@ -19,7 +19,7 @@ class Menu extends BaseSql{
            $this->archived          = $menu['archived'];
          } else {
            $this->id                = $id;
-           $this->name             = $this->setName($name);
+           $this->setName($name);
            $this->active          = $active;
            $this->archived          = 0;
          }

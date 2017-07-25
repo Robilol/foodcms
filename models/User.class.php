@@ -44,11 +44,11 @@
 
             } else {
                 $this->id           = $id;
-                $this->email        = $this->setEmail($email);
+                $this->setEmail($email);
                 $this->password     = $password;
-                $this->username     = $this->setUsername($username);
-                $this->firstname    = $this->setFirstname($firstname);
-                $this->lastname     = $this->setLastname($lastname);
+                $this->setUsername($username);
+                $this->setFirstname($firstname);
+                $this->setLastname($lastname);
                 $this->token        = uniqid('token', true);
                 $this->status       = 0;
                 $this->active       = 1;
