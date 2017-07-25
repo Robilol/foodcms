@@ -22,7 +22,38 @@ class IndexController
             }
         }
     }
+    public function feedAction($params) {
+      $v = new View("feed","flux");
 
+      $feed  = '<?xml version="1.0" encoding="utf-8"?>';
+      $feed .= '<?xml-stylesheet type="text/css" href="/assets/css/style_rss.css" ?>';
+      $feed .= '<rss version="2.0"><chanel>';
+      $feed .= '<title>Feed of  FoodCMS</title>';
+      $feed .= '<link>http://foodcms.robin-regis.com/</link>';
+      $feed .= '<description></description>';
+      $feed .= '<lastBuildDate>'.date('l jS \of F Y h:i:s A').'</lastBuildDate>';
+      $feed .= '<language>fr-fr</language>';
+
+      $actions = new Article(-1);
+      $actions = $actions->getAll(0,"DESC",1,0);
+
+      foreach($actions as $action){
+          $feed .= '<item>';
+          $feed .= '<title>'.$action['title'].'</title>';
+          $feed .= '<description>'.substr($action['text'],0,140).'</description>';
+          $feed .= '<link>http://foodcms.robin-regis.com/article/show/'.$action['id'].'</link>';
+          $feed .= '<pubDate>Date de publication : '.$action['ctime'].'</pubDate>';
+          $feed .= '</item>';
+      }
+
+      $feed .= '</chanel></rss>';
+      header('Content-Type: text/xml');
+         	header('Expires: '.date('D, d M Y H:i:s').' GMT');
+         	header('Pragma: public');
+
+      echo $feed;
+
+    }
     public function registerAction($params) {
         $v = new View("register");
     }
