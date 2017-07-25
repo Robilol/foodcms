@@ -15,7 +15,7 @@ class Menu extends BaseSql{
 
            $this->id                = $menu['id'];
            $this->name             = $menu['name'];
-           $this->active          = $menu['active'];  
+           $this->active          = $menu['active'];
            $this->archived          = $menu['archived'];
          } else {
            $this->id                = $id;
@@ -254,7 +254,7 @@ class Menu extends BaseSql{
         foreach ($menuElements as $menuElement) {
             if ($menuElement->getRedirection() == "index/login") {
                 if (!empty($_SESSION['id'])) {
-                    $html .= "<li><a><i class='fa fa-user' aria-hidden='true' style='margin-right: 5px;'></i>".$_SESSION['username']."</a></li>";
+                    $html .= "<li><a href='/user/show/".$_SESSION['id']."'><i class='fa fa-user' aria-hidden='true' style='margin-right: 5px;'></i>".$_SESSION['username']."</a></li>";
                 } else {
                     $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
                 }
