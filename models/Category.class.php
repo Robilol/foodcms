@@ -22,19 +22,19 @@ class Category extends BaseSql{
            $this->id                = $category['id'];
            $this->title             = $category['title'];
            $this->active            = $category['active'];
-           $this->category_id   = $category['category_id'];
+           $this->category_id       = $category['category_id'];
            $this->archived          = $category['archived'];
          } else {
            $this->id                = $id;
-           $this->title             = $title;
+           $this->title             = $this->setTitle($title);
            $this->active            = $active;
-           $this->category_id   = $category_id;
+           $this->category_id       = $category_id;
            $this->archived          = 0;
          }
      }
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = Tools::antiXSS($title);
     }
 
     /**

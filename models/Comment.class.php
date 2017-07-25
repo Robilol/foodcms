@@ -28,7 +28,7 @@
                 $this->utime        = $comment['utime'];
             } else {
                 $this->id           = $id;
-                $this->text        = $text;
+                $this->text        = $this->setText($text);
                 $this->active         = $active;
                 $this->archived    = $archived;
                 $this->food_user_id       = $user;
@@ -75,7 +75,7 @@
         }
         public function setText($text)
         {
-            $this->text = $text;
+            $this->text = Tools::antiXSS($text);
         }
 
         public function setActive($active)

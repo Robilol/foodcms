@@ -19,8 +19,8 @@ class MenuElement extends BaseSql{
             $this->archived         = $menuElement['archived'];
         } else {
             $this->id               = $id;
-            $this->name             = $name;
-            $this->redirection      = $redirection;
+            $this->name             = $this->setName($name);
+            $this->redirection      = $this->setRedirection($redirection);
             $this->archived         = 0;
         }
     }
@@ -70,7 +70,7 @@ class MenuElement extends BaseSql{
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = Tools::antiXSS($name);
     }
 
     /**
@@ -86,7 +86,7 @@ class MenuElement extends BaseSql{
      */
     public function setRedirection($redirection)
     {
-        $this->redirection = $redirection;
+        $this->redirection = Tools::antiXSS($redirection);
     }
 
 

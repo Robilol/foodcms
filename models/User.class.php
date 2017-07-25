@@ -39,21 +39,21 @@
                 $this->token        = $user['token'];
                 $this->status       = $user['status'];
                 $this->active       = $user['active'];
-                $this->archived       = $user['archived'];
-                $this->role_id       = $user['role_id'];
+                $this->archived     = $user['archived'];
+                $this->role_id      = $user['role_id'];
 
             } else {
                 $this->id           = $id;
-                $this->email        = $email;
+                $this->email        = $this->setEmail($email);
                 $this->password     = $password;
-                $this->username     = $username;
-                $this->firstname    = $firstname;
-                $this->lastname     = $lastname;
+                $this->username     = $this->setUsername($username);
+                $this->firstname    = $this->setFirstname($firstname);
+                $this->lastname     = $this->setLastname($lastname);
                 $this->token        = uniqid('token', true);
                 $this->status       = 0;
                 $this->active       = 1;
-                $this->archived       = 0;
-                $this->role_id       = $role_id;
+                $this->archived     = 0;
+                $this->role_id      = $role_id;
             }
         }
 
@@ -66,7 +66,7 @@
         }
 
         public function setEmail($email) {
-            $this->email = trim($email);
+            $this->email = Tools::antiXSS(trim($email));
         }
 
         public function getEmail() {
@@ -74,7 +74,11 @@
         }
 
         public function setPassword($pwd) {
-            $this->password = password_hash($pwd, PASSWORD_BCRYPT);
+            $this->password = $this->cryptPassword(Tools::antiXSS($pwd));
+        }
+
+        public function cryptPassword($pwd) {
+            password_hash($pwd, PASSWORD_BCRYPT);
         }
 
         public function getPassword() {
@@ -82,7 +86,7 @@
         }
 
         public function setUsername($username) {
-            $this->username = $username;
+            $this->username = Tools::antiXSS($username);
         }
 
         public function getUsername() {
@@ -95,7 +99,9 @@
 
         public function getActive() {
             return $this->active;
-        }public function setArchived($archived) {
+        }
+
+        public function setArchived($archived) {
             $this->archived = $archived;
         }
 
@@ -103,7 +109,7 @@
             return $this->archived;
         }
         public function setFirstname($firstname) {
-            $this->firstname = $firstname;
+            $this->firstname = Tools::antiXSS($firstname);
         }
 
         public function getFirstname() {
@@ -111,7 +117,7 @@
         }
 
         public function setLastname($lastname) {
-            $this->lastname = $lastname;
+            $this->lastname = Tools::antiXSS($lastname);
         }
 
         public function getLastname() {

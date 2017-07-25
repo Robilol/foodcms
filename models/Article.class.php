@@ -46,9 +46,9 @@
                 $this->utime        = $article['utime'];
             } else {
                 $this->id = $id;
-                $this->title = $title;
-                $this->text = $text;
-                $this->thumbnail = $thumbnail;
+                $this->title = $this->setTitle($title);
+                $this->text = $this->setText($text);
+                $this->thumbnail = $this->setThumbnail($thumbnail);
                 $this->active = $active;
                 $this->food_user_id = $user;
                 $this->archived = $archived;
@@ -63,7 +63,7 @@
          */
         public function setText($text)
         {
-            $this->text = $text;
+            $this->text = Tools::antiXSS($text);
         }
 
         /**
@@ -169,7 +169,7 @@
          */
         public function setThumbnail($thumbnail)
         {
-            $this->thumbnail = $thumbnail;
+            $this->thumbnail = Tools::antiXSS($thumbnail);
         }
 
         /**
@@ -177,7 +177,7 @@
          */
         public function setTitle($title)
         {
-            $this->title = $title;
+            $this->title = Tools::antiXSS($title);
         }
 
 

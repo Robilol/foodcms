@@ -19,7 +19,7 @@ class Menu extends BaseSql{
            $this->archived          = $menu['archived'];
          } else {
            $this->id                = $id;
-           $this->name             = $name;
+           $this->name             = $this->setName($name);
            $this->active          = $active;
            $this->archived          = 0;
          }
@@ -30,7 +30,7 @@ class Menu extends BaseSql{
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = Tools::antiXSS($name);
     }
 
     /**
