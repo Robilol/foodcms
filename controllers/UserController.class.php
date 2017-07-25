@@ -46,7 +46,21 @@ class UserController {
             exit();
         }
     }
-
+		public function showAction(){
+				$v = new View("showUser","frontend");
+				$user = new User(-1);
+				$uri = $_SERVER['REQUEST_URI'];
+				$this->uri = trim($uri, "/");
+				$this->uriExploded = explode("/", $this->uri);
+				$link = $this->uriExploded;
+				$id = $link[2];
+				if($id == $_SESSION['id']){
+				$thisUser = $user->getOneBy(["id" => $id]);
+				$v->assign("thisUser", $thisUser);
+			}else{
+				header('Location: /index');
+			}
+		}
 	public function registerAction($params) {
         $data = $_POST;
 
@@ -70,14 +84,29 @@ class UserController {
         exit();
 	}
 	public function editAction() {
-
+		$data = $_POST;
+		$uri = $_SERVER['REQUEST_URI'];
+		$this->uri = trim($uri, "/");
+		$this->uriExploded = explode("/", $this->uri);
+		$link = $this->uriExploded;
+		$id = $link[2];
+		$user = new User($id);
+		$user->setUsername($data['username']);
+		$user->setFirstname($data['firstname']);
+		$user->setLastname($data['lastname']);
+		$user->setEmail($data['email']);
+		if ($data['pwd'] != "")
+				$user->setPassword($data['pwd']);
+		$user->setRoleId($_SESSION['role']);
+		$user->setArchived(0);
+		$user->setActive(1);
+		$user->save();
+		header('Location: /user/show/'.$id);
 	}
 	public function resetAction() {
 
 	}
-	public function showAction() {
 
-	}
 
 	public function validateRegistrationAction($params) {
         $token = $params[0];
