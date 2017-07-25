@@ -40,13 +40,12 @@ class SearchController
 
         $sql = "SELECT DISTINCT(a.id)
                       FROM ".DB_PREFIXE."article a
-                      LEFT JOIN ".DB_PREFIXE."article_category ac ON a.id = ac.article_id
                       LEFT JOIN ".DB_PREFIXE."tag_article ta ON a.id = ta.article_id
                       WHERE
                       a.title LIKE '%".$name."%'";
 
         if (!empty($data["categorySelect"])) {
-            $sql .= " AND ac.category_id IN (";
+            $sql .= " AND food_category_id IN (";
             foreach ($data["categorySelect"] as $id) {
                 $sql .= $id;
                 $sql .= ",";
@@ -71,6 +70,7 @@ class SearchController
         a.active = 1
         AND
         a.archived = 0";
+
 
         $query = $this->db->prepare($sql);
         $query->execute();

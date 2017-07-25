@@ -27,13 +27,9 @@
                 <?php endforeach; ?>
             </select>
         </div>
-
-
         <div class="form-row">
             <input class="submit" type="submit" name="" value="Rechercher">
         </div>
-
-
     </form>
 </section>
 

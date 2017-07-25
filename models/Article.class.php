@@ -189,7 +189,7 @@
     public function getCtime()
     {
         $date = new DateTime($this->ctime);
-        return $date->format("j M Y G:i");
+        return $date->format("j M Y");
     }
 
     /**

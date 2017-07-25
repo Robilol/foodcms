@@ -4,16 +4,22 @@
 <section id="content">
     <?php if (empty($this->data["articlesArray"])) { $this->includeAlert("danger", "Pas de recettes trouvées"); } ?>
 
-    <?php foreach ($this->data["articlesArray"] as $article):?>
-        <div class="article">
-            <h2 class="titre_article"><?php echo $article->getTitle(); ?></h2>
-            <div class="infos_article">
-                <hr>
-                <p>Posté le : <?php echo $article->getCtime(); ?></p>
-                <hr>
+    <div id="gallery">
+        <?php foreach ($this->data["articlesArray"] as $article):?>
+            <?php  $user = new User($article->getFoodUserId()); ?>
+            <div class="gallery">
+                <a href="/article/show/<?php echo $article->getId(); ?>">
+                    <img src="<?php echo $article->getThumbnail(); ?>" alt="Trolltunga Norway">
+                    <div class="desc">
+                        <h3><?php echo $article->getTitle(); ?></h3>
+                        <p><?php echo substr($article->getText(), 0, 140); ?></p>
+                    </div>
+                    <div class="bottom">
+                        <span>Par <?php echo $user->getUsername(); ?></span>
+                        <span>Le <?php echo $article->getCtime(); ?></span>
+                    </div>
+                </a>
             </div>
-            <img class="image_article" src="<?php echo $article->getThumbnail(); ?>" alt="Image de l'article">
-            <p class="description_article"><?php echo $article->getText(); ?></p>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    </div>
 </section>

@@ -254,7 +254,7 @@ class Menu extends BaseSql{
         foreach ($menuElements as $menuElement) {
             if ($menuElement->getRedirection() == "index/login") {
                 if (!empty($_SESSION['id'])) {
-                    $html .= "<li><span></p>".$_SESSION['username']."</span></li>";
+                    $html .= "<li><a><i class='fa fa-user' aria-hidden='true' style='margin-right: 5px;'></i>".$_SESSION['username']."</a></li>";
                 } else {
                     $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
                 }
