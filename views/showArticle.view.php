@@ -10,6 +10,22 @@
     <p><b>Le : </b> <?php echo $thisArticle['ctime']; ?></p>
   </div>
 
+  <div class="info-article">
+    <p><b>Tags:</b></p>
+    <?php 
+    $ingredients ="";
+    foreach ($tags as $i => $value) {
+      $ingredients .= "$tags[$i], ";
+    }
+    
+    if ($ingredients == "")
+      echo "Pas de tags";
+      else {
+        $ingredients = trim($ingredients);
+        echo trim($ingredients, ',');
+      }
+    ?>
+  </div>
 <?php
 if(isset($_SESSION['id']))
 { ?>

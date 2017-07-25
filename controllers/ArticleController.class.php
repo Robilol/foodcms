@@ -31,6 +31,17 @@ class ArticleController {
           $userId = $thisArticle['food_user_id'];
           $thisUser = $user->getOneBy(["id" => $userId]);
 
+          $tags = [];
+          $tagArticle = new TagArticleAssociation(-1, -1);
+          $allTagArticle = $tagArticle->getTagForArticle($id); 
+          if ($allTagArticle){
+          foreach ($allTagArticle as $value) {
+            $tag = new Tag($value['tag_id']);
+            $name = $tag->getName();
+            $tags[] .= $name;
+          }
+        }
+          $v->assign("tags", $tags);
           $v->assign("thisArticle", $thisArticle);
         $v->assign("thisUser", $thisUser);
     }

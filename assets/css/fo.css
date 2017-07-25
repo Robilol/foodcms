@@ -307,7 +307,7 @@ filter:blur(3px);
 .text-article{
   padding: 1% 1% 0% 1%;
   margin: 1% 1% 0% 1%;
-  min-height: 44%;
+  min-height: 17vh;
   border: solid  #BDBDBD 1px;
   border-radius: 5px;
   background-color: #EEEEEE;
