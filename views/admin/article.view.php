@@ -35,5 +35,7 @@
     }
   }
   ?>
+  <script type="text/javascript">    CKEDITOR.replace('text');
+  </script>
   
 </section>
