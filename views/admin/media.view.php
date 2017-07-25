@@ -3,7 +3,13 @@
 </header>
 <section id="contentMedia">
   <form id="gallery" enctype="multipart/form-data" method="post" action="/admin/media/create">
-    <label>Nom de l'image : </label><input type="text" name="name" required="required">
+    <select id='tag' name='tag'>
+<?php
+      foreach ($this->data["allTag"] as $tag ):
+        ?><option value="<?php echo $tag['id']; ?>" ><?php echo $tag['name']; ?></option>
+      <?php endforeach; ?>
+
+    </select>
     <input type="file" name="media" required="required">
     <input type="submit" value="Ajouter" id="addImage">
   </form>

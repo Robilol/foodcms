@@ -9,12 +9,12 @@ class Media extends BaseSql{
     protected $active;
     protected $ctime;
     protected $utime;
-    protected $article_id;
+    protected $food_tag_id;
 
     /**
      * @param mixed $id
      */
-     public function __construct($id, $title = null, $link = null , $article_id= null, $archived = null, $active = null, $ctime = null, $utime = null)
+     public function __construct($id, $title = null, $link = null ,$food_tag_id = null, $archived = 0, $active = 1, $ctime = null, $utime = null)
      {
          parent::__construct();
 
@@ -28,7 +28,7 @@ class Media extends BaseSql{
              $this->active     = $media['active'];
              $this->ctime        = $media['ctime'];
              $this->utime        = $media['utime'];
-             $this->article_id   = $media['article_id'];
+             $this->food_tag_id   = $media['food_tag_id'];
          } else {
              $this->id           = $id;
              $this->title        = $title;
@@ -37,7 +37,7 @@ class Media extends BaseSql{
              $this->active    = $active;
              $this->ctime        = $ctime;
              $this->utime        = $utime;
-             $this->article_id   = $article_id;
+             $this->food_tag_id   = $food_tag_id;
          }
      }
 
@@ -146,11 +146,11 @@ class Media extends BaseSql{
     {
         $this->utime = $utime;
     }
-    public function setArticleId($article_id) {
-        $this->article_id = $article_id;
+    public function setTagId($food_tag_id) {
+        $this->food_tag_id = $food_tag_id;
     }
 
-    public function getArticleId() {
-        return $this-$article_id;
+    public function getTagId() {
+        return $this->food_tag_id;
     }
 }
