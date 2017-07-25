@@ -50,7 +50,7 @@ class UserController {
 	public function registerAction($params) {
         $data = $_POST;
 
-        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname']);
+        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'],3);
 
         if ($user->getUserByEmail($data['email'])) {
 
