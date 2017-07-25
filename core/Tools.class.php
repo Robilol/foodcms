@@ -7,6 +7,4 @@ class Tools
         $convertedDate = new DateTime($date);
         return $convertedDate->format("j M Y");
     }
-
-
 }

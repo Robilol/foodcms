@@ -40,7 +40,7 @@ class IndexController
       foreach($actions as $action){
           $feed .= '<item>';
           $feed .= '<title>'.$action['title'].'</title>';
-          $feed .= '<description>'.substr($action['text'],0,140).'</description>';
+          $feed .= '<description>'.strip_tags(substr($action['text'],0,140)).'</description>';
           $feed .= '<link>http://foodcms.robin-regis.com/article/show/'.$action['id'].'</link>';
           $feed .= '<pubDate>Date de publication : '.$action['ctime'].'</pubDate>';
           $feed .= '</item>';
