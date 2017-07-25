@@ -10,7 +10,9 @@
     <p><b>Le : </b> <?php echo $thisArticle['ctime']; ?></p>
   </div>
 
-
+<?php
+if(isset($_SESSION['id']))
+{ ?>
   <div class="commentArea">
     <form id="comment" enctype="multipart/form-data" method="post" action="/article/createComment">
       <label>Commentaire : </label>
@@ -19,6 +21,11 @@
       <input type="submit" value="Ajouter un commentaire" id="addComment">
     </form>
   </div>
+  <?php
+}
+$test = count($this->data["allComment"]);
+if($test != 0){
+    ?>
   <div class="commentArea">
     <?php foreach ($this->data["allComment"] as $comment):
       $user = new User($comment['food_user_id']);
@@ -29,6 +36,12 @@
           <p style="font-style: italic;"><?php echo "Posté par ".$user->getUsername()." le ".$comment['utime']; ?></p>
     </div>
     </div>
-    <?php endforeach; ?>
+    <?php endforeach;
+  }else{
+    ?>
+  <div class="commentArea">
+    <p> Il n'y a aucun commentaire pour l'instant </p>
+  </div><?php
+  }?>
   </div>
 </section>
