@@ -16,11 +16,11 @@ class Tag extends BaseSql{
             $tag = parent::getOneBy(["id" => $id]);
 
             $this->id                = $tag['id'];
-            $this->name             = $tag['name'];
+            $this->name              = $this->setName($tag['name']);
             $this->archived          = $tag['archived'];
          } else {
             $this->id                = $id;
-            $this->name             = $name;
+            $this->name              = $this->setName($name);
             $this->archived          = 0;
          }
      }
@@ -67,7 +67,7 @@ class Tag extends BaseSql{
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = Tools::antiXSS($name);
     }
   
     static function getTagForm(){

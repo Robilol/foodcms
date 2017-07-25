@@ -22,8 +22,8 @@ class Media extends BaseSql{
              $media = parent::getOneBy(["id" => $id]);
 
              $this->id           = $media['id'];
-             $this->title        = $media['title'];
-             $this->link        = $media['link'];
+             $this->title        = $this->setTitle($media['title']);
+             $this->link        = $this->setLink($media['link']);
              $this->archived     = $media['archived'];
              $this->active     = $media['active'];
              $this->ctime        = $media['ctime'];
@@ -31,8 +31,8 @@ class Media extends BaseSql{
              $this->food_tag_id   = $media['food_tag_id'];
          } else {
              $this->id           = $id;
-             $this->title        = $title;
-             $this->link        = $link;
+             $this->title        = $this->setTitle($title);
+             $this->link        = $this->setLink($link);
              $this->archived    = $archived;
              $this->active    = $active;
              $this->ctime        = $ctime;
@@ -96,7 +96,7 @@ class Media extends BaseSql{
      */
     public function setLink($link)
     {
-        $this->link = $link;
+        $this->link = Tools::antiXSS($link);
     }
 
     /**
@@ -104,7 +104,7 @@ class Media extends BaseSql{
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = Tools::antiXSS($title);
     }
     public function getCtime()
     {

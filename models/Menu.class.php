@@ -14,12 +14,12 @@ class Menu extends BaseSql{
              $menu = parent::getOneBy(["id" => $id]);
 
            $this->id                = $menu['id'];
-           $this->name             = $menu['name'];
+           $this->name             = $this->setName($menu['name']);
            $this->active          = $menu['active'];  
            $this->archived          = $menu['archived'];
          } else {
            $this->id                = $id;
-           $this->name             = $name;
+           $this->name             = $this->setName($name);
            $this->active          = $active;
            $this->archived          = 0;
          }
@@ -30,7 +30,7 @@ class Menu extends BaseSql{
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = Tools::antiXSS($name);
     }
 
     /**
