@@ -50,6 +50,7 @@ class MenuElementAssociation{
     static function LoadByMenuId($idMenu) {
         try {
             $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
+            $db->exec("SET CHARACTER SET utf8");
         } catch(Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }

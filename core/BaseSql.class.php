@@ -117,4 +117,13 @@
             return $this->db->lastInsertId();
         }
 
+        public function getLastId() {
+            $sql = "SELECT id FROM ".DB_PREFIXE."article ORDER BY id DESC LIMIT 1";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+
+            $f = $query->fetch();
+            return $f['id'];
+        }
+
     }

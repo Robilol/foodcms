@@ -6,7 +6,6 @@ class BackController{
     public function indexAction(){
       $v = new View("admin/index","backend");
 
-
       $article = new Article(-1);
       $allArticle = $article->getAll(0, "DESC");
       $articleVariables = array('article1' => 0, 'article2' => 0, 'article3' => 0, 'article4' => 0, 'article5' => 0, 'articleTotal' => 0);
