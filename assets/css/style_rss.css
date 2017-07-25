@@ -15,6 +15,12 @@ margin: 5px;
 padding: 2px;
 color: gray;
 }
+author{
+display: block;
+margin: 5px;
+padding: 2px;
+color: #790000;
+}
 link {
 display: block;
 font-size: small;
