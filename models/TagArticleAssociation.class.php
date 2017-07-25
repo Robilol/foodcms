@@ -46,7 +46,22 @@ class TagArticleAssociation{
     {
         $this->idArticle = $idArticle;
     }
+    public function getTagForArticle($idArticle)
+    {
+        try {
+            $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
+            $db->exec("SET CHARACTER SET utf8");
+        } catch(Exception $e) {
+            die("Erreur SQL : ".$e->getMessage());
+        }
+        $sql = "SELECT * FROM ".DB_PREFIXE."tag_article WHERE article_id=".$idArticle;
 
+        $query = $db->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    
+    }
     public function Save() {
         try {
             $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
