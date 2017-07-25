@@ -59,9 +59,7 @@
         $(this).remove();
     });
 
-    $('#articleCreationForm').submit(function(ev) {
-        ev.preventDefault();
-
+    $('.submit').click(function () {
         var dataList = $(".tag").map(function() {
             return $(this).data("id");
         }).get();
@@ -77,6 +75,5 @@
                 alert("erreur");
             }
         });
-
     });
 </script>
