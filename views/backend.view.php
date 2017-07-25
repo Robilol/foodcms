@@ -20,6 +20,7 @@ $link = $this->uriExploded;
     <ul id="headerBack">
         <li><a href="/admin"><img id="logo" src="/assets/img/logo.png"></a></li>
         <h1 id="titreBE">Food CMS</h1>
+        <h1 id="lienBE"><a href="/">Voir le site<i class="fa fa-external-link" aria-hidden="true"></i></a></h1>
     </ul>
     <ul id="navigationBE">
 
