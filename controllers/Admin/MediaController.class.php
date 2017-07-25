@@ -7,6 +7,9 @@ public function indexAction(){
         $media = new Media(-1);
         $allMedia = $media->getAll();
         $v->assign("allMedia", $allMedia);
+        $tag = new Tag(-1);
+        $allTag = $tag->getAll();
+        $v->assign("allTag", $allTag);
     }
     public function listAction()
     {
@@ -16,6 +19,9 @@ public function indexAction(){
     public function createAction()
     {
         $data = $_POST;
+        $id=$data['tag'];
+          $tag = new Tag(-1);
+          $thisTag = $tag->getOneBy(["id" => $id]);
         $avatarFileType = ["png", "jpg", "jpeg", "gif"];
     		$avatarLimitSize = 10000000;
         $infoFile = pathinfo($_FILES["media"]["name"]);
@@ -41,7 +47,7 @@ public function indexAction(){
         $avatar1 =$pathUpload1."/".$nameAvatar;
         move_uploaded_file($_FILES["media"]["tmp_name"], $avatar);
 
-        $menu = new Media(-1, $data['name'],$avatar1,2);
+        $menu = new Media(-1, $thisTag['name'],$avatar1,$id);
         $menu->save();
 
         header("Location: /admin/media");
