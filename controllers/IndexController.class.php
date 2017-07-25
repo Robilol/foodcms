@@ -60,7 +60,7 @@ class IndexController
     }
 
     public function loginAction($params) {
-        if (isset($_SESSION[id])) {
+        if (isset($_SESSION['id'])) {
             header("Location: /");
         }
 
