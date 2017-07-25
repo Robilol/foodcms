@@ -60,6 +60,10 @@ class IndexController
     }
 
     public function loginAction($params) {
+        if (isset($_SESSION[id])) {
+            header("Location: /");
+        }
+
         $v = new View("login");
         if (!empty($params)) {
             foreach ($params as $key => $value) {

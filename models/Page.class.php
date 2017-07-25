@@ -22,8 +22,8 @@ class Page extends BaseSql{
            $this->archived          = $page['archived'];
          } else {
            $this->id                = $id;
-           $this->title             = $this->setTitle($title);
-           $this->text              = $this->setText($text);
+           $this->setTitle($title);
+           $this->setText($text);
            $this->active          = $active;  
            $this->archived          = 0;
          }

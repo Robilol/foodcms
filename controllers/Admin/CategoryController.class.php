@@ -32,9 +32,7 @@ class CategoryController {
         $data['active'] = 0;
       else
         $data['active'] = 1;
-      if ($data['category'] == "")
-        $data['category'] = null;   
-      $category = new Category(-1, $data['title'], $data['category'], $data['active']);
+      $category = new Category(-1, $data['title'], $data['active']);
       $category->save();
 
       header("Location: /admin/category");
@@ -51,11 +49,8 @@ class CategoryController {
             $data['active'] = 0;
         else
             $data['active'] = 1;
-        if ($data['category'] == "")
-            $data['category'] = null; 
         $category = new Category($id);
         $category->setTitle($data['title']);
-        $category->setCategoryParent($data['category']);
         $category->setActive($data['active']);
         $category->save();
         header('Location: /admin/category/show/'.$id);

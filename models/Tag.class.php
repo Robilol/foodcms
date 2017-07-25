@@ -20,7 +20,7 @@ class Tag extends BaseSql{
             $this->archived          = $tag['archived'];
          } else {
             $this->id                = $id;
-            $this->name              = $this->setName($name);
+            $this->setName($name);
             $this->archived          = 0;
          }
      }

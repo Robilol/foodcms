@@ -6,13 +6,12 @@ class Category extends BaseSql{
     protected $id;
     protected $title;
     protected $active;
-    protected $category_id;
     protected $archived;
 
     /**
      * @param mixed $title
      */
-     public function __construct($id, $title = null, $category_id = null, $active = null)
+     public function __construct($id, $title = null, $active = null)
      {
          parent::__construct();
 
@@ -22,13 +21,11 @@ class Category extends BaseSql{
            $this->id                = $category['id'];
            $this->title             = $category['title'];
            $this->active            = $category['active'];
-           $this->category_id       = $category['category_id'];
            $this->archived          = $category['archived'];
          } else {
            $this->id                = $id;
-           $this->title             = $this->setTitle($title);
+           $this->setTitle($title);
            $this->active            = $active;
-           $this->category_id       = $category_id;
            $this->archived          = 0;
          }
      }
@@ -45,7 +42,7 @@ class Category extends BaseSql{
         $this->active = $active;
     }
 
-    /**
+    /*
      * @return mixed
      */
     public function getTitle()
@@ -61,13 +58,6 @@ class Category extends BaseSql{
         return $this->active;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCategoryParent()
-    {
-        return $this->category_id;
-    }
 
     /**
      * @return mixed
@@ -85,13 +75,6 @@ class Category extends BaseSql{
         return $this->id;
     }
 
-    /**
-     * @param mixed $category_id
-     */
-    public function setCategoryParent($category_id)
-    {
-        $this->category_id = $category_id;
-    }
 
     /**
      * @param mixed $archived

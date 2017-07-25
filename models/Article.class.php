@@ -46,9 +46,9 @@
                 $this->utime        = $article['utime'];
             } else {
                 $this->id = $id;
-                $this->title = $this->setTitle($title);
-                $this->text = $this->setText($text);
-                $this->thumbnail = $this->setThumbnail($thumbnail);
+                $this->setTitle($title);
+                $this->setText($text);
+                $this->setThumbnail($thumbnail);
                 $this->active = $active;
                 $this->food_user_id = $user;
                 $this->archived = $archived;
