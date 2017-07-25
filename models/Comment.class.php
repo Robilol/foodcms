@@ -19,7 +19,7 @@
                 $comment = parent::getOneBy(["id" => $id]);
 
                 $this->id           = $comment['id'];
-                $this->text        = $comment['text'];
+                $this->text        = $this->setText($comment['text']);
                 $this->active         = $comment['active'];
                 $this->archived    = $comment['archived'];
                 $this->food_user_id       = $comment['food_user_id'];
@@ -28,7 +28,7 @@
                 $this->utime        = $comment['utime'];
             } else {
                 $this->id           = $id;
-                $this->text        = $text;
+                $this->text        = $this->setText($text);
                 $this->active         = $active;
                 $this->archived    = $archived;
                 $this->food_user_id       = $user;
@@ -75,7 +75,7 @@
         }
         public function setText($text)
         {
-            $this->text = $text;
+            $this->text = Tools::antiXSS($text);
         }
 
         public function setActive($active)

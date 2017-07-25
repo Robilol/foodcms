@@ -16,25 +16,25 @@ class Page extends BaseSql{
             $page = parent::getOneBy(["id" => $id]);
 
            $this->id                = $page['id'];
-           $this->title             = $page['title'];
-           $this->text              =$page['text']; 
+           $this->title             = $this->setTitle($page['title']);
+           $this->text              = $this->setText($page['text']);
            $this->active          = $page['active'];  
            $this->archived          = $page['archived'];
          } else {
            $this->id                = $id;
-           $this->title             = $title;
-           $this->text              = $text;
+           $this->title             = $this->setTitle($title);
+           $this->text              = $this->setText($text);
            $this->active          = $active;  
            $this->archived          = 0;
          }
      }
 
     /**
-     * @param mixed $active
+     * @param mixed $text
      */
     public function setText($text)
     {
-        $this->text = $text;
+        $this->text = Tools::antiXSS($text);
     }
 
     /**
@@ -106,7 +106,7 @@ class Page extends BaseSql{
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = Tools::antiXSS($title);
     }
 
     static function getPageForm(){

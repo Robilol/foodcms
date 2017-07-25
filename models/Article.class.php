@@ -35,9 +35,9 @@
                 $article = parent::getOneBy(["id" => $id]);
 
                 $this->id           = $article['id'];
-                $this->title        = $article['title'];
-                $this->text         = $article['text'];
-                $this->thumbnail    = $article['thumbnail'];
+                $this->title        = $this->setTitle($article['title']);
+                $this->text         = $this->setText($article['text']);
+                $this->thumbnail    = $this->setThumbnail($article['thumbnail']);
                 $this->active       = $article['active'];
                 $this->food_user_id         = $article['food_user_id'];
                 $this->food_category_id         = $article['food_category_id'];
@@ -46,9 +46,9 @@
                 $this->utime        = $article['utime'];
             } else {
                 $this->id = $id;
-                $this->title = $title;
-                $this->text = $text;
-                $this->thumbnail = $thumbnail;
+                $this->title = $this->setTitle($title);
+                $this->text = $this->setText($text);
+                $this->thumbnail = $this->setThumbnail($thumbnail);
                 $this->active = $active;
                 $this->food_user_id = $user;
                 $this->archived = $archived;
@@ -63,7 +63,7 @@
          */
         public function setText($text)
         {
-            $this->text = $text;
+            $this->text = Tools::antiXSS($text);
         }
 
         /**
@@ -169,7 +169,7 @@
          */
         public function setThumbnail($thumbnail)
         {
-            $this->thumbnail = $thumbnail;
+            $this->thumbnail = Tools::antiXSS($thumbnail);
         }
 
         /**
@@ -177,7 +177,7 @@
          */
         public function setTitle($title)
         {
-            $this->title = $title;
+            $this->title = Tools::antiXSS($title);
         }
 
 

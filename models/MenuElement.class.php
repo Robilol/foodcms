@@ -14,13 +14,13 @@ class MenuElement extends BaseSql{
             $menuElement = parent::getOneBy(["id" => $id]);
 
             $this->id               = $menuElement['id'];
-            $this->name             = $menuElement['name'];
-            $this->redirection      = $menuElement['redirection'];
+            $this->name             = $this->setName($menuElement['name']);
+            $this->redirection      = $this->setRedirection($menuElement['redirection']);
             $this->archived         = $menuElement['archived'];
         } else {
             $this->id               = $id;
-            $this->name             = $name;
-            $this->redirection      = $redirection;
+            $this->name             = $this->setName($name);
+            $this->redirection      = $this->setRedirection($redirection);
             $this->archived         = 0;
         }
     }
@@ -70,7 +70,7 @@ class MenuElement extends BaseSql{
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = Tools::antiXSS($name);
     }
 
     /**
@@ -86,7 +86,7 @@ class MenuElement extends BaseSql{
      */
     public function setRedirection($redirection)
     {
-        $this->redirection = $redirection;
+        $this->redirection = Tools::antiXSS($redirection);
     }
 
 
