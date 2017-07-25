@@ -20,6 +20,9 @@ class CategoryController {
     $article = new Article(-1);
     $category = new Category(-1);
     $thisCategory = $category->getOneBy(["id" => $id]);
+    if($thisCategory['active'] == 0 || $thisCategory['archived'] == 1){
+      header("Location: /category");
+    }
     $allArticles = $article->getAllArticles(0, "DESC", 1, 0,$id);
     $v->assign("allArticles", $allArticles);
     $v->assign("thisCategory", $thisCategory);
