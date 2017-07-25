@@ -5,11 +5,10 @@ class Page extends BaseSql{
  protected $id;
  protected $title;
  protected $active;
- protected $category_id;
  protected $archived;
  protected $text;
 
-    public function __construct($id, $title = null, $text = null, $active=null, $category_id = null)
+    public function __construct($id, $title = null, $text = null, $active=null)
      {
          parent::__construct();
 
@@ -19,14 +18,12 @@ class Page extends BaseSql{
            $this->id                = $page['id'];
            $this->title             = $page['title'];
            $this->text              =$page['text']; 
-           $this->category_id          = $page['category_id'];
            $this->active          = $page['active'];  
            $this->archived          = $page['archived'];
          } else {
            $this->id                = $id;
            $this->title             = $title;
            $this->text              = $text;
-           $this->category_id          = $category_id;
            $this->active          = $active;  
            $this->archived          = 0;
          }
@@ -83,14 +80,6 @@ class Page extends BaseSql{
     /**
      * @return mixed
      */
-    public function getCategory()
-    {
-        return $this->category_id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTitle()
     {
         return $this->title;
@@ -110,14 +99,6 @@ class Page extends BaseSql{
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @param mixed $id_category
-     */
-    public function setCategory($category_id)
-    {
-        $this->category_id = $category_id;
     }
 
     /**
