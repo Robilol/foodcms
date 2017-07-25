@@ -62,8 +62,7 @@ class UserController {
         $user->setArchived(0);
         $user->setActive(1);
         $user->save();
-        var_dump($user);
-        //header('Location: /admin/user/show/'.$id);
+        header('Location: /admin/user/show/'.$id);
 	}
 	public function deleteAction(){
 	    $uri = $_SERVER['REQUEST_URI'];

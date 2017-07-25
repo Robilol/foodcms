@@ -9,9 +9,9 @@
 
 ?>
           <div class="gallery">
-            <a href="/article/show/<?php echo $thisTag['id']; ?>">
+
                 <img src="<?php echo $media['link']; ?>" alt="<?php echo $thisTag['name']; ?>">
-            </a>
+
             <div class="desc"><h3><?php echo $thisTag['name']; ?></h3>
 
             </div>
