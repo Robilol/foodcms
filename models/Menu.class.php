@@ -252,17 +252,17 @@ class Menu extends BaseSql{
         $html = "";
 
         foreach ($menuElements as $menuElement) {
-            if ($menuElement->getRedirection() == "index/login") {
+            if ($menuElement->getRedirection() == "Index/login") {
                 if (!empty($_SESSION['id'])) {
                     $html .= "<li><a href='/user/show/".$_SESSION['id']."'><i class='fa fa-user' aria-hidden='true' style='margin-right: 5px;'></i>".$_SESSION['username']."</a></li>";
                 } else {
                     $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
                 }
-            } elseif ($menuElement->getRedirection() == "index/register") {
+            } elseif ($menuElement->getRedirection() == "Index/register") {
                 if (empty($_SESSION['id'])) {
                     $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
                 }
-            } elseif ($menuElement->getRedirection() == "index/logout") {
+            } elseif ($menuElement->getRedirection() == "Index/logout") {
                 if (!empty($_SESSION['id'])) {
                     $html .= "<li><a href='/".$menuElement->getRedirection()."'>".$menuElement->getName()."</a></li>";
                 }
