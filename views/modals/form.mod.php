@@ -42,7 +42,7 @@
                             <?php echo ($attributs["required"])?"required":"" ?>
                     >
           <?php elseif($attributs["type"] == "select"):?>
-              <select <?php if($attributs["multiple"]): ?>multiple<?php endif; ?> id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
+              <select <?php if(isset($attributs["multiple"]) && $attributs["multiple"]): ?>multiple<?php endif; ?> id="<?php echo $attributs["id"]; ?>" name="<?php echo $name; ?>">
                 <?php 
                 foreach ($attributs["option"] as $option):?>
                   <option value="<?php echo $option['value']; ?>" <?php if($option['selected']): ?>selected<?php endif; ?>><?php echo $option['name']; ?></option>
