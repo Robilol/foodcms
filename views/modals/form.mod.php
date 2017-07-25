@@ -60,6 +60,11 @@
     <?php endforeach; ?>
 
     <div class="form-row">
-        <input class="submit" type="submit" name="" value="<?php echo $config["options"]["submit"]; ?>">
+        <?php if(isset($config["options"]["submit"])): ?>
+            <input class="submit" type="submit" name="" value="<?php echo $config["options"]["submit"]; ?>">
+        <?php endif; ?>
+        <?php if(isset($config["options"]["button"])): ?>
+            <button class="submit" type="button" name=""><?php echo $config["options"]["button"]; ?></button>
+        <?php endif; ?>
     </div>
 </form>

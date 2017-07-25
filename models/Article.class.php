@@ -234,7 +234,7 @@
                 "action"    =>"/admin/article/register",
                 "class"     =>"form-group",
                 "id"        =>"articleCreationForm",
-                "submit"    =>"Ajouter"
+                "button"    =>"Ajouter"
             ],
 
             "struct"=>[
@@ -283,7 +283,7 @@
                 "action"    =>"/admin/article/edit/".$thisArticle['id'],
                 "class"     =>"form-group",
                 "id"        =>"articleEditForm",
-                "submit"    =>"Modifier"
+                "button"    =>"Modifier"
             ],
 
             "struct"=>[

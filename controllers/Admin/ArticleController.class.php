@@ -11,7 +11,7 @@ class ArticleController {
     }
 
     public function showAction(){
-        $v = new View("admin/article","backend");
+        $v = new View("admin/articleEdit","backend");
         $article = new Article(-1);
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
@@ -41,7 +41,39 @@ class ArticleController {
         $article = new Article($id);
         $article->setTitle($data['title']);
         $article->setText($data['text']);
-        $article->setThumbnail($data['thumbnail']);
+
+        var_dump($_FILES);
+
+        if (isset($_FILES["thumbnail"]["name"]) && $_FILES["thumbnail"]["name"] != "") {
+            $error = false;
+            $avatarFileType = ["png", "jpg", "jpeg", "gif"];
+            $avatarLimitSize = 10000000;
+            $error = false;
+            $infoFile = pathinfo($_FILES["thumbnail"]["name"]);
+
+            if(!in_array( strtolower($infoFile["extension"]) , $avatarFileType)){
+                $error = true;
+            }
+
+            if($_FILES["thumbnail"]["size"]>$avatarLimitSize){
+                $error = true;
+            }
+
+            //Est ce que le dossier upload existe
+            $pathUpload ="./assets/media";
+            $pathUpload1 ="/assets/media";
+            if( !file_exists($pathUpload) ){
+                //Sinon le créer
+                mkdir($pathUpload);
+            }
+            //Déplacer l'avatar dedans
+            $nameAvatar =uniqid().".". strtolower($infoFile["extension"]);
+            $avatar =$pathUpload."/".$nameAvatar;
+            $avatar1 =$pathUpload1."/".$nameAvatar;
+            move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $avatar);
+
+            $article->setThumbnail($avatar1);
+        }
         $article->setActive($data['active']);
         $article->setUser($_SESSION['id']);
         $article->save();
@@ -82,15 +114,15 @@ class ArticleController {
         $avatarLimitSize = 10000000;
         $error = false;
         $infoFile = pathinfo($_FILES["thumbnail"]["name"]);
+
         if(!in_array( strtolower($infoFile["extension"]) , $avatarFileType)){
             $error = true;
-            echo '1';
         }
 
         if($_FILES["thumbnail"]["size"]>$avatarLimitSize){
             $error = true;
-            echo '2';
         }
+
         //Est ce que le dossier upload existe
         $pathUpload ="./assets/media";
         $pathUpload1 ="/assets/media";
@@ -99,23 +131,25 @@ class ArticleController {
             mkdir($pathUpload);
         }
         //Déplacer l'avatar dedans
-        $nameAvatar =uniqid().".". strtolower($infoFile["extension"]);
-        $avatar =$pathUpload."/".$nameAvatar;
-        $avatar1 =$pathUpload1."/".$nameAvatar;
+        $nameAvatar = uniqid().".". strtolower($infoFile["extension"]);
+        $avatar = $pathUpload."/".$nameAvatar;
+        $avatar1 = $pathUpload1."/".$nameAvatar;
         move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $avatar);
         if($data['active'] == "on"){
             $active = 1;
         }else{
             $active = 0;
         }
+
         if(!$error){
             $article = new Article(-1, $data['title'], $data['text'], $avatar1, $active, 2);
             $article->save();
-            //      header('Location: /admin/article');
+             header('Location: /admin/article');
         }else{
             echo "Erreur d'upload d'image";
         }
-        exit();
+
+        header('Location: /admin/article');
     }
 
     public function getTagsAction()
@@ -150,12 +184,21 @@ class ArticleController {
         echo json_encode($arrayTagsInText);
     }
 
-    public function saveTagsAction() {
+    public function saveTagsAction($params = null) {
+
+        if (isset($params[0])) {
+            $idArticle = $params[0];
+        } else {
+            $article  = new Article(-1);
+            $idArticle = $article->getLastId();
+            $idArticle++;
+        }
+
         $tags = $_POST['idList'];
 
-        $article  = new Article(-1);
-        $idArticle = $article->getLastId();
-        $idArticle++;
+        $tagArticleAssociation = new TagArticleAssociation(-1, -1);
+        $tagArticleAssociation->deleteTagsForArticle($idArticle);
+        unset($tagArticleAssociation);
 
         foreach ($tags as $idTag) {
             $tagArticleAssociation = new TagArticleAssociation($idTag, $idArticle);
