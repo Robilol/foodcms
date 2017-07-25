@@ -385,6 +385,16 @@
                                 "type"          =>"password",
                                 "placeholder"   =>"Votre mot de passe",
                                 "required"      =>true
+                            ],
+                            "option"=>[ "label"=>"Role: ",
+                                        "id"=>"role",
+                                        "type"=>"select",
+                                        "required"=>"required",
+                                        "select"=>[
+                            "Adminstrateur"=>"administrateur",
+                            "Modérateur"=>"moderateur",
+                            
+                            "Utilisateur"=>"utilisateur"]
                             ]
                         ]
                     ]
