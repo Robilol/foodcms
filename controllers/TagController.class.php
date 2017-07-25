@@ -5,9 +5,9 @@ class TagController {
 
   public function indexAction(){
     $v = new View("tagList","frontend");
-    $tag = new Tag(-1);
-    $allTags = $tag->getAll();
-    $v->assign("allTags", $allTags);
+    $media = new Media(-1);
+    $allMedia = $media->getAll();
+    $v->assign("allMedia", $allMedia);
   }
 
 
