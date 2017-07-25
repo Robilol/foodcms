@@ -19,7 +19,7 @@
                 $comment = parent::getOneBy(["id" => $id]);
 
                 $this->id           = $comment['id'];
-                $this->text        = $this->setText($comment['text']);
+                $this->text        = $comment['text'];
                 $this->active         = $comment['active'];
                 $this->archived    = $comment['archived'];
                 $this->food_user_id       = $comment['food_user_id'];

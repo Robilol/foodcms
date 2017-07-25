@@ -20,7 +20,7 @@ class Category extends BaseSql{
             $category = parent::getOneBy(["id" => $id]);
 
            $this->id                = $category['id'];
-           $this->title             = $this->setTitle($category['title']);
+           $this->title             = $category['title'];
            $this->active            = $category['active'];
            $this->category_id       = $category['category_id'];
            $this->archived          = $category['archived'];

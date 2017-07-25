@@ -14,7 +14,7 @@ class Menu extends BaseSql{
              $menu = parent::getOneBy(["id" => $id]);
 
            $this->id                = $menu['id'];
-           $this->name             = $this->setName($menu['name']);
+           $this->name             = $menu['name'];
            $this->active          = $menu['active'];  
            $this->archived          = $menu['archived'];
          } else {

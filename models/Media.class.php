@@ -22,8 +22,8 @@ class Media extends BaseSql{
              $media = parent::getOneBy(["id" => $id]);
 
              $this->id           = $media['id'];
-             $this->title        = $this->setTitle($media['title']);
-             $this->link        = $this->setLink($media['link']);
+             $this->title        = $media['title'];
+             $this->link        = $media['link'];
              $this->archived     = $media['archived'];
              $this->active     = $media['active'];
              $this->ctime        = $media['ctime'];

@@ -14,8 +14,8 @@ class MenuElement extends BaseSql{
             $menuElement = parent::getOneBy(["id" => $id]);
 
             $this->id               = $menuElement['id'];
-            $this->name             = $this->setName($menuElement['name']);
-            $this->redirection      = $this->setRedirection($menuElement['redirection']);
+            $this->name             = $menuElement['name'];
+            $this->redirection      = $menuElement['redirection'];
             $this->archived         = $menuElement['archived'];
         } else {
             $this->id               = $id;

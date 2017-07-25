@@ -16,8 +16,8 @@ class Page extends BaseSql{
             $page = parent::getOneBy(["id" => $id]);
 
            $this->id                = $page['id'];
-           $this->title             = $this->setTitle($page['title']);
-           $this->text              = $this->setText($page['text']);
+           $this->title             = $page['title'];
+           $this->text              = $page['text'];
            $this->active          = $page['active'];  
            $this->archived          = $page['archived'];
          } else {

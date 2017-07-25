@@ -35,9 +35,9 @@
                 $article = parent::getOneBy(["id" => $id]);
 
                 $this->id           = $article['id'];
-                $this->title        = $this->setTitle($article['title']);
-                $this->text         = $this->setText($article['text']);
-                $this->thumbnail    = $this->setThumbnail($article['thumbnail']);
+                $this->title        = $article['title'];
+                $this->text         = $article['text'];
+                $this->thumbnail    = $article['thumbnail'];
                 $this->active       = $article['active'];
                 $this->food_user_id         = $article['food_user_id'];
                 $this->food_category_id         = $article['food_category_id'];

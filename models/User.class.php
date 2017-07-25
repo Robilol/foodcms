@@ -31,11 +31,11 @@
                 $user = parent::getOneBy(["id" => $id]);
 
                 $this->id           = $user['id'];
-                $this->email        = $this->setEmail($user['email']);
+                $this->email        = $user['email'];
                 $this->password     = $user['password'];
-                $this->username     = $this->setUsername($user['username']);
-                $this->firstname    = $this->setFirstname($user['firstname']);
-                $this->lastname     = $this->setLastname($user['lastname']);
+                $this->username     = $user['username'];
+                $this->firstname    = $user['firstname'];
+                $this->lastname     = $user['lastname'];
                 $this->token        = $user['token'];
                 $this->status       = $user['status'];
                 $this->active       = $user['active'];

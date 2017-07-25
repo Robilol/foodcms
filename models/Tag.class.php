@@ -16,7 +16,7 @@ class Tag extends BaseSql{
             $tag = parent::getOneBy(["id" => $id]);
 
             $this->id                = $tag['id'];
-            $this->name              = $this->setName($tag['name']);
+            $this->name              = $tag['name'];
             $this->archived          = $tag['archived'];
          } else {
             $this->id                = $id;
