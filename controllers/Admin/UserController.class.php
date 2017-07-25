@@ -25,8 +25,7 @@ class UserController {
 
 	public function addAction(){
 		$data = $_POST;
-
-		$user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname']);
+		$user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'], $data['role_id']);
 
 		if ($user->getUserByEmail($data['email'])) {
 
@@ -57,11 +56,14 @@ class UserController {
         $user->setFirstname($data['firstname']);
         $user->setLastname($data['lastname']);
         $user->setEmail($data['email']);
-        $user->setPassword($data['pwd']);
+        if ($data['pwd'] != "")
+            $user->setPassword($data['pwd']);
+        $user->setRoleId($data['role_id']);
         $user->setArchived(0);
         $user->setActive(1);
         $user->save();
-        header('Location: /admin/user/show/'.$id);
+        var_dump($user);
+        //header('Location: /admin/user/show/'.$id);
 	}
 	public function deleteAction(){
 	    $uri = $_SERVER['REQUEST_URI'];
@@ -75,7 +77,6 @@ class UserController {
         $user->save();
         print_r($user);
         header('Location: /admin/user/');
-
 	}
 	public function listAction(){
 

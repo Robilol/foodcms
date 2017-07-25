@@ -386,15 +386,28 @@
                                 "placeholder"   =>"Votre mot de passe",
                                 "required"      =>true
                             ],
-                            "option"=>[ "label"=>"Role: ",
-                                        "id"=>"role",
-                                        "type"=>"select",
-                                        "required"=>"required",
-                                        "select"=>[
-                            "Adminstrateur"=>"administrateur",
-                            "Modérateur"=>"moderateur",
-                            
-                            "Utilisateur"=>"utilisateur"]
+                            "role_id"=>[ 
+                                "label"=>"Role: ",
+                                "id"=>"role_id",
+                                "type"=>"select",
+                                "required"=>"required",
+                                "option"=>[
+                                    [
+                                        "value"=>1,
+                                        "name"=>"Administrateur",
+                                        "selected"=>0
+                                    ],
+                                    [
+                                        "value"=>2,
+                                        "name"=>"Modérateur",
+                                        "selected"=>0
+                                    ],
+                                    [
+                                        "value"=>3,
+                                        "name"=>"Utilisateur",
+                                        "selected"=>1
+                                    ]
+                                ]
                             ]
                         ]
                     ]
@@ -403,6 +416,28 @@
         }
 
         static function getUserEditForm($thisUser){
+
+            $options=[
+                        [
+                            "value"=>1,
+                            "name"=>"Administrateur",
+                        ],
+                        [
+                            "value"=>2,
+                            "name"=>"Modérateur",
+                        ],
+                        [
+                            "value"=>3,
+                            "name"=>"Utilisateur",
+                        ]
+                    ];
+
+            foreach ($options as $i => $value) {
+                if ($options[$i]['value'] == $thisUser['role_id'])
+                    $options[$i]['selected'] = 1;
+                else
+                    $options[$i]['selected'] = 0;    
+            }
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -454,7 +489,15 @@
                                 "type"          =>"password",
                                 "placeholder"   =>"Votre mot de passe",
                                 "required"      =>false
+                            ],
+                            "role_id"=>[ 
+                                "label"=>"Role: ",
+                                "id"=>"role_id",
+                                "type"=>"select",
+                                "required"=>"required",
+                                "option"=>$options
                             ]
+                            
                         ]
                     ]
                 ]
