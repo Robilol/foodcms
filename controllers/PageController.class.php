@@ -10,10 +10,15 @@ class PageController
         $link = $this->uriExploded;
         $id = $link[2];
         $page = new Page($id);
+        $active = $page ->getActive();
+        $archived = $page ->getArchived();
         $title = $page->getTitle();
         if($title == "Flux Rss"){
           header('Location: /index/feed');
         }
+        if($active == 0 || $archived == 1){
+            header("Location: /");
+          }
         $text = $page->getText();
         $v->assign("title", $title);
         $v->assign("text", $text);
