@@ -142,7 +142,7 @@ class ArticleController {
         }
 
         if(!$error){
-            $article = new Article(-1, $data['title'], $data['text'], $avatar1, $active, 2);
+            $article = new Article(-1, $data['title'], $data['text'], $avatar1, $active, $_SESSION['id'], $data['food_category_id']);
             $article->save();
              header('Location: /admin/article');
         }else{
