@@ -304,6 +304,25 @@
     }
 
     static function getArticleEditForm($thisArticle){
+        $options= [];
+        $category = new Category(-1);
+        $allCategory = $category->getAll(0, "ASC", 1);
+        foreach ($allCategory as $i => $value) {
+        $options[] =
+                        [
+                            "value"=>$allCategory[$i]['id'],
+                            "name"=>$allCategory[$i]['title'],
+                            
+                        ];
+                
+        }
+
+            foreach ($options as $i => $value) {
+                if ($options[$i]['value'] == $thisArticle['food_category_id'])
+                    $options[$i]['selected'] = 1;
+                else
+                    $options[$i]['selected'] = 0;    
+            }
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -333,6 +352,13 @@
                             "value"         =>$thisArticle['thumbnail'],
                             "required"      =>false
                         ],
+                        "food_category_id"=>[ 
+                                "label"=>"Catégorie: ",
+                                "id"=>"food_category_id",
+                                "type"=>"select",
+                                "required"=>"required",
+                                "option"=>$options
+                            ],
                         "text"=>[
                             "id"            =>"text",
                             "label"         =>"Contenu :",
