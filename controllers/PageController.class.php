@@ -2,8 +2,9 @@
 
 class PageController
 {
-    public function showAction() {
-        $v = new View("page","frontend");
+    public function showAction()
+    {
+        $v = new View("page", "frontend");
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
         $this->uriExploded = explode("/", $this->uri);
@@ -13,15 +14,14 @@ class PageController
         $active = $page ->getActive();
         $archived = $page ->getArchived();
         $title = $page->getTitle();
-        if($title == "Flux Rss"){
-          header('Location: /Index/feed');
+        if ($title == "Flux Rss") {
+            header('Location: /Index/feed');
         }
-        if($active == 0 || $archived == 1){
+        if ($active == 0 || $archived == 1) {
             header("Location: /");
-          }
+        }
         $text = $page->getText();
         $v->assign("title", $title);
         $v->assign("text", $text);
-
     }
 }

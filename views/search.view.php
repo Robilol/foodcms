@@ -2,7 +2,9 @@
     <h1 id="titre">Rechercher</h1>
 </header>
 <section id="content">
-    <?php if (!empty($this->data) && array_key_exists("error", $this->data)) { $this->includeAlert("danger", $this->data['error']); } ?>
+    <?php if (!empty($this->data) && array_key_exists("error", $this->data)) {
+    $this->includeAlert("danger", $this->data['error']);
+} ?>
 
     <form id="search" class="form-group" method="post" action="/search/search">
         <div class="form-row">

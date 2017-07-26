@@ -91,7 +91,7 @@
 					<p class="title"><?php echo $article['title']; ?></p>
 					<a href="/admin/article/delete/<?php echo $article['id']; ?>"><i class="fa fa-trash"></i></a>
 					<a href="/admin/article/show/<?php echo $article['id']; ?>"><i class="fa fa-pencil-square-o"></i></a>
-					<p><?php echo substr( $article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>
+					<p><?php echo substr($article['text'], 0, 140); ?> <br><a href="/admin/article/show/<?php echo $article['id']; ?>">Lire la suite</a></p>
 			    </div>
 			    </div>
 		<?php endforeach; ?>
@@ -99,11 +99,10 @@
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
-		<?php if(count($this->data["lastComment"])!=0) {
-		foreach ($this->data["lastComment"] as $comment):
-		$user = new User($comment['food_user_id']);
-        $article = new Article($comment['article_id']);
-        ?>
+		<?php if (count($this->data["lastComment"])!=0) {
+    foreach ($this->data["lastComment"] as $comment):
+        $user = new User($comment['food_user_id']);
+    $article = new Article($comment['article_id']); ?>
 			<div class="articleDiv">
 				<div>
 						<p><a href="/admin/comment/delete/<?php echo $comment['id']; ?>"><i class="fa fa-trash"></i></a>
@@ -114,16 +113,16 @@
 			    </div>
 			    </div>
 		<?php endforeach;
-	}else{
-		?>
+} else {
+    ?>
 	<div class="articleDiv">
 		<div>
 		<?php echo "Il n'y a pas de commentaires à valider pour l'instant"; ?>
 	</div>
 	</div>
 <?php
-	}
-	?>
+}
+    ?>
      </div>
 
 	</section>

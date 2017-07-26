@@ -1,16 +1,18 @@
 <?php
 
 
-class CategoryController {
-
-    public function indexAction(){
-        $v = new View("admin/category","backend");
+class CategoryController
+{
+    public function indexAction()
+    {
+        $v = new View("admin/category", "backend");
         $category = new Category(-1);
         $allCategory = $category->getAll();
         $v->assign("allCategory", $allCategory);
     }
-    public function showAction(){
-        $v = new View("admin/category","backend");
+    public function showAction()
+    {
+        $v = new View("admin/category", "backend");
         $category = new Category(-1);
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
@@ -22,41 +24,47 @@ class CategoryController {
         $v->assign("allCategory", $allCategory);
         $v->assign("thisCategory", $thisCategory);
     }
-    public function listAction(){
+    public function listAction()
+    {
         $v= new View("admin/categoryList", "backend");
     }
 
-    public function createAction(){
-      $data = $_POST;
-      if (!isset($data['active']))
-        $data['active'] = 0;
-      else
-        $data['active'] = 1;
-      $category = new Category(-1, $data['title'], $data['active']);
-      $category->save();
+    public function createAction()
+    {
+        $data = $_POST;
+        if (!isset($data['active'])) {
+            $data['active'] = 0;
+        } else {
+            $data['active'] = 1;
+        }
+        $category = new Category(-1, $data['title'], $data['active']);
+        $category->save();
 
-      header("Location: /admin/category");
+        header("Location: /admin/category");
     }
 
-    public function editAction(){
+    public function editAction()
+    {
         $data = $_POST;
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
         $this->uriExploded = explode("/", $this->uri);
         $link = $this->uriExploded;
         $id = $link[3];
-        if (!isset($data['active']))
+        if (!isset($data['active'])) {
             $data['active'] = 0;
-        else
+        } else {
             $data['active'] = 1;
+        }
         $category = new Category($id);
         $category->setTitle($data['title']);
         $category->setActive($data['active']);
         $category->save();
         header('Location: /admin/category/show/'.$id);
-      }
+    }
 
-    public function deleteAction(){
+    public function deleteAction()
+    {
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
         $this->uriExploded = explode("/", $this->uri);
@@ -68,7 +76,4 @@ class CategoryController {
         $category->save();
         header('Location: /admin/category/');
     }
-
-
-
 }

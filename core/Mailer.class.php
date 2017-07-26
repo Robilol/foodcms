@@ -2,7 +2,6 @@
 
 class Mailer
 {
-
     private $to;
     private $object;
     private $template;
@@ -93,16 +92,15 @@ class Mailer
         $this->template = file_get_contents("./templates/".$template.".mail.html");
     }
 
-    public function parseData() {
-        foreach($this->data as $key => $value)
-        {
+    public function parseData()
+    {
+        foreach ($this->data as $key => $value) {
             $this->template = str_replace('{{'.$key.'}}', $value, $this->template);
         }
     }
 
-    public function send() {
+    public function send()
+    {
         mail($this->to, $this->object, $this->template, $this->headers);
     }
-
-
 }

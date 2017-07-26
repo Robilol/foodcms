@@ -2,8 +2,9 @@
 
 class MenuController
 {
-public function indexAction(){
-        $v = new View("admin/menu","backend");
+    public function indexAction()
+    {
+        $v = new View("admin/menu", "backend");
         $menu = new Menu(-1);
         $menuElement = new MenuElement(-1);
         $allMenu = $menu->getAll();
@@ -11,8 +12,9 @@ public function indexAction(){
         $v->assign("allMenuElement", $allMenuElement);
         $v->assign("allMenu", $allMenu);
     }
-    public function showAction(){
-        $v    = new View("admin/menu","backend");
+    public function showAction()
+    {
+        $v    = new View("admin/menu", "backend");
         $menu = new Menu(-1);
         $menuElement = new MenuElement(-1);
 
@@ -32,7 +34,8 @@ public function indexAction(){
         $v->assign("allMenu", $allMenu);
         $v->assign("thisMenu", $thisMenu);
     }
-    public function listAction(){
+    public function listAction()
+    {
         $v= new View("admin/menuList", "backend");
     }
 
@@ -43,7 +46,7 @@ public function indexAction(){
 
         try {
             $this->db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
 
@@ -62,7 +65,7 @@ public function indexAction(){
         if (!empty($data['elements'])) {
             $sql = "INSERT INTO ".DB_PREFIXE."menu_menu_element VALUES";
 
-            for($i=0;$i<count($data['elements']);$i++) {
+            for ($i=0;$i<count($data['elements']);$i++) {
                 if ($i == count($data['elements']) - 1) {
                     $sql .= "(".$id_menu.", ".$data['elements'][$i].", ".$i.");";
                 } else {
@@ -84,7 +87,7 @@ public function indexAction(){
 
         try {
             $this->db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
 
@@ -126,7 +129,7 @@ public function indexAction(){
 
         $menu->save();
         header('Location: /admin/menu/show/'.$id);
-      }
+    }
 
     public function deleteAction()
     {

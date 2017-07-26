@@ -1,7 +1,7 @@
 <?php
 
-    class Comment extends BaseSql{
-
+    class Comment extends BaseSql
+    {
         protected $id;
         protected $text;
         protected $active;
@@ -116,7 +116,8 @@
             $this->utime = $utime;
         }
 
-        static function getCommentCreationForm(){
+        public static function getCommentCreationForm()
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -152,7 +153,8 @@
             ];
         }
 
-        static function getCommentEditForm($thisComment){
+        public static function getCommentEditForm($thisComment)
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -180,7 +182,8 @@
                 ]
             ];
         }
-        static function getCommentArchivedForm($thisComment){
+        public static function getCommentArchivedForm($thisComment)
+        {
             return [
             "options"=>[
                 "method"    =>"POST",

@@ -2,14 +2,16 @@
 
 class TagController
 {
-    public function indexAction(){
-        $v = new View("admin/tag","backend");
+    public function indexAction()
+    {
+        $v = new View("admin/tag", "backend");
         $tag = new Tag(-1);
         $allTag = $tag->getAll();
         $v->assign("allTag", $allTag);
     }
-    public function showAction(){
-        $v = new View("admin/tag","backend");
+    public function showAction()
+    {
+        $v = new View("admin/tag", "backend");
         $tag = new Tag(-1);
         $uri = $_SERVER['REQUEST_URI'];
         $this->uri = trim($uri, "/");
@@ -21,7 +23,8 @@ class TagController
         $v->assign("allTag", $allTag);
         $v->assign("thisTag", $thisTag);
     }
-    public function listAction(){
+    public function listAction()
+    {
         $v= new View("admin/tagList", "backend");
     }
 
@@ -60,5 +63,5 @@ class TagController
         $tag->setArchived(1);
         $tag->save();
         header('Location: /admin/tag/');
-   }
+    }
 }

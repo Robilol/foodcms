@@ -15,20 +15,20 @@
     <?php 
     $ingredients ="";
     foreach ($tags as $i => $value) {
-      $ingredients .= "$tags[$i], ";
+        $ingredients .= "$tags[$i], ";
     }
     
-    if ($ingredients == "")
-      echo "Pas de tags";
-      else {
-        $ingredients = trim($ingredients);
-        echo trim($ingredients, ',');
+    if ($ingredients == "") {
+        echo "Pas de tags";
+    } else {
+          $ingredients = trim($ingredients);
+          echo trim($ingredients, ',');
       }
     ?>
   </div>
 <?php
-if(isset($_SESSION['id']))
-{ ?>
+if (isset($_SESSION['id'])) {
+        ?>
   <div class="commentArea">
     <form id="comment" enctype="multipart/form-data" method="post" action="/article/createComment">
       <label>Commentaire : </label>
@@ -38,14 +38,13 @@ if(isset($_SESSION['id']))
     </form>
   </div>
   <?php
-}
+    }
 $test = count($this->data["allComment"]);
-if($test != 0){
+if ($test != 0) {
     ?>
   <div class="commentArea">
     <?php foreach ($this->data["allComment"] as $comment):
-      $user = new User($comment['food_user_id']);
-      ?>
+      $user = new User($comment['food_user_id']); ?>
       <div class="articleDiv">
         <div>
           <p><?php echo $comment['text']; ?></p><br>
@@ -53,11 +52,11 @@ if($test != 0){
     </div>
     </div>
     <?php endforeach;
-  }else{
+} else {
     ?>
   <div class="commentArea">
     <p> Il n'y a aucun commentaire pour l'instant </p>
   </div><?php
-  }?>
+}?>
   </div>
 </section>

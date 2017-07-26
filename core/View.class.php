@@ -1,16 +1,18 @@
 <?php
 
-class View {
-
+class View
+{
     private $view;
     private $template;
 
-    public function __construct($view = "index", $template = "frontend") {
+    public function __construct($view = "index", $template = "frontend")
+    {
         $this->setView($view);
         $this->setTemplate($template);
     }
 
-    public function setView($view) {
+    public function setView($view)
+    {
         if (file_exists("views/".$view.".view.php")) {
             $this->view = $view;
         } else {
@@ -19,7 +21,8 @@ class View {
         }
     }
 
-    public function setTemplate($template) {
+    public function setTemplate($template)
+    {
         if (file_exists("views/".$template.".view.php")) {
             $this->template = $template;
         } else {
@@ -29,7 +32,8 @@ class View {
         }
     }
 
-    public function includeAlert($type, $text) {
+    public function includeAlert($type, $text)
+    {
         if (file_exists("views/modals/alert.mod.php")) {
             include "views/modals/alert.mod.php";
         } else {
@@ -48,16 +52,16 @@ class View {
         }
     }
 
-    public function assign($key, $value) {
+    public function assign($key, $value)
+    {
         $this->data[$key] = $value;
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         if (!empty($this->data)) {
             extract($this->data);
         }
         include "views/".$this->template.".view.php";
     }
-
-
 }

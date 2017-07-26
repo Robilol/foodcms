@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <?php if(isset($this->data['title'])): ?>
+    <?php if (isset($this->data['title'])): ?>
         <title><?php echo $this->data['title'] ?></title>
     <?php else: ?>
         <title>FoodCMS</title>
@@ -31,8 +31,8 @@
                     $page = new Page(-1);
                     $allPage = $page->getAll(0, "DESC", 1);
                     foreach ($allPage as $i => $value) {
-                         echo "<li><a href='/page/show/".$allPage[$i]['id']."''>".$allPage[$i]['title']."</a></li>";
-                     } 
+                        echo "<li><a href='/page/show/".$allPage[$i]['id']."''>".$allPage[$i]['title']."</a></li>";
+                    }
                 ?>
             </ul>
         </div>

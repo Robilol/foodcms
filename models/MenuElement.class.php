@@ -1,6 +1,7 @@
 <?php
 
-class MenuElement extends BaseSql{
+class MenuElement extends BaseSql
+{
     protected $id;
     protected $name;
     protected $redirection;
@@ -91,7 +92,8 @@ class MenuElement extends BaseSql{
 
 
 
-    static function getMenuElementForm(){
+    public static function getMenuElementForm()
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -129,7 +131,8 @@ class MenuElement extends BaseSql{
         ];
     }
 
-    static function getMenuElementEditForm($thisMenuElement){
+    public static function getMenuElementEditForm($thisMenuElement)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -164,7 +167,8 @@ class MenuElement extends BaseSql{
         ];
     }
 
-    static function getMenuElementArchivedForm($thisMenuElement){
+    public static function getMenuElementArchivedForm($thisMenuElement)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",

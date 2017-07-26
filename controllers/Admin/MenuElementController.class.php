@@ -2,14 +2,16 @@
 
 class MenuElementController
 {
-    public function indexAction(){
-        $v = new View("admin/menuElement","backend");
+    public function indexAction()
+    {
+        $v = new View("admin/menuElement", "backend");
         $menuElement = new MenuElement(-1);
         $allMenuElement = $menuElement->getAll();
         $v->assign("allMenuElement", $allMenuElement);
     }
-    public function showAction(){
-        $v    = new View("admin/menuElement","backend");
+    public function showAction()
+    {
+        $v    = new View("admin/menuElement", "backend");
         $menuElement = new MenuElement(-1);
 
         $uri = $_SERVER['REQUEST_URI'];
@@ -27,7 +29,8 @@ class MenuElementController
         $v->assign("thisMenuElement", $thisMenuElement);
     }
 
-    public function listAction(){
+    public function listAction()
+    {
         $v= new View("admin/menuElementList", "backend");
     }
 

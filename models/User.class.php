@@ -1,7 +1,7 @@
 <?php
 
-    class User extends BaseSql {
-
+    class User extends BaseSql
+    {
         protected $id;
         protected $email;
         protected $password;
@@ -41,7 +41,6 @@
                 $this->active       = $user['active'];
                 $this->archived     = $user['archived'];
                 $this->role_id      = $user['role_id'];
-
             } else {
                 $this->id           = $id;
                 $this->setEmail($email);
@@ -57,86 +56,107 @@
             }
         }
 
-        public function setId($id) {
+        public function setId($id)
+        {
             $this->id = $id;
         }
 
-        public function getId() {
+        public function getId()
+        {
             return $this->id;
         }
 
-        public function setEmail($email) {
+        public function setEmail($email)
+        {
             $this->email = Tools::antiXSS(trim($email));
         }
 
-        public function getEmail() {
-             return $this->email;
+        public function getEmail()
+        {
+            return $this->email;
         }
 
-        public function setPassword($pwd) {
+        public function setPassword($pwd)
+        {
             $this->password = $this->cryptPassword(Tools::antiXSS($pwd));
         }
 
-        public function cryptPassword($pwd) {
+        public function cryptPassword($pwd)
+        {
             password_hash($pwd, PASSWORD_BCRYPT);
         }
 
-        public function getPassword() {
+        public function getPassword()
+        {
             return $this->password;
         }
 
-        public function setUsername($username) {
+        public function setUsername($username)
+        {
             $this->username = Tools::antiXSS($username);
         }
 
-        public function getUsername() {
+        public function getUsername()
+        {
             return $this->username;
         }
 
-        public function setActive($active) {
+        public function setActive($active)
+        {
             $this->active = $active;
         }
 
-        public function getActive() {
+        public function getActive()
+        {
             return $this->active;
         }
 
-        public function setArchived($archived) {
+        public function setArchived($archived)
+        {
             $this->archived = $archived;
         }
 
-        public function getArchived() {
+        public function getArchived()
+        {
             return $this->archived;
         }
-        public function setFirstname($firstname) {
+        public function setFirstname($firstname)
+        {
             $this->firstname = Tools::antiXSS($firstname);
         }
 
-        public function getFirstname() {
+        public function getFirstname()
+        {
             return $this->firstname;
         }
 
-        public function setLastname($lastname) {
+        public function setLastname($lastname)
+        {
             $this->lastname = Tools::antiXSS($lastname);
         }
 
-        public function getLastname() {
+        public function getLastname()
+        {
             return $this->lastname;
         }
 
-        public function setStatus($status) {
+        public function setStatus($status)
+        {
             $this->status = $status;
         }
 
-        public function getStatus() {
+        public function getStatus()
+        {
             return $this->status;
         }
 
-        public function setRoleId($role_id) {
+        public function setRoleId($role_id)
+        {
             $this->role_id = $role_id;
         }
 
-        public function getRoleId() {
+        public function getRoleId()
+        {
             return $this->role_id;
         }
 
@@ -156,14 +176,16 @@
             $this->token = $token;
         }
 
-        public function generateNewPassword() {
+        public function generateNewPassword()
+        {
             $pwd = uniqid("pwd");
             $this->setPassword($pwd);
 
             return $pwd;
         }
 
-        public function getUserByUsername($username) {
+        public function getUserByUsername($username)
+        {
             $user =  parent::getOneBy(["username" => $username]);
 
             if (is_null($user['id'])) {
@@ -183,7 +205,8 @@
             return true;
         }
 
-        public function getUserByEmail($email) {
+        public function getUserByEmail($email)
+        {
             $user =  parent::getOneBy(["email" => $email]);
 
             if (is_null($user['id'])) {
@@ -202,7 +225,8 @@
             return true;
         }
 
-        public function getUserByToken($token) {
+        public function getUserByToken($token)
+        {
             $user =  parent::getOneBy(["token" => $token]);
 
             if (is_null($user['id'])) {
@@ -221,7 +245,8 @@
             return true;
         }
 
-        static function getRegisterForm(){
+        public static function getRegisterForm()
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -276,7 +301,8 @@
             ];
         }
 
-        static function getLoginForm(){
+        public static function getLoginForm()
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -309,7 +335,8 @@
                 ]
             ];
         }
-        static function getLoginFormAdmin(){
+        public static function getLoginFormAdmin()
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -343,7 +370,8 @@
             ];
         }
 
-        static function getUserCreationForm(){
+        public static function getUserCreationForm()
+        {
             return [
                 "options"=>[
                     "method"    =>"POST",
@@ -392,7 +420,7 @@
                                 "placeholder"   =>"Votre mot de passe",
                                 "required"      =>true
                             ],
-                            "role_id"=>[ 
+                            "role_id"=>[
                                 "label"=>"Role: ",
                                 "id"=>"role_id",
                                 "type"=>"select",
@@ -421,8 +449,8 @@
             ];
         }
 
-        static function getUserEditForm($thisUser){
-
+        public static function getUserEditForm($thisUser)
+        {
             $options=[
                         [
                             "value"=>1,
@@ -439,10 +467,11 @@
                     ];
 
             foreach ($options as $i => $value) {
-                if ($options[$i]['value'] == $thisUser['role_id'])
+                if ($options[$i]['value'] == $thisUser['role_id']) {
                     $options[$i]['selected'] = 1;
-                else
-                    $options[$i]['selected'] = 0;    
+                } else {
+                    $options[$i]['selected'] = 0;
+                }
             }
             return [
                 "options"=>[
@@ -496,7 +525,7 @@
                                 "placeholder"   =>"Votre mot de passe",
                                 "required"      =>false
                             ],
-                            "role_id"=>[ 
+                            "role_id"=>[
                                 "label"=>"Role: ",
                                 "id"=>"role_id",
                                 "type"=>"select",
@@ -509,8 +538,9 @@
                 ]
             ];
         }
-        static function getUserArchivedForm($thisUser){
-        return [
+        public static function getUserArchivedForm($thisUser)
+        {
+            return [
             "options"=>[
                 "method"    =>"POST",
                 "action"    =>"/admin/user/delete/".$thisUser['id'],

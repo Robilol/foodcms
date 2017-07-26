@@ -3,7 +3,7 @@
 try {
     $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
     $db->exec("SET CHARACTER SET utf8");
-} catch(Exception $e) {
+} catch (Exception $e) {
     die("Erreur SQL : ".$e->getMessage());
 }
 
@@ -670,5 +670,3 @@ $sql = "INSERT INTO `food_menu_menu_element` (`menu_id`, `menu_element_id`, `ord
 (1, 6, 6)";
 $query = $db->prepare($sql);
 $query->execute();
-
-?>

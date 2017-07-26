@@ -8,7 +8,8 @@
  */
 class SearchController
 {
-    public function indexAction() {
+    public function indexAction()
+    {
         $v = new View("search");
 
         $tag = new Tag(-1);
@@ -21,12 +22,13 @@ class SearchController
         $v->assign("categoriesArray", $categories_array);
     }
 
-    public function searchAction() {
+    public function searchAction()
+    {
         $data = $_POST;
 
         try {
             $this->db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
 
@@ -66,7 +68,7 @@ class SearchController
             $sql .= ")";
         }
             
-          $sql .= " AND
+        $sql .= " AND
         a.active = 1
         AND
         a.archived = 0";
@@ -91,7 +93,5 @@ class SearchController
 
         $v = new View("searchResult");
         $v->assign("articlesArray", $articleArray);
-
-
     }
 }

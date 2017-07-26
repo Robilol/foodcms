@@ -1,6 +1,7 @@
 <?php
 
-class TagArticleAssociation{
+class TagArticleAssociation
+{
     protected $idTag;
     protected $idArticle;
 
@@ -51,7 +52,7 @@ class TagArticleAssociation{
         try {
             $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
             $db->exec("SET CHARACTER SET utf8");
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
         $sql = "SELECT * FROM ".DB_PREFIXE."tag_article WHERE article_id=".$idArticle;
@@ -62,11 +63,12 @@ class TagArticleAssociation{
         return $query->fetchAll();
     }
 
-    public function deleteTagsForArticle($idArticle) {
+    public function deleteTagsForArticle($idArticle)
+    {
         try {
             $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
             $db->exec("SET CHARACTER SET utf8");
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
 
@@ -77,11 +79,12 @@ class TagArticleAssociation{
         $query->execute();
     }
 
-    public function Save() {
+    public function Save()
+    {
         try {
             $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PWD);
             $db->exec("SET CHARACTER SET utf8");
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             die("Erreur SQL : ".$e->getMessage());
         }
 
@@ -91,5 +94,4 @@ class TagArticleAssociation{
         $query = $db->prepare($sql);
         $query->execute();
     }
-
 }

@@ -1,8 +1,8 @@
 <?php
 
 
-    class Article extends BaseSql{
-
+    class Article extends BaseSql
+    {
         protected $id;
         protected $title;
         protected $text;
@@ -181,74 +181,73 @@
         }
 
 
-    /**
-     * Gets the value of ctime.
-     *
-     * @return mixed
-     */
-    public function getCtime()
-    {
-        $date = new DateTime($this->ctime);
-        return $date->format("j M Y");
-    }
+        /**
+         * Gets the value of ctime.
+         *
+         * @return mixed
+         */
+        public function getCtime()
+        {
+            $date = new DateTime($this->ctime);
+            return $date->format("j M Y");
+        }
 
-    /**
-     * Sets the value of ctime.
-     *
-     * @param mixed $ctime the date created
-     *
-     * @return self
-     */
-    protected function setCtime($ctime)
-    {
-        $this->ctime = $ctime;
-    }
+        /**
+         * Sets the value of ctime.
+         *
+         * @param mixed $ctime the date created
+         *
+         * @return self
+         */
+        protected function setCtime($ctime)
+        {
+            $this->ctime = $ctime;
+        }
 
-    /**
-     * Gets the value of utime.
-     *
-     * @return mixed
-     */
-    public function getUtime()
-    {
-        $date = new DateTime($this->utime);
-        return $date->format("j M Y G:i");
-    }
+        /**
+         * Gets the value of utime.
+         *
+         * @return mixed
+         */
+        public function getUtime()
+        {
+            $date = new DateTime($this->utime);
+            return $date->format("j M Y G:i");
+        }
 
-    /**
-     * Sets the value of utime.
-     *
-     * @param mixed $utime the date modified
-     *
-     * @return self
-     */
-    protected function setUtime($utime)
-    {
-        $this->utime = $utime;
-    }
+        /**
+         * Sets the value of utime.
+         *
+         * @param mixed $utime the date modified
+         *
+         * @return self
+         */
+        protected function setUtime($utime)
+        {
+            $this->utime = $utime;
+        }
 
-    static function getArticleCreationForm(){
-
-        $options= [];
-        $category = new Category(-1);
-        $allCategory = $category->getAll(0, "ASC", 1);
-        foreach ($allCategory as $i => $value) {
-        $options[] =
+        public static function getArticleCreationForm()
+        {
+            $options= [];
+            $category = new Category(-1);
+            $allCategory = $category->getAll(0, "ASC", 1);
+            foreach ($allCategory as $i => $value) {
+                $options[] =
                         [
                             "value"=>$allCategory[$i]['id'],
                             "name"=>$allCategory[$i]['title'],
                             "selected"=>0,
                         ];
+            }
 
-        }
-
-           /* foreach ($options as $i => $value) {
-                if ($options[$i]['value'] == $thisArticle['food_category_id'])
-                    $options[$i]['selected'] = 1;
-                else
-                    $options[$i]['selected'] = 0;
-            }*/
-        return [
+            /* foreach ($options as $i => $value) {
+                 if ($options[$i]['value'] == $thisArticle['food_category_id'])
+                     $options[$i]['selected'] = 1;
+                 else
+                     $options[$i]['selected'] = 0;
+             }*/
+            return [
             "options"=>[
                 "method"    =>"POST",
                 "action"    =>"/admin/article/register",
@@ -301,29 +300,30 @@
                 ]
             ]
         ];
-    }
+        }
 
-    static function getArticleEditForm($thisArticle){
-        $options= [];
-        $category = new Category(-1);
-        $allCategory = $category->getAll(0, "ASC", 1);
-        foreach ($allCategory as $i => $value) {
-        $options[] =
+        public static function getArticleEditForm($thisArticle)
+        {
+            $options= [];
+            $category = new Category(-1);
+            $allCategory = $category->getAll(0, "ASC", 1);
+            foreach ($allCategory as $i => $value) {
+                $options[] =
                         [
                             "value"=>$allCategory[$i]['id'],
                             "name"=>$allCategory[$i]['title'],
                             
                         ];
-                
-        }
+            }
 
             foreach ($options as $i => $value) {
-                if ($options[$i]['value'] == $thisArticle['food_category_id'])
+                if ($options[$i]['value'] == $thisArticle['food_category_id']) {
                     $options[$i]['selected'] = 1;
-                else
-                    $options[$i]['selected'] = 0;    
+                } else {
+                    $options[$i]['selected'] = 0;
+                }
             }
-        return [
+            return [
             "options"=>[
                 "method"    =>"POST",
                 "action"    =>"/admin/article/edit/".$thisArticle['id'],
@@ -352,7 +352,7 @@
                             "value"         =>$thisArticle['thumbnail'],
                             "required"      =>false
                         ],
-                        "food_category_id"=>[ 
+                        "food_category_id"=>[
                                 "label"=>"Catégorie: ",
                                 "id"=>"food_category_id",
                                 "type"=>"select",
@@ -380,9 +380,10 @@
                 ]
             ]
         ];
-    }
+        }
 
-    static function getArticleArchivedForm($thisArticle){
+        public static function getArticleArchivedForm($thisArticle)
+        {
             return [
             "options"=>[
                 "method"    =>"POST",
@@ -393,5 +394,5 @@
                 ],
             "struct"=>[]
             ];
+        }
     }
-}

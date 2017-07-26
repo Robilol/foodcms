@@ -1,8 +1,9 @@
 <?php
 
-class UserController {
-
-	public function loginAction() {
+class UserController
+{
+    public function loginAction()
+    {
         $data = $_POST;
         $user = new User(0);
         $user->getUserByUsername($data['login']);
@@ -25,11 +26,13 @@ class UserController {
         }
     }
 
-	public function logoutAction() {
+    public function logoutAction()
+    {
         session_destroy();
-	}
+    }
 
-	public function resetPassword($params) {
+    public function resetPassword($params)
+    {
         $email = $params[0];
         $user = new User(0);
         if (!$user->getUserByEmail($email)) {
@@ -46,28 +49,29 @@ class UserController {
             exit();
         }
     }
-		public function showAction(){
-				$v = new View("showUser","frontend");
-				$user = new User(-1);
-				$uri = $_SERVER['REQUEST_URI'];
-				$this->uri = trim($uri, "/");
-				$this->uriExploded = explode("/", $this->uri);
-				$link = $this->uriExploded;
-				$id = $link[2];
-				if($id == $_SESSION['id']){
-				$thisUser = $user->getOneBy(["id" => $id]);
-				$v->assign("thisUser", $thisUser);
-			}else{
-				header('Location: /Index');
-			}
-		}
-	public function registerAction($params) {
+    public function showAction()
+    {
+        $v = new View("showUser", "frontend");
+        $user = new User(-1);
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[2];
+        if ($id == $_SESSION['id']) {
+            $thisUser = $user->getOneBy(["id" => $id]);
+            $v->assign("thisUser", $thisUser);
+        } else {
+            header('Location: /Index');
+        }
+    }
+    public function registerAction($params)
+    {
         $data = $_POST;
 
-        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'],3);
+        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'], 3);
 
         if ($user->getUserByEmail($data['email'])) {
-
         }
 
         $user->setPassword($data['pwd']);
@@ -82,33 +86,36 @@ class UserController {
 
         header('Location: /Index/login/verify');
         exit();
-	}
-	public function editAction() {
-		$data = $_POST;
-		$uri = $_SERVER['REQUEST_URI'];
-		$this->uri = trim($uri, "/");
-		$this->uriExploded = explode("/", $this->uri);
-		$link = $this->uriExploded;
-		$id = $link[2];
-		$user = new User($id);
-		$user->setUsername($data['username']);
-		$user->setFirstname($data['firstname']);
-		$user->setLastname($data['lastname']);
-		$user->setEmail($data['email']);
-		if ($data['pwd'] != "")
-				$user->setPassword($data['pwd']);
-		$user->setRoleId($_SESSION['role']);
-		$user->setArchived(0);
-		$user->setActive(1);
-		$user->save();
-		header('Location: /user/show/'.$id);
-	}
-	public function resetAction() {
+    }
+    public function editAction()
+    {
+        $data = $_POST;
+        $uri = $_SERVER['REQUEST_URI'];
+        $this->uri = trim($uri, "/");
+        $this->uriExploded = explode("/", $this->uri);
+        $link = $this->uriExploded;
+        $id = $link[2];
+        $user = new User($id);
+        $user->setUsername($data['username']);
+        $user->setFirstname($data['firstname']);
+        $user->setLastname($data['lastname']);
+        $user->setEmail($data['email']);
+        if ($data['pwd'] != "") {
+            $user->setPassword($data['pwd']);
+        }
+        $user->setRoleId($_SESSION['role']);
+        $user->setArchived(0);
+        $user->setActive(1);
+        $user->save();
+        header('Location: /user/show/'.$id);
+    }
+    public function resetAction()
+    {
+    }
 
-	}
 
-
-	public function validateRegistrationAction($params) {
+    public function validateRegistrationAction($params)
+    {
         $token = $params[0];
         $user = new User(0);
 
@@ -122,6 +129,5 @@ class UserController {
             header('Location: /Index/login/wrongAccount');
             exit();
         }
-
     }
 }
