@@ -10,7 +10,7 @@ class IndexController
         $v = new View("index");
 
         $article = new Article(-1);
-        $articleArray = $article->getAll(8, "DESC",1);
+        $articleArray = $article->getAll(0, "DESC",1);
 
         $v->assign("articlesArray", $articleArray);
 

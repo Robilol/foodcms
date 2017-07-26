@@ -47,44 +47,44 @@ $link = $this->uriExploded;
 
         <ul id="navigationList">
             <?php
-            if ($link[1] == 'article') {
+            if (strtolower($link[1]) == 'article') {
                 foreach ($this->data["allArticles"] as $article):?>
                     <li><a href="/admin/article/show/<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a>
                     </li><?php endforeach;
             }
-            if ($link[1] == 'comment') {
+            if (strtolower($link[1]) == 'comment') {
                 foreach ($this->data["allComment"] as $comment):?>
                     <li><a href="/admin/comment/show/<?php echo $comment['id']; ?>"><?php echo $comment['text']; ?></a>
                     </li><?php endforeach;
             }
-            if ($link[1] == 'category') {
+            if (strtolower($link[1]) == 'category') {
                 foreach ($this->data["allCategory"] as $category):?>
                     <li>
                         <a href="/admin/category/show/<?php echo $category['id']; ?>"><?php echo $category['title']; ?></a>
                     </li>
                 <?php endforeach;
             }
-            if ($link[1] == 'page') {
+            if (strtolower($link[1]) == 'page') {
                 foreach ($this->data["allPage"] as $page):?>
                     <li><a href="/admin/page/show/<?php echo $page['id']; ?>"><?php echo $page['title']; ?></a></li>
                 <?php endforeach;
             }
-            if ($link[1] == 'tag') {
+            if (strtolower($link[1]) == 'tag') {
                 foreach ($this->data["allTag"] as $tag):?>
                     <li><a href="/admin/tag/show/<?php echo $tag['id']; ?>"><?php echo $tag['name']; ?></a></li>
                 <?php endforeach;
             }
-            if ($link[1] == 'menu') {
+            if (strtolower($link[1]) == 'menu') {
                 foreach ($this->data["allMenu"] as $menu):?>
                     <li><a href="/admin/menu/show/<?php echo $menu['id']; ?>"><?php echo $menu['name']; ?></a></li>
                 <?php endforeach;
             }
-            if ($link[1] == 'menuElement') {
+            if (strtolower($link[1]) == 'menuElement') {
                 foreach ($this->data["allMenuElement"] as $menuElement):?>
                     <li><a href="/admin/menuElement/show/<?php echo $menuElement['id']; ?>"><?php echo $menuElement['name']; ?></a></li>
                 <?php endforeach;
             }
-            if ($link[1] == 'user') {
+            if (strtolower($link[1]) == 'user') {
                 foreach ($this->data["allUsers"] as $user):?>
                     <li><a href="/admin/user/show/<?php echo $user['id']; ?>"><?php echo $user['username']; ?></a></li>
                 <?php endforeach;
