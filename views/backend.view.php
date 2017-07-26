@@ -79,7 +79,7 @@ $link = $this->uriExploded;
                     <li><a href="/admin/menu/show/<?php echo $menu['id']; ?>"><?php echo $menu['name']; ?></a></li>
                 <?php endforeach;
             }
-            if (strtolower($link[1]) == 'menuElement') {
+            if (strtolower($link[1]) == 'menuelement') {
                 foreach ($this->data["allMenuElement"] as $menuElement):?>
                     <li><a href="/admin/menuElement/show/<?php echo $menuElement['id']; ?>"><?php echo $menuElement['name']; ?></a></li>
                 <?php endforeach;
