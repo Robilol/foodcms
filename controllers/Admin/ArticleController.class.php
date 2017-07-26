@@ -110,10 +110,6 @@ class ArticleController {
     public function registerAction()
     {
         $data = $_POST;
-        if (!isset($data['active']))
-            $data['active'] = 0;
-        else
-            $data['active'] = 1;
         $error = false;
         $avatarFileType = ["png", "jpg", "jpeg", "gif"];
         $avatarLimitSize = 10000000;
@@ -140,9 +136,9 @@ class ArticleController {
         $avatar = $pathUpload."/".$nameAvatar;
         $avatar1 = $pathUpload1."/".$nameAvatar;
         move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $avatar);
-        if($data['active'] == "on"){
+        if($data['active'] == "on" || $data['active'] === 1 ){
             $active = 1;
-        }else{
+        }elseif($data['active'] == "off" || $data['active'] === 0){
             $active = 0;
         }
 

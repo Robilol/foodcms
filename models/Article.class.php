@@ -49,7 +49,7 @@
                 $this->setTitle($title);
                 $this->setText($text);
                 $this->setThumbnail($thumbnail);
-                $this->active = $active;
+                $this->setActive($active);
                 $this->food_user_id = $user;
                 $this->archived = $archived;
                 $this->ctime = $ctime;
@@ -228,7 +228,7 @@
     }
 
     static function getArticleCreationForm(){
-        
+
         $options= [];
         $category = new Category(-1);
         $allCategory = $category->getAll(0, "ASC", 1);
@@ -239,14 +239,14 @@
                             "name"=>$allCategory[$i]['title'],
                             "selected"=>0,
                         ];
-                
+
         }
 
            /* foreach ($options as $i => $value) {
                 if ($options[$i]['value'] == $thisArticle['food_category_id'])
                     $options[$i]['selected'] = 1;
                 else
-                    $options[$i]['selected'] = 0;    
+                    $options[$i]['selected'] = 0;
             }*/
         return [
             "options"=>[
@@ -274,7 +274,7 @@
                             "placeholder"   =>"Votre image",
                             "required"      =>true
                         ],
-                        "food_category_id"=>[ 
+                        "food_category_id"=>[
                                 "label"=>"Catégorie: ",
                                 "id"=>"food_category_id",
                                 "type"=>"select",
