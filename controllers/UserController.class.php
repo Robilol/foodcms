@@ -29,10 +29,10 @@ class UserController {
         session_destroy();
 	}
 
-	public function resetPassword($params) {
-        $email = $params[0];
+	public function resetPasswordAction() {
+	    $data = $_POST;
         $user = new User(0);
-        if (!$user->getUserByEmail($email)) {
+        if (!$user->getUserByEmail($data['email'])) {
             header('Location: /index/login/wrongAccount');
             exit();
         } else {
@@ -103,8 +103,9 @@ class UserController {
 		$user->save();
 		header('Location: /user/show/'.$id);
 	}
-	public function resetAction() {
 
+	public function resetAction() {
+        $v = new View("reset");
 	}
 
 

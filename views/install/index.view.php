@@ -8,5 +8,7 @@
         <br>
 
         <input type="button" value="Continuer" onclick="window.location.href='/Install/config'" />
+
+        <a href="User/"></a>
     </div>
 </section>
