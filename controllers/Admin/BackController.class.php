@@ -59,7 +59,7 @@ class BackController{
       $v->assign("lastArticles", $lastArticles);
 
       $comment2 = new Comment(-1);
-      $lastComment = $comment2->getAll(3, "DESC");
+      $lastComment = $comment2->getAll(3, "DESC",0);
       $v->assign("lastComment", $lastComment);
 
       if (!empty($params)) {
@@ -73,6 +73,9 @@ class BackController{
     public function loginAction() {
 
             $v = new View("admin/login","empty");
+    }
+    public function page404Action($params) {
+        $v = new View("/admin/404","empty");
     }
     public function loginVerifAction() {
           $data = $_POST;
