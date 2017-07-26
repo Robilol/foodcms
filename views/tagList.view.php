@@ -5,8 +5,7 @@
   <div id="gallery">
     <?php foreach ($this->data["allMedia"] as $media):
       $tag = new Tag(-1);
-      $thisTag = $tag->getOneBy(["id" => $media['id']]);
-
+      $thisTag = $tag->getOneBy(["id" => $media['food_tag_id']]);
 ?>
           <div class="gallery">
 
