@@ -14,7 +14,7 @@ class PageController
         $archived = $page ->getArchived();
         $title = $page->getTitle();
         if($title == "Flux Rss"){
-          header('Location: /index/feed');
+          header('Location: /Index/feed');
         }
         if($active == 0 || $archived == 1){
             header("Location: /");
