@@ -1,5 +1,5 @@
 <header>
-    <h1 id="titre">Connexion</h1>
+    <h1 id="titre">Mot de passe oublié</h1>
 </header>
 <section id="content">
     <form class="form-group" action="User/resetPassword" method="post">
