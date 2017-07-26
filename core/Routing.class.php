@@ -99,7 +99,7 @@ class Routing {
           $controller->{$this->actionName}($this->params);
           exit();
         }
-      } 
+      }
       if ($this->uriExploded[0] == "admin"){
         if (!isset($_SESSION['username']))
             header('Location: /admin/back/login');
@@ -123,7 +123,12 @@ class Routing {
   }
 
   public function page404() {
-    die("Page 404");
+    if($this->uriExploded[0] == "admin"){
+      header('Location: /admin/back/page404');
+    }else{
+      header('Location: /index/page404');
+
+    }
   }
 
 }
