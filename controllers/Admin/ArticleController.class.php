@@ -82,7 +82,7 @@ class ArticleController {
     $article->setUser($_SESSION['id']);
     $article->setCategory($data['food_category_id']);
     $article->save();
-    header('Location: /admin/article/');
+    header('Location: /admin/article/show/'.$id);
   }
 
   public function  deleteAction(){
@@ -93,8 +93,8 @@ class ArticleController {
     $link = $this->uriExploded;
     $id = $link[3];
     $article = new Article($id);
-    $article->setActive(0);
     $article->setArchived(1);
+    $article->setActive(0);
     $article->save();
     header('Location: /admin/article/');
   }
