@@ -5,8 +5,8 @@
 	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-	
-	
+
+
 	<script>
 	var chart = AmCharts.makeChart("chartdiv", {
     "theme": "light",
@@ -99,7 +99,8 @@
 	</section>
 	<section id="section-bas">
 		<h3>Derniers Commentaires</h3>
-		<?php foreach ($this->data["lastComment"] as $comment):
+		<?php if(count($this->data["lastComment"])!=0) {
+		foreach ($this->data["lastComment"] as $comment):
 		$user = new User($comment['food_user_id']);
         $article = new Article($comment['article_id']);
         ?>
@@ -109,10 +110,20 @@
 						<a href="/admin/comment/moderate/<?php echo $comment['id']; ?>"><i class="fa fa-check"></i></a></p>
 						<p><?php echo  substr($comment['text'], 0, 140); ?></p>
 						<p style="font-style: italic;"><?php echo "Posté par ".$user->getUsername()." le ".$comment['utime']." sur l'article ".$article->getTitle()."."; ?></p>
-           
+
 			    </div>
 			    </div>
-		<?php endforeach; ?>
+		<?php endforeach;
+	}else{
+		?>
+	<div class="articleDiv">
+		<div>
+		<?php echo "Il n'y a pas de commentaires à valider pour l'instant"; ?>
+	</div>
+	</div>
+<?php
+	}
+	?>
      </div>
 
 	</section>
