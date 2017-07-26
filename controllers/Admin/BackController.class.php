@@ -74,6 +74,9 @@ class BackController{
 
             $v = new View("admin/login","empty");
     }
+    public function page404Action($params) {
+        $v = new View("/admin/404","empty");
+    }
     public function loginVerifAction() {
           $data = $_POST;
           $user = new User(0);

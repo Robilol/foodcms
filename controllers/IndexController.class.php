@@ -58,7 +58,9 @@ class IndexController
     public function registerAction($params) {
         $v = new View("register");
     }
-
+    public function page404Action($params) {
+        $v = new View("404");
+    }
     public function loginAction($params) {
         if (isset($_SESSION['id'])) {
             header("Location: /");
