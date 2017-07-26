@@ -2,6 +2,9 @@
   <h1 id="titre">Archive Articles</h1>
 </header>
 <section id="contentArchived">
+  <?php if(count($this->data["allArticle"])!=0){
+?>
+
   <table>
     <tr>
       <th>Titre</th>
@@ -20,7 +23,12 @@
       <td><?php echo $user->getUsername(); ?></td>
       <td><a href="/admin/archive/activate/article/<?php echo $article['id'] ?>"><i class="fa fa-share" aria-hidden="true"></i></a></td>
     </tr>
-  <?php endforeach; ?>
+  <?php endforeach;
+}else{
+  echo "Il n'y a pas d'article archivée<br>";
+  echo "<a href='/admin/archive'>Retour aux archives</a>";
+}
+ ?>
 
 </table>
 </section>
