@@ -126,7 +126,7 @@ class Routing {
     if($this->uriExploded[0] == "admin"){
       header('Location: /admin/back/page404');
     }else{
-      header('Location: /index/page404');
+      header('Location: /Index/page404');
 
     }
   }

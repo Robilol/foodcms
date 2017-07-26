@@ -11,16 +11,16 @@ class UserController {
 
         if (password_verify($data['pwd'], $user->getPassword())) {
             if ($user->getStatus() == 0) {
-                header('Location: /index/login/verify');
+                header('Location: /Index/login/verify');
                 exit();
             }
             session_start();
             $_SESSION['id']         = $user->getId();
             $_SESSION['username']   = $user->getUsername();
             $_SESSION['role']   = $user->getRoleId();
-            header('Location: /index/index/connected');
+            header('Location: /Index/index/connected');
         } else {
-            header('Location: /index/login/error');
+            header('Location: /Index/login/error');
             exit();
         }
     }
@@ -33,7 +33,7 @@ class UserController {
         $email = $params[0];
         $user = new User(0);
         if (!$user->getUserByEmail($email)) {
-            header('Location: /index/login/wrongAccount');
+            header('Location: /Index/login/wrongAccount');
             exit();
         } else {
             $variables['username']   = $user->getUsername();
@@ -42,7 +42,7 @@ class UserController {
             $mail = new Mailer($user->getEmail(), "Votre nouveau mot de passe", "resetPassword", $variables);
             $mail->send();
 
-            header('Location: /index/login/newPassword');
+            header('Location: /Index/login/newPassword');
             exit();
         }
     }
@@ -58,7 +58,7 @@ class UserController {
 				$thisUser = $user->getOneBy(["id" => $id]);
 				$v->assign("thisUser", $thisUser);
 			}else{
-				header('Location: /index');
+				header('Location: /Index');
 			}
 		}
 	public function registerAction($params) {
@@ -80,7 +80,7 @@ class UserController {
         $mail = new Mailer($user->getEmail(), "Confirmation d'inscription", "register", $variables);
         $mail->send();
 
-        header('Location: /index/login/verify');
+        header('Location: /Index/login/verify');
         exit();
 	}
 	public function editAction() {
@@ -116,10 +116,10 @@ class UserController {
             $user->setStatus(1);
             $user->save();
 
-            header('Location: /index/login/tokenVerified');
+            header('Location: /Index/login/tokenVerified');
             exit();
         } else {
-            header('Location: /index/login/wrongAccount');
+            header('Location: /Index/login/wrongAccount');
             exit();
         }
 

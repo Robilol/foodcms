@@ -95,7 +95,7 @@ class IndexController
 
     public function logoutAction($params) {
         session_destroy();
-        header('Location: /index');
+        header('Location: /Index');
         exit();
     }
 }

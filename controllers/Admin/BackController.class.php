@@ -86,7 +86,7 @@ class BackController{
 
           if (password_verify($data['pwd'], $user->getPassword())) {
               if ($user->getStatus() == 0) {
-                  header('Location: /index/login/verify');
+                  header('Location: /Index/login/verify');
                   exit();
               }
               session_start();
@@ -96,7 +96,7 @@ class BackController{
 
               header('Location: /admin');
           } else {
-              header('Location: /index/login/error');
+              header('Location: /Index/login/error');
               exit();
           }
       }
