@@ -423,3 +423,9 @@ min-height: 50px;
   overflow-y: auto;
   padding-bottom: 20px;
 }
+
+div.content {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

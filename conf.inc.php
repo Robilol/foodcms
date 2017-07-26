@@ -12,7 +12,7 @@ switch ($_SERVER['SERVER_NAME']) {
     case "foodcms.dev":
         define('HOSTNAME', 'foodcms.dev');
         define('DB_HOST', '51.255.160.240');
-        define('DB_NAME', 'foodcms2');
+        define('DB_NAME', 'test');
         define('DB_USER', 'user');
         define('DB_PWD', 'Donjett0');
         define('DB_PORT', '3306');
