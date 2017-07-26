@@ -21,6 +21,8 @@ class IndexController
                 }
             }
         }
+
+        $v->assign("title", "Homepage");
     }
     public function feedAction($params) {
       $v = new View("feed","flux");
@@ -57,9 +59,11 @@ class IndexController
     }
     public function registerAction($params) {
         $v = new View("register");
+        $v->assign("title", "Inscription");
     }
     public function page404Action($params) {
         $v = new View("404");
+        $v->assign("title", "404");
     }
     public function loginAction($params) {
         if (isset($_SESSION['id'])) {
@@ -67,6 +71,7 @@ class IndexController
         }
 
         $v = new View("login");
+        $v->assign("title", "Connexion");
         if (!empty($params)) {
             foreach ($params as $key => $value) {
                 if ($value == "error") {
