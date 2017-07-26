@@ -59,7 +59,7 @@ class BackController{
       $v->assign("lastArticles", $lastArticles);
 
       $comment2 = new Comment(-1);
-      $lastComment = $comment2->getAll(3, "DESC");
+      $lastComment = $comment2->getAll(3, "DESC",0);
       $v->assign("lastComment", $lastComment);
 
       if (!empty($params)) {
