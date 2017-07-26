@@ -80,6 +80,7 @@ class ArticleController {
     }
     $article->setActive($data['active']);
     $article->setUser($_SESSION['id']);
+    $article->setCategory($data['food_category_id']);
     $article->save();
     header('Location: /admin/article/show/'.$id);
   }
