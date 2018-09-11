@@ -1,6 +1,7 @@
 <?php
 
-class Tag extends BaseSql{
+class Tag extends BaseSql
+{
     protected $id;
     protected $name;
     protected $archived;
@@ -8,22 +9,22 @@ class Tag extends BaseSql{
     /**
      * @return mixed
      */
-     public function __construct($id, $name = null)
-     {
-         parent::__construct();
+    public function __construct($id, $name = null)
+    {
+        parent::__construct();
 
-         if ($id > 0) {
+        if ($id > 0) {
             $tag = parent::getOneBy(["id" => $id]);
 
             $this->id                = $tag['id'];
             $this->name              = $tag['name'];
             $this->archived          = $tag['archived'];
-         } else {
+        } else {
             $this->id                = $id;
             $this->setName($name);
             $this->archived          = 0;
-         }
-     }
+        }
+    }
 
     public function getArchived()
     {
@@ -70,7 +71,8 @@ class Tag extends BaseSql{
         $this->name = Tools::antiXSS($name);
     }
   
-    static function getTagForm(){
+    public static function getTagForm()
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -101,7 +103,8 @@ class Tag extends BaseSql{
         ];
     }
 
- static function getTagEditForm($thisTag){
+    public static function getTagEditForm($thisTag)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -129,8 +132,9 @@ class Tag extends BaseSql{
         ];
     }
     
-    static function getTagArchivedForm($thisTag){
-    return [
+    public static function getTagArchivedForm($thisTag)
+    {
+        return [
             "options"=>[
                 "method"    =>"POST",
                 "action"    =>"/admin/tag/delete/".$thisTag['id'],

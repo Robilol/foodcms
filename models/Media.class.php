@@ -1,7 +1,7 @@
 <?php
 
-class Media extends BaseSql{
-
+class Media extends BaseSql
+{
     protected $id;
     protected $title;
     protected $link;
@@ -14,32 +14,32 @@ class Media extends BaseSql{
     /**
      * @param mixed $id
      */
-     public function __construct($id, $title = null, $link = null ,$food_tag_id = null, $archived = 0, $active = 1, $ctime = null, $utime = null)
-     {
-         parent::__construct();
+    public function __construct($id, $title = null, $link = null, $food_tag_id = null, $archived = 0, $active = 1, $ctime = null, $utime = null)
+    {
+        parent::__construct();
 
-         if ($id > 0) {
-             $media = parent::getOneBy(["id" => $id]);
+        if ($id > 0) {
+            $media = parent::getOneBy(["id" => $id]);
 
-             $this->id           = $media['id'];
-             $this->title        = $media['title'];
-             $this->link        = $media['link'];
-             $this->archived     = $media['archived'];
-             $this->active     = $media['active'];
-             $this->ctime        = $media['ctime'];
-             $this->utime        = $media['utime'];
-             $this->food_tag_id   = $media['food_tag_id'];
-         } else {
-             $this->id           = $id;
-             $this->setTitle($title);
-             $this->setLink($link);
-             $this->archived    = $archived;
-             $this->active    = $active;
-             $this->ctime        = $ctime;
-             $this->utime        = $utime;
-             $this->food_tag_id   = $food_tag_id;
-         }
-     }
+            $this->id           = $media['id'];
+            $this->title        = $media['title'];
+            $this->link        = $media['link'];
+            $this->archived     = $media['archived'];
+            $this->active     = $media['active'];
+            $this->ctime        = $media['ctime'];
+            $this->utime        = $media['utime'];
+            $this->food_tag_id   = $media['food_tag_id'];
+        } else {
+            $this->id           = $id;
+            $this->setTitle($title);
+            $this->setLink($link);
+            $this->archived    = $archived;
+            $this->active    = $active;
+            $this->ctime        = $ctime;
+            $this->utime        = $utime;
+            $this->food_tag_id   = $food_tag_id;
+        }
+    }
 
     public function setId($id)
     {
@@ -146,11 +146,13 @@ class Media extends BaseSql{
     {
         $this->utime = $utime;
     }
-    public function setTagId($food_tag_id) {
+    public function setTagId($food_tag_id)
+    {
         $this->food_tag_id = $food_tag_id;
     }
 
-    public function getTagId() {
+    public function getTagId()
+    {
         return $this->food_tag_id;
     }
 }

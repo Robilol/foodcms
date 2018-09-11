@@ -2,7 +2,9 @@
     <h1 id="titre">Résultats de la recherche</h1>
 </header>
 <section id="content">
-    <?php if (empty($this->data["articlesArray"])) { $this->includeAlert("danger", "Pas de recettes trouvées"); } ?>
+    <?php if (empty($this->data["articlesArray"])) {
+    $this->includeAlert("danger", "Pas de recettes trouvées");
+} ?>
 
     <div id="gallery">
         <?php foreach ($this->data["articlesArray"] as $article):?>

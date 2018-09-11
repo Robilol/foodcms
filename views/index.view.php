@@ -1,4 +1,6 @@
-<?php if (!empty($this->data) && array_key_exists("connected", $this->data)) { $this->includeAlert("success", $this->data['connected']); } ?>
+<?php if (!empty($this->data) && array_key_exists("connected", $this->data)) {
+    $this->includeAlert("success", $this->data['connected']);
+} ?>
 
 <section id ="search">
     <img src="/assets/img/desert.jpg" alt="Image de l'article">

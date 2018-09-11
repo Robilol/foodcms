@@ -2,8 +2,8 @@
 date_default_timezone_set('Europe/Paris');
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
-ini_set("SMTP","smtp.gmail.com");
-ini_set("smtp_port","25");
+ini_set("SMTP", "smtp.gmail.com");
+ini_set("smtp_port", "25");
 
 define("DS", DIRECTORY_SEPARATOR);
 define("PATH_RELATIVE", "/MVC/");

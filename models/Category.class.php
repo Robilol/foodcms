@@ -1,8 +1,8 @@
 <?php
 
 
-class Category extends BaseSql{
-
+class Category extends BaseSql
+{
     protected $id;
     protected $title;
     protected $active;
@@ -11,24 +11,24 @@ class Category extends BaseSql{
     /**
      * @param mixed $title
      */
-     public function __construct($id, $title = null, $active = null)
-     {
-         parent::__construct();
+    public function __construct($id, $title = null, $active = null)
+    {
+        parent::__construct();
 
-         if ($id > 0) {
+        if ($id > 0) {
             $category = parent::getOneBy(["id" => $id]);
 
-           $this->id                = $category['id'];
-           $this->title             = $category['title'];
-           $this->active            = $category['active'];
-           $this->archived          = $category['archived'];
-         } else {
-           $this->id                = $id;
-           $this->setTitle($title);
-           $this->active            = $active;
-           $this->archived          = 0;
-         }
-     }
+            $this->id                = $category['id'];
+            $this->title             = $category['title'];
+            $this->active            = $category['active'];
+            $this->archived          = $category['archived'];
+        } else {
+            $this->id                = $id;
+            $this->setTitle($title);
+            $this->active            = $active;
+            $this->archived          = 0;
+        }
+    }
     public function setTitle($title)
     {
         $this->title = Tools::antiXSS($title);
@@ -92,11 +92,13 @@ class Category extends BaseSql{
         $this->id = $id;
     }
 
-    public function getAllCategories() {
+    public function getAllCategories()
+    {
         return parent::getAll();
     }
   
-    static function getCategoryForm(){
+    public static function getCategoryForm()
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -147,7 +149,8 @@ class Category extends BaseSql{
             
         ];
     }
-    static function getCategoryEditForm($thisCategory){
+    public static function getCategoryEditForm($thisCategory)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -198,7 +201,8 @@ class Category extends BaseSql{
         ];
     }
     
-    static function getCategoryArchivedForm($thisCategory){
+    public static function getCategoryArchivedForm($thisCategory)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -211,4 +215,3 @@ class Category extends BaseSql{
             ];
     }
 }
-

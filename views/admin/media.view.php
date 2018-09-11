@@ -5,7 +5,7 @@
   <form id="gallery" enctype="multipart/form-data" method="post" action="/admin/media/create">
     <select id='tag' name='tag'>
 <?php
-      foreach ($this->data["allTag"] as $tag ):
+      foreach ($this->data["allTag"] as $tag):
         ?><option value="<?php echo $tag['id']; ?>" ><?php echo $tag['name']; ?></option>
       <?php endforeach; ?>
 

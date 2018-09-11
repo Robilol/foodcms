@@ -7,14 +7,12 @@
     $this->uri = trim($uri, "/");
     $this->uriExploded = explode("/", $this->uri);
     $link = $this->uriExploded;
-    if(!array_key_exists(2,$link)) {
+    if (!array_key_exists(2, $link)) {
         $this->includeModal("form", MenuElement::getMenuElementForm());
-    }
-    else{
-        if($link[2]!="show") {
+    } else {
+        if ($link[2]!="show") {
             $this->includeModal("form", MenuElement::getMenuElementForm());
-        }
-        else{
+        } else {
             $this->includeModal("form", MenuElement::getMenuElementEditForm($thisMenuElement));
             $this->includeModal("form", MenuElement::getMenuElementArchivedForm($thisMenuElement));
         }

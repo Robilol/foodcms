@@ -1,33 +1,33 @@
 <?php
 
-class Page extends BaseSql{
-
- protected $id;
- protected $title;
- protected $active;
- protected $archived;
- protected $text;
+class Page extends BaseSql
+{
+    protected $id;
+    protected $title;
+    protected $active;
+    protected $archived;
+    protected $text;
 
     public function __construct($id, $title = null, $text = null, $active=null)
-     {
-         parent::__construct();
+    {
+        parent::__construct();
 
-         if ($id > 0) {
+        if ($id > 0) {
             $page = parent::getOneBy(["id" => $id]);
 
-           $this->id                = $page['id'];
-           $this->title             = $page['title'];
-           $this->text              = $page['text'];
-           $this->active          = $page['active'];  
-           $this->archived          = $page['archived'];
-         } else {
-           $this->id                = $id;
-           $this->setTitle($title);
-           $this->setText($text);
-           $this->active          = $active;  
-           $this->archived          = 0;
-         }
-     }
+            $this->id                = $page['id'];
+            $this->title             = $page['title'];
+            $this->text              = $page['text'];
+            $this->active          = $page['active'];
+            $this->archived          = $page['archived'];
+        } else {
+            $this->id                = $id;
+            $this->setTitle($title);
+            $this->setText($text);
+            $this->active          = $active;
+            $this->archived          = 0;
+        }
+    }
 
     /**
      * @param mixed $text
@@ -109,7 +109,8 @@ class Page extends BaseSql{
         $this->title = Tools::antiXSS($title);
     }
 
-    static function getPageForm(){
+    public static function getPageForm()
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -152,7 +153,8 @@ class Page extends BaseSql{
         ];
     }
 
-    static function getPageEditForm($thisPage){
+    public static function getPageEditForm($thisPage)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",
@@ -196,7 +198,8 @@ class Page extends BaseSql{
         ];
     }
 
-    static function getPageArchivedForm($thisPage){
+    public static function getPageArchivedForm($thisPage)
+    {
         return [
             "options"=>[
                 "method"    =>"POST",

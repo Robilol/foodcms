@@ -1,23 +1,24 @@
 <?php
 
-class InstallController {
-
-    public function indexAction(){
-        $v = new View("install/index","empty");
-
+class InstallController
+{
+    public function indexAction()
+    {
+        $v = new View("install/index", "empty");
     }
 
 
-    public function configAction(){
-        $v = new View("install/config","empty");
-
+    public function configAction()
+    {
+        $v = new View("install/config", "empty");
     }
-    public function saveConfigAction() {
+    public function saveConfigAction()
+    {
         $data = $_POST;
 
         include './assets/foodcms.php';
 
-        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'],1);
+        $user = new User(-1, $data['email'], null, $data['username'], $data['firstname'], $data['lastname'], 1);
         $user->setPassword($data['pwd']);
         $user->save();
 

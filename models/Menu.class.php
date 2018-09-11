@@ -1,29 +1,30 @@
 <?php
 
-class Menu extends BaseSql{
+class Menu extends BaseSql
+{
     protected $id;
     protected $name;
     protected $active;
     protected $archived;
 
     public function __construct($id, $name = null, $active = 0)
-     {
-         parent::__construct();
+    {
+        parent::__construct();
 
-         if ($id > 0) {
-             $menu = parent::getOneBy(["id" => $id]);
+        if ($id > 0) {
+            $menu = parent::getOneBy(["id" => $id]);
 
-           $this->id                = $menu['id'];
-           $this->name             = $menu['name'];
-           $this->active          = $menu['active'];
-           $this->archived          = $menu['archived'];
-         } else {
-           $this->id                = $id;
-           $this->setName($name);
-           $this->active          = $active;
-           $this->archived          = 0;
-         }
-     }
+            $this->id                = $menu['id'];
+            $this->name             = $menu['name'];
+            $this->active          = $menu['active'];
+            $this->archived          = $menu['archived'];
+        } else {
+            $this->id                = $id;
+            $this->setName($name);
+            $this->active          = $active;
+            $this->archived          = 0;
+        }
+    }
 
     /**
      * @param mixed $name
@@ -89,12 +90,14 @@ class Menu extends BaseSql{
         $this->active = $active;
     }
 
-    public function loadActive() {
+    public function loadActive()
+    {
         $menu = parent::getOneBy(["active" => 1]);
         return new Menu($menu['id']);
     }
 
-    static function getMenuForm($menuElements){
+    public static function getMenuForm($menuElements)
+    {
         $options = [];
         foreach ($menuElements as $menuElement) {
             $options[] = [
@@ -151,7 +154,8 @@ class Menu extends BaseSql{
         ];
     }
 
-    static function getMenuEditForm($thisMenu, $menuElements){
+    public static function getMenuEditForm($thisMenu, $menuElements)
+    {
         $options = [];
 
         $menuElementsArray = MenuElementAssociation::LoadByMenuId($thisMenu['id']);
@@ -165,7 +169,7 @@ class Menu extends BaseSql{
         }
 
         foreach ($menuElements as $menuElement) {
-            if(!in_array($menuElement['id'], $options)) {
+            if (!in_array($menuElement['id'], $options)) {
                 $options[] = [
                     "value" => $menuElement['id'],
                     "name" => $menuElement['name'],
@@ -231,8 +235,9 @@ class Menu extends BaseSql{
         ];
     }
 
-    static function getMenuArchivedForm($thisMenu){
-    return [
+    public static function getMenuArchivedForm($thisMenu)
+    {
+        return [
             "options"=>[
                 "method"    =>"POST",
                 "action"    =>"/admin/menu/delete/".$thisMenu['id'],
@@ -244,7 +249,8 @@ class Menu extends BaseSql{
             ];
     }
 
-    public function getMenuHTML() {
+    public function getMenuHTML()
+    {
         $menu = $this->loadActive();
 
         $menuElements = MenuElementAssociation::LoadByMenuId($menu->getId());
