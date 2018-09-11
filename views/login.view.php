@@ -21,4 +21,9 @@
     <?php
     $this->includeModal("form", User::getLoginForm());
     ?>
+
+    <br>
+    <div style="width: 50%; margin-left: auto; margin-right: auto;text-align: center">
+        <a href="/User/reset">Mot de passe oublié ?</a>
+    </div>
 </section>

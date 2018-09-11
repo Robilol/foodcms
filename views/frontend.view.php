@@ -31,8 +31,8 @@
                     $page = new Page(-1);
                     $allPage = $page->getAll(0, "DESC", 1);
                     foreach ($allPage as $i => $value) {
-                        echo "<li><a href='/page/show/".$allPage[$i]['id']."''>".$allPage[$i]['title']."</a></li>";
-                    }
+                         echo "<li><a href='/page/show/".$allPage[$i]['id']."''>".$allPage[$i]['title']."</a></li>";
+                     }
                 ?>
             </ul>
         </div>

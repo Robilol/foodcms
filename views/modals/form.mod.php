@@ -56,6 +56,7 @@
         <?php endif; ?>
     <?php endforeach; ?>
 
+    <br>
     <div class="form-row">
         <?php if(isset($config["options"]["submit"])): ?>
             <input class="submit" type="submit" name="" value="<?php echo $config["options"]["submit"]; ?>">
